@@ -9,6 +9,7 @@
 using namespace std;
 
 class Graph {
+public:
     struct Edge {
         int dest;   // Destination node
         int weight; // An integer weight
@@ -24,7 +25,6 @@ class Graph {
     bool hasDir;        // false: undirected; true: directed
     vector<Node> nodes; // The list of nodes being represented
 
-public:
     // Constructor: nr nodes and direction (default: undirected)
     Graph(int nodes, bool dir = false);
 

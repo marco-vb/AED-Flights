@@ -8,7 +8,7 @@ using namespace std;
 int main() {
     unordered_map<string, int> airport_codes;
     unordered_map<int, Airport> airports;
-    ifstream airports_file("data/airports.csv");
+    ifstream airports_file("../data/airports.csv");
 
     string line;
     int i = 1;
@@ -35,7 +35,7 @@ int main() {
     unordered_map<string, int> airline_codes;
     unordered_map<int, Airline> airlines;
 
-    ifstream airlines_file("data/airlines.csv");
+    ifstream airlines_file("../data/airlines.csv");
 
     i = 1;
     while (getline(airlines_file, line)) {
@@ -51,7 +51,7 @@ int main() {
         i++;
     }
 
-    ifstream flights_file("data/flights.csv");
+    ifstream flights_file("../data/flights.csv");
     while (getline(flights_file, line)) {
         istringstream ss(line);
         string origin, destination, airline;
@@ -62,6 +62,11 @@ int main() {
         graph.addEdge(airport_codes[origin], airport_codes[destination], airline);
     }
 
+    /*for (int v = 1; v <= 4; v++) {
+        for (auto &e : graph.nodes.at(v).adj) {
+            cout << airports.at(v).getName() << " -> " << airports.at(e.dest).getName() << " " << endl;
+        }
+    }*/
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
