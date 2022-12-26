@@ -1,6 +1,3 @@
-// AED 2022/2023 - Aula Pratica 12
-// Pedro Ribeiro (DCC/FCUP) [last update: 11/12/2022]
-
 #ifndef _GRAPH_H_
 #define _GRAPH_H_
 
@@ -13,9 +10,9 @@ using namespace std;
 
 class Graph {
     struct Edge {
-        vector<string> airlines;
         int dest;   // Destination node
         int weight; // An integer weight
+        vector<string> airlines;
     };
 
     struct Node {

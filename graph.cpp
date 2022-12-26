@@ -1,6 +1,3 @@
-// AED 2022/2023 - Aula Pratica 12
-// Pedro Ribeiro (DCC/FCUP) [last update: 11/12/2022]
-
 #include "graph.h"
 
 // Constructor: nr nodes and direction (default: undirected)
@@ -10,12 +7,12 @@ Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 // Add edge from source to destination with a certain weight
 void Graph::addEdge(int src, int dest, string airline, int weight) {
     if (src<1 || src>n || dest<1 || dest>n) return;
-    if(nodes[src].adj.empty()) {
-        vector<string> airlines;
-        airlines.push_back(airline);
-        nodes[src].adj.push_back({dest, weight, airlines});
-    }
-    if (!hasDir) nodes[dest].adj.push_back({src, weight});
+    for (Edge &e : nodes[src].adj)
+        if (e.dest == dest) {
+            e.airlines.push_back(airline);
+            return;
+        }
+    nodes[src].adj.push_back({dest, weight, {airline}});
 }
 
 // Depth-First Search: example implementation

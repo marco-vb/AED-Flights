@@ -1,16 +1,12 @@
-#include <iostream>
-#include <string>
-#include <unordered_map>
-#include <fstream>
+#include <bits/stdc++.h>
 #include "Airport.h"
-#include "Flight.h"
-#include "Graph.h"
+#include "graph.h"
 
 using namespace std;
 
 int main() {
     unordered_map<string, int> codes;
-    unordered_map<string, Airport> airports;
+    unordered_map<int, Airport> airports;
     ifstream airports_file("data/airports.csv");
 
     string line;
@@ -25,19 +21,19 @@ int main() {
 
         Airport airport(code, name, city, country, latitude, longitude);
         codes.insert({code, i});
-        airports.insert({code, airport});
+        airports.insert({i, airport});
         i++;
     }
     airports_file.close();
+    Graph graph((int) codes.size(), true);
 
     ifstream flights_file("data/flights.csv");
-    Graph graph(codes.size());
     while (getline(flights_file, line)) {
         string origin = line.substr(0, 3);
         string destination = line.substr(4, line.find(",") - 4);
         string airline = line.substr(line.find(",") + 1, line.find(",") - 1);
 
-        graph.addEdge(codes[origin], codes[destination]);
+        graph.addEdge(codes[origin], codes[destination], airline);
     }
 
 
