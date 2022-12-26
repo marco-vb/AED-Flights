@@ -1,39 +1,65 @@
 #include <bits/stdc++.h>
 #include "Airport.h"
+#include "Airline.h"
 #include "graph.h"
 
 using namespace std;
 
 int main() {
-    unordered_map<string, int> codes;
+    unordered_map<string, int> airport_codes;
     unordered_map<int, Airport> airports;
     ifstream airports_file("data/airports.csv");
 
     string line;
     int i = 1;
     while (getline(airports_file, line)) {
-        string code = line.substr(0, 3);
-        string name = line.substr(4, line.find(",") - 4);
-        string city = line.substr(line.find(",") + 1, line.find(",") - 1);
-        string country = line.substr(line.find(",") + 1, line.find(",") - 1);
-        double latitude = stod(line.substr(line.find(",") + 1, line.find(",") - 1));
-        double longitude = stod(line.substr(line.find(",") + 1, line.find(",") - 1));
+        istringstream ss(line);
+        string code, name, city, country;
+        double lat, lon;
+        getline(ss, code, ',');
+        getline(ss, name, ',');
+        getline(ss, city, ',');
+        getline(ss, country, ',');
+        ss >> lat;
+        ss.ignore();
+        ss >> lon;
 
-        Airport airport(code, name, city, country, latitude, longitude);
-        codes.insert({code, i});
+        Airport airport(code, name, city, country, lat, lon);
+        airport_codes.insert({code, i});
         airports.insert({i, airport});
         i++;
     }
     airports_file.close();
-    Graph graph((int) codes.size(), true);
+    Graph graph((int) airport_codes.size(), true);
+
+    unordered_map<string, int> airline_codes;
+    unordered_map<int, Airline> airlines;
+
+    ifstream airlines_file("data/airlines.csv");
+
+    i = 1;
+    while (getline(airlines_file, line)) {
+        istringstream ss(line);
+        string code, name, callSign, country;
+        getline(ss, code, ',');
+        getline(ss, name, ',');
+        getline(ss, callSign, ',');
+        getline(ss, country);
+        Airline airline(code, name, callSign, country);
+        airline_codes.insert({code, i});
+        airlines.insert({i, airline});
+        i++;
+    }
 
     ifstream flights_file("data/flights.csv");
     while (getline(flights_file, line)) {
-        string origin = line.substr(0, 3);
-        string destination = line.substr(4, line.find(",") - 4);
-        string airline = line.substr(line.find(",") + 1, line.find(",") - 1);
+        istringstream ss(line);
+        string origin, destination, airline;
+        getline(ss, origin, ',');
+        getline(ss, destination, ',');
+        getline(ss, airline);
 
-        graph.addEdge(codes[origin], codes[destination], airline);
+        graph.addEdge(airport_codes[origin], airport_codes[destination], airline);
     }
 
 
