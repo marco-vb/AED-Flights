@@ -68,6 +68,21 @@ int main() {
         }
     }*/
 
+    // find the shortest path between two airports
+    int src = airport_codes["SJZ"];
+    int dest = airport_codes["YKS"];
+    list<li> path = graph.least_flights(src, dest);
+    cout << "Least flights from: " << airports.at(src).getName() << " to " << airports.at(dest).getName() << endl;
+    for (auto &l : path) {
+        for (auto &k: l) {
+            if (k == l.back())
+                cout << airports.at(k).getName() << endl;
+            else
+                cout << airports.at(k).getName() << " -> ";
+        }
+        cout << endl;
+    }
+
     std::cout << "Hello, World!" << std::endl;
     return 0;
 }

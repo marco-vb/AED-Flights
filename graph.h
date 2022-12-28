@@ -7,6 +7,8 @@
 #include <iostream>
 
 using namespace std;
+typedef list<int> li;
+typedef vector<int> vi;
 
 class Graph {
 public:
@@ -19,6 +21,7 @@ public:
     struct Node {
         list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
         bool visited;   // As the node been visited on a search?
+        int distance;
     };
 
     int n;              // Graph size (vertices are numbered from 1 to n)
@@ -36,6 +39,8 @@ public:
 
     // Breadth-First Search
     void bfs(int v);
+
+    list<li> least_flights(int i, int i1);
 };
 
 #endif
