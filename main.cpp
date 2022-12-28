@@ -2,6 +2,7 @@
 #include "Airport.h"
 #include "Airline.h"
 #include "graph.h"
+#include "Coord2dTree.h"
 
 using namespace std;
 
@@ -67,6 +68,13 @@ int main() {
             cout << airports.at(v).getName() << " -> " << airports.at(e.dest).getName() << " " << endl;
         }
     }*/
+
+    Coord2dTree tree;
+    tree.insert(90, 60);
+    tree.insert(10, -178);
+    tree.insert(90, 50);
+    pair<double, double> p = tree.nearest(15, 2);
+    cout << p.first << " " << p.second << endl;
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
