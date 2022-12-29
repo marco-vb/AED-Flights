@@ -144,3 +144,58 @@ list<li> Graph::least_flights(int src, int dest, set<string> &airlines_to_consid
     return paths;
 }
 
+int Graph::getOutDegree(int i) {
+    return nodes[i].adj.size();
+}
+
+int Graph::getAirlinesNumber(int i) {
+    set<string> airlines;
+    for (const auto& e : nodes[i].adj)
+        for (const auto& a : e.airlines)
+            airlines.insert(a);
+
+    return airlines.size();
+}
+
+int Graph::getDestinationsNumber(int i) {
+    set<int> destinations;
+    for (const auto& e : nodes[i].adj)
+        destinations.insert(e.dest);
+
+    return destinations.size();
+}
+
+int Graph::getDestinationsCountries(int i, unordered_map<int, Airport> &airports) {
+    set<string> countries;
+    for (const auto& e : nodes[i].adj)
+        countries.insert(airports.at(e.dest).getCountry());
+
+    return countries.size();
+}
+
+set<int> Graph::getDestinations(int src, int r) {
+    set<int> destinations;
+    for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
+    queue<int> q;
+    q.push(src);
+    nodes[src].visited = true;
+    nodes[src].distance = 0;
+
+    while (!q.empty()) {
+        int u = q.front(); q.pop();
+        for (const auto& e : nodes[u].adj) {
+            int w = e.dest;
+            if (!nodes[w].visited) {
+                nodes[w].visited = true;
+                nodes[w].distance = nodes[u].distance + 1;
+                if (nodes[w].distance <= r) {
+                    q.push(w);
+                    destinations.insert(w);
+                }
+            }
+        }
+    }
+
+    return destinations;
+}
+
