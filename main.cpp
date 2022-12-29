@@ -35,7 +35,34 @@ int main() {
 
 void list_shortest_paths(int src, int dest) {
     list<li> path = graph.least_flights(src, dest);
-    cout << "Trajetos mais curtos: " << airports.at(src).getName() << " -> " << airports.at(dest).getName() << endl;
+    cout << "Trajetos mais curtos de " << airports.at(src).getName() << " para " << airports.at(dest).getName() << endl;
+
+    if (path.empty())
+        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
+
+    for (auto &l : path) {
+        for (auto &k: l) {
+            if (k == l.back())
+                cout << airports.at(k).getName() << endl;
+            else
+                cout << airports.at(k).getName() << " -> ";
+        }
+        cout << endl;
+    }
+}
+
+void list_shortest_paths(int src, int dest, set<string> &airlines_to_consider) {
+    list<li> path = graph.least_flights(src, dest, airlines_to_consider);
+
+    cout << "Companhias aéreas consideradas: ";
+    for (const auto& a : airlines_to_consider) cout << a << " ";
+    cout << endl;
+
+    cout << "Trajetos mais curtos de " << airports.at(src).getName() << " para " << airports.at(dest).getName() << endl;
+
+    if (path.empty())
+        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
+
     for (auto &l : path) {
         for (auto &k: l) {
             if (k == l.back())
@@ -161,10 +188,37 @@ void print_menu1() {
             switch (choice) {
                 case 1:
                     cout << "Escolha o aeroporto de origem: "; cin >> src;
-                    cout << "Escolha o aeroporto de destino: "; cin >> dest; cout << endl;
-                    list_shortest_paths(airport_codes[src], airport_codes[dest]);
+                    if (airport_codes.find(src) == airport_codes.end()) {
+                        cout << "Aeroporto nao encontrado!" << endl; wait(); break;
+                    }
+
+                    cout << "Escolha o aeroporto de destino: "; cin >> dest;
+                    if (airport_codes.find(dest) == airport_codes.end()) {
+                        cout << "Aeroporto nao encontrado!" << endl; wait(); break;
+                    }
+
+                    cout << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
+                    string op; cin >> op;
+
+                    if (op == "s") {
+                        set<string> airlines_to_consider;
+                        cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
+                        string airline;
+                        while (cin >> airline && airline != "fim") {
+                            if (airline_codes.find(airline) != airline_codes.end()) {
+                                airlines_to_consider.insert(airline);
+                            }
+                            else {
+                                cout << "Companhia aérea não encontrada!" << endl;
+                            }
+                        }
+                        list_shortest_paths(airport_codes[src], airport_codes[dest], airlines_to_consider);
+                    } else {
+                        list_shortest_paths(airport_codes[src], airport_codes[dest]);
+                    }
+
                     wait(); break;
-                case 2:
+                /*case 2:
                     cout << "Escolha a cidade de origem: "; cin >> src;
                     cout << endl << "Escolha a cidade de destino: "; cin >> dest; cout << endl;
                     //TODO
@@ -176,10 +230,9 @@ void print_menu1() {
                     //TODO
                     wait(); break;
                 default:
-                    cout << "Opcao invalida!" << endl;
+                    cout << "Opcao invalida!" << endl;*/
             }
         }
     } while (choice != 0);
 }
-
 

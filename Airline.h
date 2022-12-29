@@ -22,6 +22,8 @@ public:
     string getCallSign() const;
 
     string getCountry() const;
+
+    bool operator<(const Airline &rhs) const;
 };
 
 
