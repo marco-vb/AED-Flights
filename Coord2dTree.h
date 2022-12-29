@@ -4,6 +4,7 @@
 #include <utility>
 #include "Rect.h"
 #include "haversine.h"
+#include "coordinates.h"
 using namespace std;
 
 struct Node {
@@ -14,6 +15,7 @@ struct Node {
 
 class Coord2dTree {
 private:
+    vector<pair<double, double>> all;
     Node* root;
     Node* insert(pair<double, double> x, Node* t, int cd);
     void nearest(pair<double, double> Q, Node* t, int cd, Rect BB, pair<double, double> &best, double &best_dist);

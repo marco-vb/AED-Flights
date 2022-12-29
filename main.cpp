@@ -70,11 +70,40 @@ int main() {
     }*/
 
     Coord2dTree tree;
-    tree.insert(90, 60);
-    tree.insert(10, -178);
-    tree.insert(90, 50);
-    pair<double, double> p = tree.nearest(15, 2);
-    cout << p.first << " " << p.second << endl;
+    vector<pair<double, double>> coords;
+    int n = 0;
+
+    for (int i = 0; i < 200; i++) {
+        double lat = (double) rand() / RAND_MAX * 180 - 90;
+        double lon = (double) rand() / RAND_MAX * 360 - 180;
+        coords.push_back({lat, lon});
+        tree.insert(lat, lon);
+    }
+    for (int i = 0; i < 200; i++) {
+        double lat = (double) rand() / RAND_MAX * -90;
+        double lon = (double) rand() / RAND_MAX * 360 - 180;
+        pair<double, double> best = make_pair(0, 0);
+        double best_dist = 1000000000;
+        for(pair<double, double> coord : coords) {
+            if(haversine(lat, lon, coord.first, coord.second) < best_dist) {
+                best = coord;
+                best_dist = haversine(lat, lon, coord.first, coord.second);
+            }
+        }
+        pair<double, double> found = tree.nearest(lat, lon);
+        if(best.first != found.first || best.second != found.second) {
+            cout << n << endl;
+            cout << "Error" << endl;
+            cout << "Lat: " << lat << " Lon: " << lon << endl;
+            cout << "Best: " << best.first << " " << best.second << endl;
+            cout << "Best Dist: " << best_dist << endl;
+            cout << "Found: " << found.first << " " << found.second << endl;
+            cout << "Found Dist: " << haversine(lat, lon, found.first, found.second) << endl;
+            cout << "0 Dist: " << haversine(lat, lon, lat, -180) << endl;
+        }
+        n++;
+    }
+    cout << n << endl;
 
     std::cout << "Hello, World!" << std::endl;
     return 0;
