@@ -11,6 +11,9 @@ int main() {
     unordered_map<int, Airport> airports;
     ifstream airports_file("../data/airports.csv");
 
+    vector<pair<double, double>> coords;
+    Coord2dTree tree;
+
     string line;
     int i = 1;
     while (getline(airports_file, line)) {
@@ -29,6 +32,9 @@ int main() {
         airport_codes.insert({code, i});
         airports.insert({i, airport});
         i++;
+
+        coords.push_back({lat, lon});
+        tree.insert({lat, lon});
     }
     airports_file.close();
     Graph graph((int) airport_codes.size(), true);
@@ -69,6 +75,28 @@ int main() {
         }
     }*/
 
-    std::cout << "Hello, World!" << std::endl;
+    // Coord2dTree tree;
+    // vector<pair<double, double>> coords;
+    int n = 0;
+
+    for (int i = 0; i < 20000; i++) {
+        double lat = (double) rand() / RAND_MAX * 180 - 90;
+        double lon = (double) rand() / RAND_MAX * 360 - 180;
+        coords.push_back({lat, lon});
+        tree.insert(lat, lon);
+    }
+
+    cout << "Testing nearest neighbor search: KdTree" << endl;
+    cout << "Loaded " << coords.size() << " airports." << endl;
+
+    for (int i = 0; i < 4200; i++) {
+        double lat = (double) rand() / RAND_MAX * -90;
+        double lon = (double) rand() / RAND_MAX * 360 - 180;
+        // pair<double, double> best = findClosest(coords, {lat, lon});
+        pair<double, double> found = tree.nearest(lat, lon);
+        n++;
+    }
+    cout << "Tested with " << n << " random points." << endl;
+
     return 0;
 }

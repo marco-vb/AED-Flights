@@ -68,7 +68,7 @@ pair<double, double> Coord2dTree::nearest(double lat, double lon) {
     Rect BB = Rect(-90, 90, -180, 180);
     nearest(Q, root, 0, BB, best, best_dist);
     if(haversine(Q, best) > haversine(Q.first, Q.second, Q.first, 180)) {
-        best = findClosest(all, Q);
+        nearest(make_pair(lat, (lon < 0 ? 360 + lon : -360 + lon)), root, 0, BB, best, best_dist);
     }
     return best;
 }
@@ -78,6 +78,9 @@ pair<double, double> Coord2dTree::nearest(pair<double, double> p) {
     double best_dist = 1000000000;
     Rect BB = Rect(-90, 90, -180, 180);
     nearest(p, root, 0, BB, best, best_dist);
+    if(haversine(p, best) > haversine(p.first, p.second, p.first, 180)) {
+        nearest(make_pair(p.first, (p.second < 0 ? 360 + p.second : -360 + p.second)), root, 0, BB, best, best_dist);
+    }
     return best;
 }
 
