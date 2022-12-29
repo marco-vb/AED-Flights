@@ -28,6 +28,8 @@ public:
     bool hasDir;        // false: undirected; true: directed
     vector<Node> nodes; // The list of nodes being represented
 
+    Graph(); // Default constructor
+
     // Constructor: nr nodes and direction (default: undirected)
     Graph(int nodes, bool dir = false);
 

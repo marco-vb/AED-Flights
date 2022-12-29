@@ -1,6 +1,11 @@
 #include <bits/stdc++.h>
 #include "graph.h"
 
+Graph::Graph() {
+    n = 0;
+    hasDir = false;
+}
+
 // Constructor: nr nodes and direction (default: undirected)
 Graph::Graph(int num, bool dir) : n(num), hasDir(dir), nodes(num+1) {
 }
