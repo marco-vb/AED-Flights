@@ -18,3 +18,7 @@ string Airline::getCallSign() const {
 string Airline::getCountry() const {
     return country;
 }
+
+bool Airline::operator<(const Airline &rhs) const {
+    return code < rhs.code;
+}

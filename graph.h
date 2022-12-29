@@ -15,7 +15,7 @@ public:
     struct Edge {
         int dest;   // Destination node
         int weight; // An integer weight
-        vector<string> airlines;
+        set<string> airlines;
     };
 
     struct Node {
@@ -42,7 +42,9 @@ public:
     // Breadth-First Search
     void bfs(int v);
 
-    list<li> least_flights(int i, int i1);
+    list<li> least_flights(int src, int dest);
+
+    list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
 };
 
 #endif
