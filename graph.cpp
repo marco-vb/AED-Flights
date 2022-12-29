@@ -199,3 +199,61 @@ set<int> Graph::getDestinations(int src, int r) {
     return destinations;
 }
 
+vector<Graph::Node> Graph::getNodes() const {
+    return nodes;
+}
+
+int Graph::getNumEdges() {
+    int num_edges = 0;
+    for (int i = 1; i <= n; ++i)
+        num_edges += (int) nodes[i].adj.size();
+
+    return num_edges;
+}
+
+int Graph::getCompanies() {
+    set<string> companies;
+    for (int i = 1; i <= n; ++i)
+        for (const auto& e : nodes[i].adj)
+            for (const auto& c : e.airlines)
+                companies.insert(c);
+
+    return (int) companies.size();
+}
+
+int Graph::getDiameter() {
+    int diameter = 0;
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
+        queue<int> q;
+        q.push(i);
+        nodes[i].visited = true;
+        nodes[i].distance = 0;
+
+        while (!q.empty()) {
+            int u = q.front(); q.pop();
+            for (const auto& e : nodes[u].adj) {
+                int w = e.dest;
+                if (!nodes[w].visited) {
+                    q.push(w);
+                    nodes[w].visited = true;
+                    nodes[w].distance = nodes[u].distance + 1;
+                    diameter = max(diameter, nodes[w].distance);
+                }
+            }
+        }
+    }
+
+    return diameter;
+}
+
+//TODO
+set<int> Graph::getTopAirports(int i) {
+    return set<int>();
+}
+
+//TODO
+set<int> Graph::getArticulationPoints() {
+    return set<int>();
+}
+

@@ -54,6 +54,18 @@ public:
     int getDestinationsCountries(int i, unordered_map<int, Airport> &airports);
 
     set<int> getDestinations(int src, int r);
+
+    vector<Node> getNodes() const;
+
+    int getNumEdges();
+
+    int getCompanies();
+
+    int getDiameter();
+
+    set<int> getTopAirports(int i);
+
+    set<int> getArticulationPoints();
 };
 
 #endif
