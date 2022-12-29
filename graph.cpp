@@ -96,4 +96,49 @@ list<li> Graph::least_flights(int source, int destination) {
     }
     return paths;
 }
-
+//
+//list<li> Graph::least_flights(vector<int> sources, int destination) {
+//    for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
+//    vector<vi> previous(n+1, vi());
+//
+//    queue<int> q;
+//    for (const auto& s : sources) {
+//        q.push(s);
+//        nodes[s].visited = true;
+//        nodes[s].distance = 0;
+//    }
+//
+//    while (!q.empty()) {
+//        int u = q.front(); q.pop();
+//        for (const auto& e : nodes[u].adj) {
+//            int w = e.dest;
+//            if (!nodes[w].visited) {
+//                q.push(w);
+//                nodes[w].visited = true;
+//                nodes[w].distance = nodes[u].distance + 1;
+//                previous[w].push_back(u);
+//            } else if (nodes[w].distance == nodes[u].distance + 1) {
+//                previous[w].push_back(u);
+//            }
+//        }
+//    }
+//
+//    list<li> paths;
+//    if (nodes[destination].distance == -1) return paths;
+//
+//    li path;
+//    path.push_back(destination);
+//    paths.push_back(path);
+//    for (int i = 0; i < nodes[destination].distance; ++i) {
+//        list<li> new_paths;
+//        for (const auto& p : paths) {
+//            for (const auto& node : previous[p.front()]) {
+//                li new_path = p;
+//                new_path.push_front(node);
+//                new_paths.push_back(new_path);
+//            }
+//        }
+//        paths = new_paths;
+//    }
+//    return paths;
+//}

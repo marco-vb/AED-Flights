@@ -66,7 +66,9 @@ pair<double, double> Coord2dTree::nearest(double lat, double lon) {
     pair<double, double> best = make_pair(0, 0);
     double best_dist = 1000000000;
     Rect BB = Rect(-90, 90, -180, 180);
+
     nearest(Q, root, 0, BB, best, best_dist);
+
     if(haversine(Q, best) > haversine(Q.first, Q.second, Q.first, 180)) {
         nearest(make_pair(lat, (lon < 0 ? 360 + lon : -360 + lon)), root, 0, BB, best, best_dist);
     }
@@ -80,6 +82,61 @@ pair<double, double> Coord2dTree::nearest(pair<double, double> p) {
     nearest(p, root, 0, BB, best, best_dist);
     if(haversine(p, best) > haversine(p.first, p.second, p.first, 180)) {
         nearest(make_pair(p.first, (p.second < 0 ? 360 + p.second : -360 + p.second)), root, 0, BB, best, best_dist);
+    }
+    return best;
+}
+
+void Coord2dTree::in_radius(pair<double, double> Q, Node* t, int cd, Rect BB, vector<pair<double, double>> &best, double radius){
+    if(t == nullptr || distance(Q, BB) > radius)
+        return;
+
+    double dist = haversine(Q, t -> data);
+    if(dist < radius) {
+        best.push_back(t -> data);
+    }
+
+    double curr; double curr_data;
+    if(cd == 0){ curr = Q.first; curr_data = t -> data.first; }
+    else { curr = Q.second; curr_data = t -> data.second; }
+    int next_cd = (cd + 1) % 2;
+
+    if(curr < curr_data){
+        in_radius(Q, t -> left, next_cd, BB.trimLeft(cd, curr_data), best, radius);
+        in_radius(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), best, radius);
+    }
+    else {
+        in_radius(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), best, radius);
+        in_radius(Q, t -> left, next_cd, BB.trimLeft(cd,curr_data), best, radius);
+    }
+}
+
+vector<pair<double, double>> Coord2dTree::in_radius(double lat, double lon, double radius) {
+    pair<double, double> Q = make_pair(lat, lon);
+    vector<pair<double, double>> best;
+    double t = 0.5*radius;
+    radius = radius + t;
+    Rect BB = Rect(-90, 90, -180, 180);
+    in_radius(Q, root, 0, BB, best, radius);
+    if(radius > haversine(Q.first, Q.second, Q.first, 180)) {
+        in_radius(make_pair(lat, (lon < 0 ? 360 + lon : -360 + lon)), root, 0, BB, best, radius);
+    }
+    radius = radius - t;
+    for(auto it = best.begin(); it != best.end();){
+        double dist = haversine(Q, *it);
+        if(haversine(Q, *it) > radius)
+            it = best.erase(it);
+        else
+            ++it;
+    }
+    return best;
+}
+
+vector<pair<double, double>> Coord2dTree::in_radius(pair<double, double> p, double radius) {
+    vector<pair<double, double>> best;
+    Rect BB = Rect(-90, 90, -180, 180);
+    in_radius(p, root, 0, BB, best, radius);
+    if(radius > haversine(p.first, p.second, p.first, 180)) {
+        in_radius(make_pair(p.first, (p.second < 0 ? 360 + p.second : -360 + p.second)), root, 0, BB, best, radius);
     }
     return best;
 }

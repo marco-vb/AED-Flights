@@ -2,6 +2,7 @@
 #define AED2223_P12_COORD2DTREE_H
 
 #include <utility>
+#include <list>
 #include "Rect.h"
 #include "haversine.h"
 #include "coordinates.h"
@@ -19,18 +20,16 @@ private:
     Node* root;
     Node* insert(pair<double, double> x, Node* t, int cd);
     void nearest(pair<double, double> Q, Node* t, int cd, Rect BB, pair<double, double> &best, double &best_dist);
+    void in_radius(pair<double, double> Q, Node* t, int cd, Rect BB, vector<pair<double, double>> &best, double radius);
 
-public:
+        public:
     Coord2dTree();
     bool insert(double lat, double lon);
     bool insert(pair<double, double> p);
-    pair<double, double> find_min();
-    void remove(double lat, double lon);
-    void remove(pair<double, double> p);
-    bool contains(double lat, double lon);
-    bool contains(pair<double, double> p);
     pair<double, double> nearest(double lat, double lon);
     pair<double, double> nearest(pair<double, double> p);
+    vector<pair<double, double>> in_radius(double lat, double lon, double radius);
+    vector<pair<double, double>> in_radius(pair<double, double> p, double radius);
 };
 
 
