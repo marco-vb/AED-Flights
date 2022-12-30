@@ -15,13 +15,9 @@ void print_menu();
 void print_menu1();
 void print_shortest_paths(const vector<int>& src, const vector<int>& dest);
 int get_airport(bool is_origin);
-void print_shortest_paths_airports();
 vector<int> get_city(bool is_origin);
-void print_shortest_paths_cities();
 int get_coordinates(bool is_origin);
-void print_shortest_paths_coordinates();
 vector<int> get_coordinates_km(bool is_origin);
-void print_shortest_paths_coordinates_km();
 void print_menu2();
 void print_menu3();
 void print_menu4();
@@ -432,44 +428,7 @@ int get_airport(bool is_origin) {
     }
     return airport_codes[src];
 }
-void print_shortest_paths_airports() {
-    string src, dest;
-    cout << "Escolha o aeroporto de origem: "; cin >> src;
-    transform(src.begin(), src.end(), src.begin(), ::toupper);
 
-    if (airport_codes.find(src) == airport_codes.end()) {
-        cout << "Aeroporto nao encontrado!" << endl; wait();
-        return;
-    }
-
-    cout << "Escolha o aeroporto de destino: "; cin >> dest;
-    transform(dest.begin(), dest.end(), dest.begin(), ::toupper);
-
-    if (airport_codes.find(dest) == airport_codes.end()) {
-        cout << "Aeroporto nao encontrado!" << endl; wait();
-        return;
-    }
-
-    cout << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
-    string op; cin >> op;
-    // make op lowercase
-    transform(op.begin(), op.end(), op.begin(), ::toupper);
-
-    if (op == "S") {
-        set<string> airlines_to_consider;
-        cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
-        string airline;
-        while (cin >> airline) {
-            transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
-            if (airline == "FIM") break;
-            if (airline_codes.find(airline) != airline_codes.end()) airlines_to_consider.insert(airline);
-            else cout << "Companhia aérea não encontrada!" << endl;
-        }
-        list_shortest_paths(airport_codes[src], airport_codes[dest], airlines_to_consider);
-    } else {
-        list_shortest_paths(airport_codes[src], airport_codes[dest]);
-    }
-}
 string normalize_city(string city) {
     transform(city.begin(), city.end(), city.begin(), ::tolower);
     int i = -1;
@@ -494,43 +453,6 @@ vector<int> get_city(bool is_origin) {
 
     return airport_cities[src];
 }
-void print_shortest_paths_cities() {
-    string src; string dest;
-    cout << "Escolha a cidade de origem: ";
-    getline(cin >> ws, src);
-    if (airport_cities.find(src) == airport_cities.end()) {
-        cout << "Cidade nao encontrada!" << endl;
-        return;
-    }
-
-    cout << "Escolha a cidade de destino: ";
-    getline(cin >> ws, dest);
-    if (airport_cities.find(dest) == airport_cities.end()) {
-        cout << "Cidade nao encontrada!" << endl;
-        return;
-    }
-
-    cout << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
-    string op;
-    cin >> op;
-
-    if (op == "s" || op == "S") {
-        set<string> airlines_to_consider;
-        cout
-                << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
-        string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
-            if (airline_codes.find(airline) != airline_codes.end()) {
-                airlines_to_consider.insert(airline);
-            } else {
-                cout << "Companhia aérea não encontrada!" << endl;
-            }
-        }
-        list_shortest_paths(airport_cities[src], airport_cities[dest], airlines_to_consider);
-    } else {
-        list_shortest_paths(airport_cities[src], airport_cities[dest]);
-    }
-}
 
 int get_coordinates(bool is_origin) {
     string src;
@@ -548,49 +470,6 @@ int get_coordinates(bool is_origin) {
         return {};
     }
     return airport_coords[src_coords];
-}
-void print_shortest_paths_coordinates() {
-    string src; string dest;
-    cout << "Escolha as coordenadas de origem (e.g. '16.23N 64.13W'): ";
-    getline(cin >> ws, src);
-    pair <double, double> src_coords = string_to_coords(src);
-    if (src_coords.first == 100 &&
-        src_coords.second == 200) {
-        cout << "Erro ao introduzir as coordenadas!" << endl;
-        return;
-    }
-
-    cout << endl << "Escolha as coordenadas de destino (e.g. '16.23N 64.13W'): ";
-    getline(cin >> ws, dest);
-    pair <double, double> dest_coords = string_to_coords(dest);
-    if (dest_coords.first == 100 &&
-        dest_coords.second == 200) {
-        cout << "Erro ao introduzir as coordenadas!" << endl;
-        return;
-    }
-
-    cout << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
-    string op;
-    cin >> op;
-
-    if (op == "s" || op == "S") {
-        set<string> airlines_to_consider;
-        cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
-        string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
-            if (airline_codes.find(airline) != airline_codes.end()) {
-                airlines_to_consider.insert(airline);
-            } else {
-                cout << "Companhia aérea não encontrada!" << endl;
-            }
-        }
-        list_shortest_paths(airport_coords[tree.nearest(src_coords)],
-                            airport_coords[tree.nearest(dest_coords)],
-                            airlines_to_consider);
-    } else {
-        list_shortest_paths(airport_coords[tree.nearest(src_coords)],
-                            airport_coords[tree.nearest(dest_coords)]);
-    }
 }
 
 vector<int> get_coordinates_km(bool is_origin) {
@@ -621,77 +500,6 @@ vector<int> get_coordinates_km(bool is_origin) {
     }
 
     return airports_in_radius_src;
-}
-void print_shortest_paths_coordinates_km() {
-    string src; string dest;
-    cout << "Escolha as coordenadas de origem (e.g. '16.23N 64.13W'): ";
-    getline(cin >> ws, src);
-    pair <double, double> src_coords = string_to_coords(src);
-    if (src_coords.first == 100 &&
-        src_coords.second == 200) {
-        cout << "Erro ao introduzir as coordenadas!" << endl;
-        return;
-    }
-    cout << endl << "Escolha o raio de pesquisa (em km): ";
-    double radius_src;
-    cin >> radius_src;
-
-    cout << endl << "Escolha as coordenadas de destino (e.g. '16.23N 64.13W'): ";
-    getline(cin >> ws, dest);
-    pair <double, double> dest_coords = string_to_coords(dest);
-    if (dest_coords.first == 100 &&
-        dest_coords.second == 200) {
-        cout << "Erro ao introduzir as coordenadas!" << endl;
-        return;
-    }
-
-    cout << endl << "Escolha o raio de pesquisa (em km): ";
-    double radius_dest;
-    cin >> radius_dest;
-
-
-    vector <pair<double, double>> src_pairs = tree.in_radius(src_coords, radius_src);
-    if(src_pairs.empty()) {
-        cout << "Nao foram encontrados aeroportos na zona de origem!" << endl;
-        return;
-    }
-    vector <pair<double, double>> dest_pairs = tree.in_radius(dest_coords, radius_dest);
-    if(dest_pairs.empty()) {
-        cout << "Nao foram encontrados aeroportos na zona de destino!" << endl;
-        return;
-    }
-    vector <int> airports_in_radius_src;
-    vector <int> airports_in_radius_dest;
-    cout << "Aeroportos na zona de origem:  ";
-    for(int i = 0; i < src_pairs.size(); i++) {
-        airports_in_radius_src.push_back(airport_coords[src_pairs[i]]);
-        cout << airports.at(airports_in_radius_src[i]).getName() << "  ";
-    } cout << endl;
-    cout << endl << "Aeroportos na zona de destino:  ";
-    for(int i = 0; i < dest_pairs.size(); i++) {
-        airports_in_radius_dest.push_back(airport_coords[dest_pairs[i]]);
-        cout << airports.at(airports_in_radius_dest[i]).getName() << "  ";
-    } cout << endl;
-
-    cout << endl << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
-    string op;
-    cin >> op;
-
-    if (op == "s" || op == "S") {
-        set<string> airlines_to_consider;
-        cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
-        string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
-            if (airline_codes.find(airline) != airline_codes.end()) {
-                airlines_to_consider.insert(airline);
-            } else {
-                cout << "Companhia aérea não encontrada!" << endl;
-            }
-        }
-        list_shortest_paths(airports_in_radius_src, airports_in_radius_dest, airlines_to_consider);
-    } else {
-        list_shortest_paths(airports_in_radius_src, airports_in_radius_dest);
-    }
 }
 
 void print_menu2() {}
