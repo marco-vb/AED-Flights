@@ -45,6 +45,10 @@ public:
     list<li> least_flights(int src, int dest);
 
     list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
+
+    list<li> least_flights(vector<int> sources, vector<int> destination);
+
+    list<li> least_flights(vector<int> sources, vector<int> dest, set<string> &airlines_to_consider);
 };
 
 #endif
