@@ -6,6 +6,8 @@
 
 using namespace std;
 
+typedef pair<int, int> pii;
+
 void read_airports();
 void read_airlines();
 void read_flights();
@@ -20,6 +22,7 @@ int get_coordinates(bool is_origin);
 vector<int> get_coordinates_km(bool is_origin);
 void print_menu2();
 void print_menu3();
+void print_global_stats();
 void print_menu4();
 void print_menu5();
 void print_airport_stats(int, Airport &);
@@ -33,12 +36,17 @@ int getCitiesNumber(set<int> &set1);
 
 int getCountriesNumber(set<int> &set1);
 
+void print_country_stats();
+
+void print_airline_stats();
+
 unordered_map<string, int> airport_codes;
 unordered_map<int, Airport> airports;
 unordered_map<string, int> airline_codes;
 unordered_map<int, Airline> airlines;
 unordered_map<pair<double, double>, int, pair_hash> airport_coords;
 unordered_map<string, vector<int>> airport_cities;
+unordered_map<string, vector<int>> airport_countries;
 Graph graph;
 Coord2dTree tree;
 
@@ -184,6 +192,16 @@ void read_airports() {
         } else {
             airport_cities.at(city).push_back(i);
         }
+
+        if (airport_countries.find(country) == airport_countries.end()) {
+            vector<int> v; v.push_back(i);
+            transform(country.begin(), country.end(), country.begin(), ::toupper);
+            airport_countries.insert({country, v});
+        } else {
+            transform(country.begin(), country.end(), country.begin(), ::toupper);
+            airport_countries.at(country).push_back(i);
+        }
+
         i++;
     }
 }
@@ -438,6 +456,7 @@ string normalize_city(string city) {
     } while(city[i] == ' ');
     return city;
 }
+
 vector<int> get_city(bool is_origin) {
     string src;
     string s;
@@ -504,19 +523,56 @@ vector<int> get_coordinates_km(bool is_origin) {
 
 void print_menu2() {}
 void print_menu3() {
-    int num_airports = (int) graph.getNodes().size();
-    int num_flights = graph.getNumEdges();
-    int num_companies = graph.getCompanies();
-    int diameter = graph.getDiameter();
-    set<int> top_airports = graph.getTopAirports(5);
-
-    cout << "A rede global tem um total de " << num_airports << " aeroportos," << endl;
-    cout << "com um total de " << num_flights << " voos," << endl;
-    cout << "e " << num_companies << " companhias aéreas." << endl;
-
-    cout << "O diâmetro da rede é " << diameter << "." << endl;
-    wait();
+    int choice;
+    do {
+        clear();
+        cout << "--------------------------------------------" << endl;
+        cout << "|         Simulador de Voos 3000           |" << endl;
+        cout << "|          Estatísticas da Rede            |" << endl;
+        cout << "| Selecione o modo:                        |" << endl;
+        cout << "| 1. Estatísticas da rede global           |" << endl;
+        cout << "| 2. Estatísticas de um país               |" << endl;
+        cout << "| 3. Estatísticas de uma companhia         |" << endl;
+        cout << "| 0. Voltar                                |" << endl;
+        cout << "--------------------------------------------" << endl;
+        cout << "Escolha: ";
+        cin >> choice;
+        switch(choice) {
+            case 1:
+                print_global_stats();
+                break;
+            case 2:
+                print_country_stats();
+                break;
+            case 3:
+                print_airline_stats();
+                break;
+            case 0:
+                break;
+            default:
+                cout << "Opcao invalida!" << endl;
+                wait();
+        }
+    } while(choice != 0);
 }
+
+void print_airline_stats() {
+
+}
+
+void print_country_stats() {
+    string country;
+    cout << "Escolha o país: ";
+    getline(cin >> ws, country);
+    transform(country.begin(), country.end(), country.begin(), ::toupper);
+    if (airport_countries.find(country) == airport_countries.end()) {
+        cout << "Pais nao encontrado!" << endl;
+        wait();
+        return;
+    }
+    
+}
+
 void print_menu4() {}
 void print_menu5() {
     string code;
@@ -567,3 +623,24 @@ int getCitiesNumber(set<int> &set1) {
     return (int) cities.size();
 }
 
+
+void print_global_stats() {
+    int num_airports = (int) graph.getNodes().size();
+    int num_flights = graph.getNumEdges();
+    int num_companies = graph.getCompanies();
+    int diameter = graph.getDiameter();
+    // random number between 3 and 5
+    int n = rand() % 3 + 3;
+    vector<pii> top_airports = graph.getTopAirports(n);
+
+    cout << "A rede global tem um total de " << num_airports << " aeroportos," << endl;
+    cout << "com um total de " << num_flights << " voos," << endl;
+    cout << "e " << num_companies << " companhias aéreas." << endl;
+
+    cout << "O diâmetro da rede é " << diameter << "." << endl;
+    cout << "Os " << n << " aeroportos com mais voos são:" << endl;
+    for (const auto & top_airport : top_airports) {
+        cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+    }
+    wait();
+}

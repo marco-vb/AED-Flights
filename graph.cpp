@@ -352,8 +352,14 @@ int Graph::getDiameter() {
 }
 
 //TODO
-set<int> Graph::getTopAirports(int i) {
-    return set<int>();
+vector<pii> Graph::getTopAirports(int i) {
+    vector<pii> airports(n);
+    for (int v = 1; v <= n; v++) {
+        airports[v-1] = make_pair(v, getDestinationsNumber(v));
+    }
+    sort(airports.begin(), airports.end(), [](const pii& a, const pii& b) {return a.second > b.second;});
+
+    return vector<pii>(airports.begin(), airports.begin() + i);
 }
 
 //TODO

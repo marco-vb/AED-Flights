@@ -10,6 +10,7 @@
 using namespace std;
 typedef list<int> li;
 typedef vector<int> vi;
+typedef pair<int, int> pii;
 
 class Graph {
 public:
@@ -64,7 +65,7 @@ public:
 
     int getDiameter();
 
-    set<int> getTopAirports(int i);
+    vector<pii> getTopAirports(int i);
 
     set<int> getArticulationPoints();
 
