@@ -5,6 +5,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
+#include "Airport.h"
 
 using namespace std;
 typedef list<int> li;
@@ -43,12 +44,30 @@ public:
     void bfs(int v);
 
     list<li> least_flights(int src, int dest);
-
     list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
-
     list<li> least_flights(vector<int> sources, vector<int> destination);
-
     list<li> least_flights(vector<int> sources, vector<int> dest, set<string> &airlines_to_consider);
+
+    int getOutDegree(int i);
+    int getAirlinesNumber(int i);
+    int getDestinationsNumber(int i);
+
+    int getDestinationsCountries(int i, unordered_map<int, Airport> &airports);
+
+    set<int> getDestinations(int src, int r);
+
+    vector<Node> getNodes() const;
+
+    int getNumEdges();
+
+    int getCompanies();
+
+    int getDiameter();
+
+    set<int> getTopAirports(int i);
+
+    set<int> getArticulationPoints();
+
 };
 
 #endif
