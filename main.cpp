@@ -193,12 +193,13 @@ void read_airports() {
             airport_cities.at(city).push_back(i);
         }
 
+        transform(country.begin(), country.end(), country.begin(), ::toupper);
         if (airport_countries.find(country) == airport_countries.end()) {
             vector<int> v; v.push_back(i);
-            transform(country.begin(), country.end(), country.begin(), ::toupper);
+            //transform(country.begin(), country.end(), country.begin(), ::toupper);
             airport_countries.insert({country, v});
         } else {
-            transform(country.begin(), country.end(), country.begin(), ::toupper);
+            //transform(country.begin(), country.end(), country.begin(), ::toupper);
             airport_countries.at(country).push_back(i);
         }
 
@@ -565,12 +566,47 @@ void print_country_stats() {
     cout << "Escolha o país: ";
     getline(cin >> ws, country);
     transform(country.begin(), country.end(), country.begin(), ::toupper);
+
     if (airport_countries.find(country) == airport_countries.end()) {
         cout << "Pais nao encontrado!" << endl;
         wait();
         return;
     }
-    
+    vector <int> airports_nodes = airport_countries[country];
+    Graph country_graph = Graph((int) airports.size() + 1, true);
+
+    for (int &node : airports_nodes) {
+        for (auto const &edge : graph.nodes[node].adj) {
+            int w = edge.dest;
+            string new_country = airports.at(w).getCountry();
+            transform(new_country.begin(), new_country.end(), new_country.begin(), ::toupper);
+            if (new_country == country) {
+                for (const string& airline : edge.airlines) {
+                    country_graph.addEdge(node, w, airline);
+                }
+            }
+        }
+    }
+
+
+    int num_airports = (int) airports_nodes.size();
+    int num_flights = country_graph.getNumEdges();
+    int num_companies = country_graph.getCompanies();
+    int diameter = country_graph.getDiameter();
+    // random number between 3 and 5
+    int n = rand() % 3 + 3;
+    vector<pii> top_airports = country_graph.getTopAirports(n);
+
+    cout << "A rede de " << country << " tem um total de " << num_airports << " aeroportos," << endl;
+    cout << "com um total de " << num_flights << " voos," << endl;
+    cout << "e " << num_companies << " companhias aéreas." << endl;
+
+    cout << "O diâmetro da rede é " << diameter << "." << endl;
+    cout << "Os " << n << " aeroportos com mais voos são:" << endl;
+    for (const auto & top_airport : top_airports) {
+        cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+    }
+    wait();
 }
 
 void print_menu4() {}
