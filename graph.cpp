@@ -169,18 +169,27 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
         }
     }
 
-    list<li> paths;
-    int min = -1;
-    for(const auto& d : destinations) {
-        if(nodes[d].distance != -1)
-            if(min == -1 || nodes[d].distance < nodes[min].distance) min = d;
+    li all_min;
+    int min_dist = INT_MAX;
+    for(int d : destinations) {
+        if(nodes[d].distance != -1 && nodes[d].distance < min_dist) {
+            min_dist = nodes[d].distance;
+        }
     }
-    if(min == -1) return paths;
+    for(int d : destinations) {
+        if(nodes[d].distance == min_dist) {
+            all_min.push_back(d);
+        }
+    }
 
-    li path;
-    path.push_back(min);
-    paths.push_back(path);
-    for (int i = 0; i < nodes[min].distance; ++i) {
+    list<li> paths;
+    if(min_dist == INT_MAX) return paths;
+    for(int d : all_min) {
+        li path;
+        path.push_back(d);
+        paths.push_back(path);
+    }
+    for (int i = 0; i < min_dist; ++i) {
         list<li> new_paths;
         for (const auto& p : paths) {
             for (const auto& node : previous[p.front()]) {
@@ -223,18 +232,27 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> dest, set<string>
         }
     }
 
-    list<li> paths;
-    int min = -1;
-    for(const auto& d : dest) {
-        if(nodes[d].distance != -1)
-            if(min == -1 || nodes[d].distance < nodes[min].distance) min = d;
+    li all_min;
+    int min_dist = INT_MAX;
+    for(int d : dest) {
+        if(nodes[d].distance != -1 && nodes[d].distance < min_dist) {
+            min_dist = nodes[d].distance;
+        }
     }
-    if(min == -1) return paths;
+    for(int d : dest) {
+        if(nodes[d].distance == min_dist) {
+            all_min.push_back(d);
+        }
+    }
 
-    li path;
-    path.push_back(min);
-    paths.push_back(path);
-    for (int i = 0; i < nodes[min].distance; ++i) {
+    list<li> paths;
+    if(min_dist == INT_MAX) return paths;
+    for(int d : all_min) {
+        li path;
+        path.push_back(d);
+        paths.push_back(path);
+    }
+    for (int i = 0; i < min_dist; ++i) {
         list<li> new_paths;
         for (const auto& p : paths) {
             for (const auto& node : previous[p.front()]) {

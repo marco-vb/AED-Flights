@@ -64,6 +64,25 @@ size_t pair_hash::operator () (const std::pair<double, double> &pair) const {
     return std::hash<double>()(pair.first) ^ std::hash<double>()(pair.second);
 }
 
+std::string set_to_string(const std::set<std::string>& set) {
+    std::stringstream result;
+    bool first = true;
+    for (const std::string& s : set) {
+        if (!first) {
+            result << ", ";
+        }
+        result << s;
+        first = false;
+    }
+
+    std::string str = result.str();
+    std::size_t last_comma = str.find_last_of(',');
+    if (last_comma != std::string::npos) {
+        str.replace(last_comma, 2, " & ");
+    }
+    return str;
+}
+
 void list_shortest_paths(int src, int dest) {
     list<li> path = graph.least_flights(src, dest);
     cout << "Trajetos mais curtos de " << airports.at(src).getName() << " para " << airports.at(dest).getName() << endl;
@@ -84,7 +103,23 @@ void list_shortest_paths(int src, int dest) {
 
 void list_shortest_paths(vector<int> src, vector<int> dest) {
     list<li> path = graph.least_flights(src, dest);
-    cout << endl << "Trajetos mais curtos de " << airports.at(src.front()).getName() << " para " << airports.at(dest.front()).getCity() << endl;
+    set<string> o; set<string> d; string src_string; string dst_string;
+    if(src.size() == 1)
+        src_string = airports.at(src[0]).getName();
+    else {
+        for (auto &s: src)
+            o.insert(airports.at(s).getCity());
+        src_string = set_to_string(o);
+    }
+    if(dest.size() == 1)
+        dst_string = airports.at(dest[0]).getName();
+    else {
+        for (auto &s: dest)
+            d.insert(airports.at(s).getCity());
+        dst_string = set_to_string(d);
+    }
+
+    cout << endl << "Trajetos mais curtos de " << src_string << " para " << dst_string << endl << endl;
 
     if (path.empty())
         cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
@@ -147,18 +182,25 @@ void list_shortest_paths(vector<int> src, vector<int> dest, set<string> &airline
 }
 
 pair<double, double> string_to_coords(string s) {
+    double lat; double lon;
     int i = 0;
-    while (s[i] != 'N' && s[i] != 'S'){
+    while (s[i] != 'N' && s[i] != 'S' && s[i] != ','){
         i++;
         if(i == s.size()) return make_pair(100, 200);
     }
-    if(i+3 >= s.size() || (s[s.size()-1] != 'E' && s[s.size()-1] != 'W')) return make_pair(100, 200);
 
-    double lat = stod(s.substr(0, i));
-    if (s[i] == 'S') lat *= -1;
-    double lon = stod(s.substr(i + 2, s.size() - i - 3));
-    if (s[s.size() - 1] == 'W') lon *= -1;
+    if(s[i] == ','){
+        lat = stod(s.substr(0, i));
+        lon = stod(s.substr(i+1, s.size()-i-1));
+    }
+    else {
+        if(i+3 >= s.size() || (s[s.size()-1] != 'E' && s[s.size()-1] != 'W')) return make_pair(100, 200);
 
+        lat = stod(s.substr(0, i));
+        if (s[i] == 'S') lat *= -1;
+        lon = stod(s.substr(i + 2, s.size() - i - 3));
+        if (s[s.size() - 1] == 'W') lon *= -1;
+    }
     if(lat < -90 || lat > 90 || lon < -180 || lon > 180) return make_pair(100, 200);
     return make_pair(lat, lon);
 }
@@ -479,7 +521,7 @@ int get_coordinates(bool is_origin) {
     string s;
     if(is_origin) s = "origem";
     else s = "destino";
-    cout << "Escolha as coordenadas de " << s << " (e.g. '16.23N 64.13W'): ";
+    cout << "Escolha as coordenadas de " << s << " (e.g. '16.23N 42.13W' or '16.23,-42.13'): ";
     getline(cin >> ws, src);
     pair <double, double> coords = string_to_coords(src);
     pair <double, double> src_coords = tree.nearest(coords);
@@ -497,7 +539,7 @@ vector<int> get_coordinates_km(bool is_origin) {
     string s;
     if(is_origin) s = "origem";
     else s = "destino";
-    cout << "Escolha as coordenadas de " << s << " (e.g. '16.23N 64.13W'): ";
+    cout << "Escolha as coordenadas de " << s << " (e.g. '16.23N 42.13W' or '16.23,-42.13'): ";
     getline(cin >> ws, src);
     pair <double, double> coords = string_to_coords(src);
     if (coords.first == 100 &&
