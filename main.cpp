@@ -47,6 +47,7 @@ unordered_map<int, Airline> airlines;
 unordered_map<pair<double, double>, int, pair_hash> airport_coords;
 unordered_map<string, vector<int>> airport_cities;
 unordered_map<string, vector<int>> airport_countries;
+unordered_map<string, vector<int>> airport_airlines;
 Graph graph;
 Coord2dTree tree;
 
@@ -82,25 +83,6 @@ std::string set_to_string(const std::set<std::string>& set) {
     }
     return str;
 }
-
-void list_shortest_paths(int src, int dest) {
-    list<li> path = graph.least_flights(src, dest);
-    cout << "Trajetos mais curtos de " << airports.at(src).getName() << " para " << airports.at(dest).getName() << endl;
-
-    if (path.empty())
-        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
-
-    for (auto &l : path) {
-        for (auto &k: l) {
-            if (k == l.back())
-                cout << airports.at(k).getName() << endl;
-            else
-                cout << airports.at(k).getName() << " -> ";
-        }
-        cout << endl;
-    }
-}
-
 void list_shortest_paths(vector<int> src, vector<int> dest) {
     list<li> path = graph.least_flights(src, dest);
     set<string> o; set<string> d; string src_string; string dst_string;
@@ -120,29 +102,6 @@ void list_shortest_paths(vector<int> src, vector<int> dest) {
     }
 
     cout << endl << "Trajetos mais curtos de " << src_string << " para " << dst_string << endl << endl;
-
-    if (path.empty())
-        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
-
-    for (auto &l : path) {
-        for (auto &k: l) {
-            if (k == l.back())
-                cout << airports.at(k).getName() << endl;
-            else
-                cout << airports.at(k).getName() << " -> ";
-        }
-        cout << endl;
-    }
-}
-
-void list_shortest_paths(int src, int dest, set<string> &airlines_to_consider) {
-    list<li> path = graph.least_flights(src, dest, airlines_to_consider);
-
-    cout << "Companhias aéreas consideradas: ";
-    for (const auto& a : airlines_to_consider) cout << a << " ";
-    cout << endl;
-
-    cout << "Trajetos mais curtos de " << airports.at(src).getName() << " para " << airports.at(dest).getName() << endl;
 
     if (path.empty())
         cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
@@ -269,6 +228,7 @@ void read_airlines() {
 void read_flights() {
     ifstream flights_file("../data/flights.csv");
     string line;
+    getline(flights_file, line);
     while (getline(flights_file, line)) {
         istringstream ss(line);
         string origin, destination, airline;
@@ -277,6 +237,13 @@ void read_flights() {
         getline(ss, airline);
 
         graph.addEdge(airport_codes[origin], airport_codes[destination], airline);
+
+        if (airport_airlines.find(airline) == airport_airlines.end()) {
+            vector<int> v; v.push_back(airport_codes[origin]);
+            airport_airlines.insert({airline, v});
+        } else {
+            airport_airlines.at(airline).push_back(airport_codes[origin]);
+        }
     }
 }
 
@@ -600,7 +567,47 @@ void print_menu3() {
 }
 
 void print_airline_stats() {
+    string airline;
+    cout << "Escolha a companhia aérea: ";
+    getline(cin >> ws, airline);
+    transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
 
+    if (airline_codes.find(airline) == airline_codes.end()) {
+        cout << "Companhia aérea não encontrada!" << endl;
+        wait();
+        return;
+    }
+
+    vector<int> airports_nodes = airport_airlines[airline];
+    Graph g = Graph((int) airports.size() + 1, true);
+
+    for (int &node : airports_nodes) {
+        for (auto const &edge : g.nodes[node].adj) {
+            int w = edge.dest;
+            if (edge.airlines.find(airline) != edge.airlines.end()) {
+                g.addEdge(node, w, airline);
+            }
+        }
+    }
+
+    int num_airports = (int) airports_nodes.size();
+    int num_flights = g.getNumEdges();
+    int num_companies = g.getCompanies();
+    int diameter = g.getDiameter();
+    // random number between 3 and 5
+    int n = rand() % 3 + 3;
+    vector<pii> top_airports = g.getTopAirports(n);
+
+    cout << "A rede de " << airline << " tem um total de " << num_airports << " aeroportos," << endl;
+    cout << "com um total de " << num_flights << " voos," << endl;
+    cout << "e " << num_companies << " companhias aéreas." << endl;
+
+    cout << "O diâmetro da rede é " << diameter << "." << endl;
+    cout << "Os " << n << " aeroportos com mais voos são:" << endl;
+    for (const auto & top_airport : top_airports) {
+        cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+    }
+    wait();
 }
 
 void print_country_stats() {
