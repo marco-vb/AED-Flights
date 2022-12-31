@@ -89,7 +89,7 @@ int main() {
     cout << "Testing nearest neighbor search: KdTree" << endl;
     cout << "Loaded " << coords.size() << " airports." << endl;
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = 0; i < 0; i++) {
         double lat = (double) rand() / RAND_MAX * 180 - 90;
         double lon = (double) rand() / RAND_MAX * 360 - 180;
         double r = (double) rand() / RAND_MAX * 20000;
@@ -140,6 +140,16 @@ int main() {
 //        }
     }
     cout << "Tested with " << n << " random points." << endl;
+
+    set<string> airline_set = {"BAW"};
+    set<int> ap = graph.getArticulationPoints(airline_set);
+    if(ap.empty()) cout << "No articulation points" << endl;
+    else {
+        cout << "Articulation points: " << endl;
+        for(auto &a : ap) {
+            cout << airports.at(a).getCode() << '-' << airports.at(a).getName() << '-' << a << endl;
+        }
+    }
 
     return 0;
 }

@@ -68,7 +68,9 @@ public:
     vector<pii> getTopAirports(int i);
 
     set<int> getArticulationPoints();
-
+    set<int> articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, bool first = false);
+    set<int> getArticulationPoints(set<string> &airlines_to_consider);
+    set<int> articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<string> &airlines_to_consider, bool first = false);
 };
 
 #endif
