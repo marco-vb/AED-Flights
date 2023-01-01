@@ -582,10 +582,9 @@ void print_airline_stats() {
     Graph g = Graph((int) airports.size() + 1, true);
 
     for (int &node : airports_nodes) {
-        for (auto const &edge : g.nodes[node].adj) {
-            int w = edge.dest;
+        for (auto const &edge : graph.nodes[node].adj) {
             if (edge.airlines.find(airline) != edge.airlines.end()) {
-                g.addEdge(node, w, airline);
+                g.addEdge(node, edge.dest, airline);
             }
         }
     }
@@ -599,8 +598,7 @@ void print_airline_stats() {
     vector<pii> top_airports = g.getTopAirports(n);
 
     cout << "A rede de " << airline << " tem um total de " << num_airports << " aeroportos," << endl;
-    cout << "com um total de " << num_flights << " voos," << endl;
-    cout << "e " << num_companies << " companhias aéreas." << endl;
+    cout << "com um total de " << num_flights << " voos." << endl;
 
     cout << "O diâmetro da rede é " << diameter << "." << endl;
     cout << "Os " << n << " aeroportos com mais voos são:" << endl;
