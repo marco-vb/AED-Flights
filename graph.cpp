@@ -380,12 +380,11 @@ vector<pii> Graph::getTopAirports(int i) {
     return vector<pii>(airports.begin(), airports.begin() + i);
 }
 
-set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, bool first){
+set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first){
     nodes[v].visited = true;
     num[v] = index;
     low[v] = index;
     index++;
-    set<int> ap;
     bool is_ap = false;
     s.insert(v);
     int n_adj = 0;
@@ -393,7 +392,8 @@ set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector
         int w = e.dest;
         if (!nodes[w].visited) {
             n_adj++;
-            ap = articulationPointsDFS(w, index, num, low, s);
+            set<int> temp = articulationPointsDFS(w, index, num, low, s, ap);
+            for(int t: temp) ap.insert(t);
             low[v] = min(low[v], low[w]);
             if(low[w] >= num[v]) {
                 is_ap = true;
@@ -417,18 +417,16 @@ set<int> Graph::getArticulationPoints() {
         nodes[i].visited = false;
     for(int i = 1; i <= n; i++)
         if(!nodes[i].visited){
-            set<int> temp = articulationPointsDFS(i, 0, num, low, s, true);
-            for(int t : temp) articulationPoints.insert(t);
+            articulationPointsDFS(i, 0, num, low, s, articulationPoints, true);
         }
     return articulationPoints;
 }
 
-set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<string> &airlines_to_consider, bool first){
+set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, set<string> &airlines_to_consider, bool first){
     nodes[v].visited = true;
     num[v] = index;
     low[v] = index;
     index++;
-    set<int> ap;
     bool is_ap = false;
     s.insert(v);
     int n_adj = 0;
@@ -440,9 +438,12 @@ set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector
         int w = e.dest;
         if (!nodes[w].visited) {
             n_adj++;
-            ap = articulationPointsDFS(w, index, num, low, s, airlines_to_consider);
+            set<int> temp = articulationPointsDFS(w, index, num, low, s, ap, airlines_to_consider);
+            for(int t : temp) ap.insert(t);
             low[v] = min(low[v], low[w]);
-            if(low[w] >= num[v]) {
+            if(low[w] >= num[v] && !first) {
+//                cout << v << " - is first: " << first << endl;
+//                cout << w << " - the curr destiny" << endl;
                 is_ap = true;
                 ap.insert(v);
             }
@@ -464,8 +465,7 @@ set<int> Graph::getArticulationPoints(set<string> &airlines_to_consider) {
         nodes[i].visited = false;
     for(int i = 1; i <= n; i++)
         if(!nodes[i].visited){
-            set<int> temp = articulationPointsDFS(i, 0, num, low, s, airlines_to_consider, true);
-            for(int t : temp) articulationPoints.insert(t);
+            articulationPointsDFS(i, 0, num, low, s, articulationPoints, airlines_to_consider, true);
         }
     return articulationPoints;
 }

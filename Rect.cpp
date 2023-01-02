@@ -52,23 +52,36 @@ double distance(pair<double, double> Q, Rect BB) {
         else
             return haversine(lat, lon, lat, BB.lon2);*/
     // } else {
-        if (lat >= BB.lat1 && lat <= BB.lat2 && lon >= BB.lon1 && lon <= BB.lon2)
-            return 0;
-        else if (lat < BB.lat1 && lon < BB.lon1)
-            return haversine(lat, lon, BB.lat1, BB.lon1);
-        else if (lat < BB.lat1 && lon > BB.lon2)
-            return haversine(lat, lon, BB.lat1, BB.lon2);
-        else if (lat > BB.lat2 && lon < BB.lon1)
-            return haversine(lat, lon, BB.lat2, BB.lon1);
-        else if (lat > BB.lat2 && lon > BB.lon2)
-            return haversine(lat, lon, BB.lat2, BB.lon2);
-        else if (lat < BB.lat1)
-            return haversine(lat, lon, BB.lat1, lon);
-        else if (lat > BB.lat2)
-            return haversine(lat, lon, BB.lat2, lon);
-        else if (lon < BB.lon1)
-            return haversine(lat, lon, lat, BB.lon1);
-        else
-            return haversine(lat, lon, lat, BB.lon2);
+    if (lat >= BB.lat1 && lat <= BB.lat2 && lon >= BB.lon1 && lon <= BB.lon2)
+        return 0;
+    else if (lat < BB.lat1 && lon < BB.lon1)
+        return haversine(lat, lon, BB.lat1, BB.lon1);
+    else if (lat < BB.lat1 && lon > BB.lon2)
+        return haversine(lat, lon, BB.lat1, BB.lon2);
+    else if (lat > BB.lat2 && lon < BB.lon1)
+        return haversine(lat, lon, BB.lat2, BB.lon1);
+    else if (lat > BB.lat2 && lon > BB.lon2)
+        return haversine(lat, lon, BB.lat2, BB.lon2);
+    else if (lat < BB.lat1)
+        return haversine(lat, lon, BB.lat1, lon);
+    else if (lat > BB.lat2)
+        return haversine(lat, lon, BB.lat2, lon);
+    else if (lon < BB.lon1)
+        return haversine(lat, lon, lat, BB.lon1);
+    else
+        return haversine(lat, lon, lat, BB.lon2);
     // }
+}
+
+double distance2(pair<double, double> Q, Rect BB){
+    priority_queue<double, vector<double>, greater<double>> pq;
+    pq.push(haversine(Q.first, Q.second, BB.lat1, BB.lon1));
+    pq.push(haversine(Q.first, Q.second, BB.lat1, BB.lon2));
+    pq.push(haversine(Q.first, Q.second, BB.lat2, BB.lon1));
+    pq.push(haversine(Q.first, Q.second, BB.lat2, BB.lon2));
+    pq.push(haversine(Q.first, Q.second, BB.lat1, Q.second));
+    pq.push(haversine(Q.first, Q.second, BB.lat2, Q.second));
+    pq.push(haversine(Q.first, Q.second, Q.first, BB.lon1));
+    pq.push(haversine(Q.first, Q.second, Q.first, BB.lon2));
+    return pq.top();
 }

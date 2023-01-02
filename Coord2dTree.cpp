@@ -87,7 +87,7 @@ pair<double, double> Coord2dTree::nearest(pair<double, double> p) {
 }
 
 void Coord2dTree::in_radius(pair<double, double> Q, Node* t, int cd, Rect BB, vector<pair<double, double>> &best, double radius){
-    if(t == nullptr || distance(Q, BB) > radius)
+    if(t == nullptr)// || distance2(Q, BB) > radius)
         return;
 
     double dist = haversine(Q, t -> data);
@@ -100,34 +100,28 @@ void Coord2dTree::in_radius(pair<double, double> Q, Node* t, int cd, Rect BB, ve
     else { curr = Q.second; curr_data = t -> data.second; }
     int next_cd = (cd + 1) % 2;
 
-    if(curr < curr_data){
-        in_radius(Q, t -> left, next_cd, BB.trimLeft(cd, curr_data), best, radius);
-        in_radius(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), best, radius);
-    }
-    else {
-        in_radius(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), best, radius);
-        in_radius(Q, t -> left, next_cd, BB.trimLeft(cd,curr_data), best, radius);
-    }
+    in_radius(Q, t -> left, next_cd, BB.trimLeft(cd, curr_data), best, radius);
+    in_radius(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), best, radius);
 }
 
 vector<pair<double, double>> Coord2dTree::in_radius(double lat, double lon, double radius) {
     pair<double, double> Q = make_pair(lat, lon);
     vector<pair<double, double>> best;
-    double t = 0.5*radius;
-    radius = radius + t;
+    // double t = 0 + 0.5*radius;
+    // radius = radius + t;
     Rect BB = Rect(-90, 90, -180, 180);
     in_radius(Q, root, 0, BB, best, radius);
     if(radius > haversine(Q.first, Q.second, Q.first, 180)) {
         in_radius(make_pair(lat, (lon < 0 ? 360 + lon : -360 + lon)), root, 0, BB, best, radius);
     }
-    radius = radius - t;
-    for(auto it = best.begin(); it != best.end();){
-        double dist = haversine(Q, *it);
-        if(haversine(Q, *it) > radius)
-            it = best.erase(it);
-        else
-            ++it;
-    }
+//    radius = radius - t;
+//    for(auto it = best.begin(); it != best.end();){
+//        double dist = haversine(Q, *it);
+//        if(haversine(Q, *it) > radius)
+//            it = best.erase(it);
+//        else
+//            ++it;
+//    }
     return best;
 }
 

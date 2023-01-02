@@ -2,6 +2,8 @@
 #define FLIGHTS_RECT_H
 
 #include <utility>
+#include <queue>
+#include <functional>
 #include "haversine.h"
 using namespace std;
 
@@ -18,5 +20,6 @@ public:
 };
 
 double distance(pair<double, double> Q, Rect BB);
+double distance2(pair<double, double> Q, Rect BB);
 
 #endif //FLIGHTS_RECT_H

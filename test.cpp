@@ -85,17 +85,20 @@ int main() {
 //        coords.push_back({lat, lon});
 //        tree.insert(lat, lon);
 //    }
-
     cout << "Testing nearest neighbor search: KdTree" << endl;
     cout << "Loaded " << coords.size() << " airports." << endl;
 
-    for (int i = 0; i < 0; i++) {
+    for (int i = 0; i < 4200; i++) {
         double lat = (double) rand() / RAND_MAX * 180 - 90;
         double lon = (double) rand() / RAND_MAX * 360 - 180;
         double r = (double) rand() / RAND_MAX * 20000;
         // lat = 59.2264; lon = 101.753; r = 4956.21;
         vector<pair<double, double>> best = findInRadius(coords, {lat, lon}, r);
         vector<pair<double, double>> found = tree.in_radius(lat, lon, r);
+        //vector<pair<double, double>> found = best;
+
+//        pair<double, double> best = findClosest(coords, {lat, lon});
+        //pair<double, double> found = tree.nearest(lat, lon);
         n++;
 
         set<pair<double, double>> sbest;
@@ -109,23 +112,23 @@ int main() {
         if (sbest != sfound) {
             cout << "Searching for " << lat << ", " << lon << " within " << r << " km" << endl;
 
-//            cout << endl;
-//            cout << "Test " << n << " failed!" << endl;
-//            cout << "Best: " << endl;
-//            for (auto &p : best) {
-//                if(sfound.find(p) == sfound.end()) {
-//                    cout << p.first << " " << p.second << endl;
-//                    cout << "Distance: " << haversine(lat, lon, p.first, p.second) << endl;
-//                }}
-//            cout << "Found: " << endl;
-//            for (auto &p : found) {
-//                if(sbest.find(p) == sbest.end()) {
-//                    cout << p.first << " " << p.second << endl;
-//                    cout << "Distance: " << haversine(lat, lon, p.first, p.second) << endl;
-//                }
-//            }
-//            cout << "Lat: " << lat << " Lon: " << lon << endl;
-//            return 0;
+            cout << endl;
+            cout << "Test " << n << " failed!" << endl;
+            cout << "Best: " << endl;
+            for (auto &p : best) {
+                if(sfound.find(p) == sfound.end()) {
+                    cout << p.first << " " << p.second << endl;
+                    cout << "Distance: " << haversine(lat, lon, p.first, p.second) << endl;
+                }}
+            cout << "Found: " << endl;
+            for (auto &p : found) {
+                if(sbest.find(p) == sbest.end()) {
+                    cout << p.first << " " << p.second << endl;
+                    cout << "Distance: " << haversine(lat, lon, p.first, p.second) << endl;
+                }
+            }
+            cout << "Lat: " << lat << " Lon: " << lon << endl;
+            return 0;
         }
 
 //        if(best.first != found.first || best.second != found.second) {
@@ -140,16 +143,18 @@ int main() {
 //        }
     }
     cout << "Tested with " << n << " random points." << endl;
+//
+//    set<string> airline_set = {"TAP"};
+//    set<int> ap = graph.getArticulationPoints(airline_set);
+//    if(ap.empty()) cout << "No articulation points" << endl;
+//    else {
+//        cout << "Articulation points: " << endl;
+//        for(auto &a : ap) {
+//            cout << airports.at(a).getCode() << '-' << airports.at(a).getName() << '-' << a << endl;
+//        }
+//        cout << airports.at(523).getName() << ' ' << 523 << endl;
+//    }
 
-    set<string> airline_set = {"BAW"};
-    set<int> ap = graph.getArticulationPoints(airline_set);
-    if(ap.empty()) cout << "No articulation points" << endl;
-    else {
-        cout << "Articulation points: " << endl;
-        for(auto &a : ap) {
-            cout << airports.at(a).getCode() << '-' << airports.at(a).getName() << '-' << a << endl;
-        }
-    }
 
     return 0;
 }
