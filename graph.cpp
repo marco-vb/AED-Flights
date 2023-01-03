@@ -380,7 +380,7 @@ vector<pii> Graph::getTopAirports(int i) {
     return vector<pii>(airports.begin(), airports.begin() + i);
 }
 
-set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first){
+void Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first){
     nodes[v].visited = true;
     num[v] = index;
     low[v] = index;
@@ -392,21 +392,19 @@ set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector
         int w = e.dest;
         if (!nodes[w].visited) {
             n_adj++;
-            set<int> temp = articulationPointsDFS(w, index, num, low, s, ap);
-            for(int t: temp) ap.insert(t);
+            articulationPointsDFS(w, index, num, low, s, ap);
             low[v] = min(low[v], low[w]);
             if(low[w] >= num[v]) {
                 is_ap = true;
                 ap.insert(v);
             }
         }
-        if(is_ap && first && n_adj <= 1)
-            ap.erase(v);
         else if (s.find(w) != s.end())
             low[v] = min(low[v], num[w]);
     }
+    if(is_ap && first && n_adj <= 1)
+        ap.erase(v);
     s.erase(v);
-    return ap;
 }
 set<int> Graph::getArticulationPoints() {
     set<int> articulationPoints;

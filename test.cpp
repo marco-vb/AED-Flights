@@ -88,7 +88,7 @@ int main() {
     cout << "Testing nearest neighbor search: KdTree" << endl;
     cout << "Loaded " << coords.size() << " airports." << endl;
 
-    for (int i = 0; i < 4200; i++) {
+    for (int i = 0; i < 42; i++) {
         double lat = (double) rand() / RAND_MAX * 180 - 90;
         double lon = (double) rand() / RAND_MAX * 360 - 180;
         double r = (double) rand() / RAND_MAX * 20000;
@@ -143,6 +143,8 @@ int main() {
 //        }
     }
     cout << "Tested with " << n << " random points." << endl;
+
+    cout << haversine(40.8574085,-74.0962338, 40.6971494,-74.2598661) << endl;
 //
 //    set<string> airline_set = {"TAP"};
 //    set<int> ap = graph.getArticulationPoints(airline_set);

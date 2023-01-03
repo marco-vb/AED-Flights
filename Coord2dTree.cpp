@@ -30,10 +30,20 @@ Node* Coord2dTree::insert(pair<double, double> x, Node* t, int cd){
 
 bool Coord2dTree::insert(double lat, double lon) {
     pair<double, double> p = make_pair(lat, lon);
-    root = insert(p, root, 0);
+    try {
+        root = insert(p, root, 0);
+        return true;
+    } catch (const char*){
+        return false;
+    }
 }
 bool Coord2dTree::insert(pair<double, double> p){
-    root = insert(p, root, 0);
+    try {
+        root = insert(p, root, 0);
+        return true;
+    } catch (const char*){
+        return false;
+    }
 }
 
 
