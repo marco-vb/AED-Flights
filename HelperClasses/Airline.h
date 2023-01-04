@@ -13,16 +13,11 @@ private:
     string country;
 
 public:
-    Airline(string code, string name, string callsign, string country);
-
+    Airline(string code, string name, string callSign, string country);
     string getCode() const;
-
     string getName() const;
-
     string getCallSign() const;
-
     string getCountry() const;
-
     bool operator<(const Airline &rhs) const;
 };
 

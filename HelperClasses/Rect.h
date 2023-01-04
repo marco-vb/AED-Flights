@@ -4,7 +4,7 @@
 #include <utility>
 #include <queue>
 #include <functional>
-#include "haversine.h"
+#include "Haversine.h"
 using namespace std;
 
 class Rect {
@@ -15,11 +15,10 @@ public:
     double lon2;
 
     Rect(double lat1, double lat2, double lon1, double lon2);
-    Rect trimLeft(int cd, double data);
-    Rect trimRight(int cd, double data);
+    Rect trimLeft(int cd, double data) const;
+    Rect trimRight(int cd, double data) const;
 };
 
 double distance(pair<double, double> Q, Rect BB);
-double distance2(pair<double, double> Q, Rect BB);
 
 #endif //FLIGHTS_RECT_H
