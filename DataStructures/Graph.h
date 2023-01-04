@@ -5,7 +5,7 @@
 #include <vector>
 #include <queue>
 #include <iostream>
-#include "Airport.h"
+#include "../HelperClasses/Airport.h"
 
 using namespace std;
 typedef list<int> li;
@@ -48,7 +48,7 @@ public:
 
     [[maybe_unused]] list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
     list<li> least_flights(vector<int> sources, vector<int> destination);
-    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, set<string> &airlines_to_consider);
+    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider);
 
     int getOutDegree(int i);
     int getAirlinesNumber(int i);

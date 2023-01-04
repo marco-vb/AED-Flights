@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-#include "graph.h"
+#include "Graph.h"
 
 Graph::Graph() {
     n = 0;
@@ -203,7 +203,7 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
     return paths;
 }
 
-list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& dest, set<string> &airlines_to_consider) {
+list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
     vector<vi> previous(n+1, vi());
 
