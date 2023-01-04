@@ -61,7 +61,7 @@ Coord2dTree tree;
 
 int main() {
     read_airports();
-    graph = Graph((int) airport_codes.size(), true);
+    graph = Graph((int) airport_codes.size());
     read_airlines();
     read_flights();
     print_menu();
@@ -878,7 +878,7 @@ void print_airline_stats() {
     }
 
     vector<int> airports_nodes = airport_airlines[airline];
-    Graph g = Graph((int) airports.size() + 1, true);
+    Graph g = Graph((int) airports.size() + 1);
 
     for (int &node : airports_nodes) {
         for (auto const &edge : graph.nodes[node].adj) {
@@ -918,7 +918,7 @@ void print_country_stats() {
         return;
     }
     vector <int> airports_nodes = airport_countries[country];
-    Graph country_graph = Graph((int) airports.size() + 1, true);
+    Graph country_graph = Graph((int) airports.size() + 1);
 
     for (int &node : airports_nodes) {
         for (auto const &edge : graph.nodes[node].adj) {
