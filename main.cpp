@@ -41,6 +41,12 @@ void print_country_stats();
 
 void print_airline_stats();
 
+void print_shortest_paths_distance(vector<int> vector1, vector<int> vector2);
+
+void list_shortest_paths_with_distance(vector<int> src, vector<int> dest, const set<string>& airlines_to_consider);
+
+void list_shortest_paths_with_distance(vector<int> src, vector<int> dest);
+
 unordered_map<string, int> airport_codes;
 unordered_map<int, Airport> airports;
 unordered_map<string, int> airline_codes;
@@ -408,6 +414,228 @@ void print_menu1() {
     } while (choice != 0 && !opcao_invalida);
 }
 
+void print_menu2() {
+    bool opcao_invalida = false;
+    int choice;
+    vector<int> src, dest;
+    do {
+        clear();
+        cout << "--------------------------------------------" << endl;
+        cout << "|         Simulador de Voos 3000           |" << endl;
+        cout << "|            Rotas mais curtas             |" << endl;
+        cout << "| Selecione a origem do voo:               |" << endl;
+        cout << "| 1. Aeroporto                             |" << endl;
+        cout << "| 2. Cidade                                |" << endl;
+        cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
+        cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 0. Voltar                                |" << endl;
+        cout << "--------------------------------------------" << endl;
+        cout << "Escolha: ";
+        cin >> choice;
+        if (choice == 0) return;
+        if (choice != 0) {
+            switch (choice) {
+                case 1: {
+                    int src_i = get_airport(true);
+                    if(src_i == -1) opcao_invalida = true;
+                    else src.push_back(src_i);
+                    wait();
+                    break;
+                }
+                case 2: {
+                    src = get_city(true);
+                    wait();
+                    break;
+                }
+
+                case 3: {
+                    int src_i = get_coordinates(true);
+                    if(src_i == -1) opcao_invalida = true;
+                    else src.push_back(src_i);
+                    wait();
+                    break;
+                }
+
+                case 4: {
+                    src = get_coordinates_km(true);
+                    wait();
+                    break;
+                }
+
+                default:
+                    opcao_invalida = true;
+                    cout << "Opcao invalida!" << endl;
+            }
+        }
+
+        if(opcao_invalida) break;
+
+        clear();
+        cout << "--------------------------------------------" << endl;
+        cout << "|         Simulador de Voos 3000           |" << endl;
+        cout << "|            Rotas mais curtas             |" << endl;
+        cout << "| Selecione o destino do voo:              |" << endl;
+        cout << "| 1. Aeroporto                             |" << endl;
+        cout << "| 2. Cidade                                |" << endl;
+        cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
+        cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 0. Voltar                                |" << endl;
+        cout << "--------------------------------------------" << endl;
+        cout << "Escolha: ";
+        cin >> choice;
+        if (choice == 0) return;
+        if (choice != 0) {
+            switch (choice) {
+                case 1: {
+                    int dest_i = get_airport(false);
+                    if(dest_i == -1) opcao_invalida = true;
+                    else dest.push_back(dest_i);
+                    wait();
+                    break;
+                }
+                case 2: {
+                    dest = get_city(false);
+                    wait();
+                    break;
+                }
+
+                case 3: {
+                    int dest_i = get_coordinates(false);
+                    if(dest_i == -1) opcao_invalida = true;
+                    else dest.push_back(dest_i);
+                    wait();
+                    break;
+                }
+
+                case 4: {
+                    dest = get_coordinates_km(false);
+                    wait();
+                    break;
+                }
+
+                default:
+                    opcao_invalida = true;
+                    cout << "Opcao invalida!" << endl;
+            }
+
+            if(!opcao_invalida) {
+                print_shortest_paths_distance(src, dest);
+                wait();
+                break;
+            }
+        }
+    } while (choice != 0 && !opcao_invalida);
+}
+
+void print_shortest_paths_distance(vector<int> src, vector<int> dest) {
+    if(src.size() == 0) {
+        cout << "Nao existem aeroportos de origem!" << endl;
+        return;
+    }
+    if(dest.size() == 0) {
+        cout << "Nao existem aeroportos de destino!" << endl;
+        return;
+    }
+
+    if(src.size() == 1) {
+        cout << "Aeroporto de origem: " << airports.at(src[0]).getName() << endl;
+    } else {
+        cout << "Aeroportos de origem: " << endl;
+        for(int & i : src) {
+            cout << "  - " << airports.at(i).getName() << endl;
+        }
+    }
+    cout << endl;
+    if(dest.size() == 1) {
+        cout << "Aeroporto de destino: " << airports.at(dest[0]).getName() << endl;
+    } else {
+        cout << "Aeroportos de destino: " << endl;
+        for(int & i : dest) {
+            cout << "  - " << airports.at(i).getName() << endl;
+        }
+    }
+
+    cout << endl << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
+    string op;
+    cin >> op;
+    if (op == "s" || op == "S") {
+        set<string> airlines_to_consider;
+        cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
+        string airline;
+        while (cin >> airline && airline != "fim" && airline != "FIM") {
+            if (airline_codes.find(airline) != airline_codes.end()) {
+                airlines_to_consider.insert(airline);
+            } else {
+                cout << "Companhia aérea não encontrada!" << endl;
+            }
+        }
+        list_shortest_paths_with_distance(src, dest, airlines_to_consider);
+    } else {
+        list_shortest_paths_with_distance(src, dest);
+    }
+}
+
+void list_shortest_paths_with_distance(vector<int> src, vector<int> dest) {
+    list<li> path = graph.least_flights_with_distance(src, dest);
+    set<string> o; set<string> d; string src_string; string dst_string;
+    if(src.size() == 1)
+        src_string = airports.at(src[0]).getName();
+    else {
+        for (auto &s: src)
+            o.insert(airports.at(s).getCity());
+        src_string = set_to_string(o);
+    }
+    if(dest.size() == 1)
+        dst_string = airports.at(dest[0]).getName();
+    else {
+        for (auto &s: dest)
+            d.insert(airports.at(s).getCity());
+        dst_string = set_to_string(d);
+    }
+
+    cout << endl << "Trajetos mais curtos de " << src_string << " para " << dst_string << endl << endl;
+
+    if (path.empty())
+        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
+
+    for (auto &l : path) {
+        for (auto &k: l) {
+            if (k == l.front())
+                cout << "(" <<k << " Km) ";
+            else if (k == l.back())
+                cout << airports.at(k).getName() << endl;
+            else
+                cout << airports.at(k).getName() << " -> ";
+        }
+        cout << endl;
+    }
+}
+
+void list_shortest_paths_with_distance(vector<int> src, vector<int> dest, const set<string>& airlines_to_consider) {
+    list<li> path = graph.least_flights_with_distance(src, dest, airlines_to_consider);
+
+    cout << "Companhias aéreas consideradas: ";
+    for (const auto& a : airlines_to_consider) cout << a << " ";
+    cout << endl;
+
+    cout << endl << "Trajetos mais curtos de " << airports.at(src.front()).getCity() << " para " << airports.at(dest.front()).getCity() << endl;
+
+    if (path.empty())
+        cout << "Não há trajetos disponíveis para os critérios especificados." << endl;
+
+    for (auto &l : path) {
+        for (auto &k: l) {
+            if (k == l.front())
+                cout << "(" <<k << " Km) ";
+            else if (k == l.back())
+                cout << airports.at(k).getName() << endl;
+            else
+                cout << airports.at(k).getName() << " -> ";
+        }
+        cout << endl;
+    }
+}
+
 void print_articulation_points() {
     cout << endl << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
     string op;
@@ -588,7 +816,6 @@ vector<int> get_coordinates_km(bool is_origin) {
     return airports_in_radius_src;
 }
 
-void print_menu2() {}
 void print_menu3() {
     int choice;
     do {

@@ -53,7 +53,7 @@ void Graph::bfs(int v) {
     }
 }
 
-list<li> Graph::least_flights(int source, int destination) {
+[[maybe_unused]] list<li> Graph::least_flights(int source, int destination) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
     vector<vi> previous(n+1, vi());
 
@@ -97,7 +97,7 @@ list<li> Graph::least_flights(int source, int destination) {
     return paths;
 }
 
-list<li> Graph::least_flights(int src, int dest, set<string> &airlines_to_consider) {
+[[maybe_unused]] list<li> Graph::least_flights(int src, int dest, set<string> &airlines_to_consider) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
     vector<vi> previous(n+1, vi());
 
@@ -203,7 +203,7 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
     return paths;
 }
 
-list<li> Graph::least_flights(vector<int> sources, vector<int> dest, set<string> &airlines_to_consider) {
+list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& dest, set<string> &airlines_to_consider) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
     vector<vi> previous(n+1, vi());
 
@@ -369,7 +369,6 @@ int Graph::getDiameter() {
     return diameter;
 }
 
-//TODO
 vector<pii> Graph::getTopAirports(int i) {
     vector<pii> airports(n);
     for (int v = 1; v <= n; v++) {
@@ -466,5 +465,106 @@ set<int> Graph::getArticulationPoints(set<string> &airlines_to_consider) {
             articulationPointsDFS(i, 0, num, low, s, articulationPoints, airlines_to_consider, true);
         }
     return articulationPoints;
+}
+
+list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider) {
+    for (int i = 1; i <= n; i++) {
+        nodes[i].distance = INT_MAX;
+        nodes[i].visited = false;
+    }
+
+    queue<int> q;
+    vector<int> prev(n+1);
+
+    for (const int & i : src) {
+        nodes[i].distance = 0;
+        q.push(i);
+    }
+
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        if (nodes[v].visited) continue;
+        nodes[v].visited = true;
+        for (const auto& e : nodes[v].adj) {
+            set<string> intersection;
+            set_intersection(e.airlines.begin(), e.airlines.end(), airlines_to_consider.begin(), airlines_to_consider.end(), inserter(intersection, intersection.begin()));
+            if (intersection.empty()) continue;
+            int w = e.dest;
+            if (nodes[w].distance > nodes[v].distance + e.weight) {
+                nodes[w].distance = nodes[v].distance + e.weight;
+                prev[w] = v;
+                q.push(w);
+            }
+        }
+    }
+
+    list<li> paths;
+    for (const int & i : dest) {
+        if (nodes[i].distance == INT_MAX) continue;
+        list<int> path;
+        int v = i;
+        while (v != 0) {
+            path.push_front(v);
+            v = prev[v];
+        }
+        paths.push_back(path);
+    }
+
+    for (auto& p : paths) {
+        p.push_front(nodes[p.back()].distance);
+    }
+
+    return paths;
+}
+
+list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest) {
+    for (int i = 1; i <= n; i++) {
+        nodes[i].distance = INT_MAX;
+        nodes[i].visited = false;
+    }
+
+    queue<int> q;
+    vector<int> prev(n+1);
+
+    for (const int & i : src) {
+        nodes[i].distance = 0;
+        q.push(i);
+    }
+
+    //Dijkstra's algorithm
+    while (!q.empty()) {
+        int v = q.front();
+        q.pop();
+        if (nodes[v].visited) continue;
+        nodes[v].visited = true;
+        for (const auto& e : nodes[v].adj) {
+            int w = e.dest;
+            if (nodes[w].distance > nodes[v].distance + e.weight) {
+                nodes[w].distance = nodes[v].distance + e.weight;
+                prev[w] = v;
+                q.push(w);
+            }
+        }
+    }
+
+    //Find the shortest path between src and dest
+    list<li> paths;
+    for (const int & i : dest) {
+        if (nodes[i].distance == INT_MAX) continue;
+        list<int> path;
+        int v = i;
+        while (v != 0) {
+            path.push_front(v);
+            v = prev[v];
+        }
+        paths.push_back(path);
+    }
+
+    for (auto& p : paths) {
+        p.push_front(nodes[p.back()].distance);
+    }
+
+    return paths;
 }
 

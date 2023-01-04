@@ -44,10 +44,11 @@ public:
     // Breadth-First Search
     void bfs(int v);
 
-    list<li> least_flights(int src, int dest);
-    list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
+    [[maybe_unused]] list<li> least_flights(int src, int dest);
+
+    [[maybe_unused]] list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
     list<li> least_flights(vector<int> sources, vector<int> destination);
-    list<li> least_flights(vector<int> sources, vector<int> dest, set<string> &airlines_to_consider);
+    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, set<string> &airlines_to_consider);
 
     int getOutDegree(int i);
     int getAirlinesNumber(int i);
@@ -71,6 +72,10 @@ public:
     void articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first = false);
     set<int> getArticulationPoints(set<string> &airlines_to_consider);
     set<int> articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, set<string> &airlines_to_consider, bool first = false);
+
+    list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider);
+
+    list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest);
 };
 
 #endif
