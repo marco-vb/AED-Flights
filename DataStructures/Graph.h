@@ -15,67 +15,43 @@ typedef pair<int, int> pii;
 class Graph {
 public:
     struct Edge {
-        int dest;   // Destination node
-        int weight; // An integer weight
+        int dest;
+        int weight;
         set<string> airlines;
     };
-
     struct Node {
-        list<Edge> adj; // The list of outgoing edges (to adjacent nodes)
-        bool visited;   // As the node been visited on a search?
+        list<Edge> adj;
+        bool visited;
         int distance;
     };
 
-    int n;              // Graph size (vertices are numbered from 1 to n)
-    bool hasDir;        // false: undirected; true: directed
-    vector<Node> nodes; // The list of nodes being represented
+    int n;
+    vector<Node> nodes;
 
-    Graph(); // Default constructor
-
-    // Constructor: nr nodes and direction (default: undirected)
-    Graph(int nodes, bool dir = false);
-
-    // Add edge from source to destination with a certain weight
+    Graph();
+    explicit Graph(int nodes);
     void addEdge(int src, int dest, string airline, int weight = 1);
-
-    // Depth-First Search
-    void dfs(int v);
-
-    // Breadth-First Search
-    void bfs(int v);
-
-    [[maybe_unused]] list<li> least_flights(int src, int dest);
-
-    [[maybe_unused]] list<li> least_flights(int src, int dest, set<string> &airlines_to_consider);
-    list<li> least_flights(vector<int> sources, vector<int> destination);
-    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider);
 
     int getOutDegree(int i);
     int getAirlinesNumber(int i);
     int getDestinationsNumber(int i);
-
     int getDestinationsCountries(int i, unordered_map<int, Airport> &airports);
-
-    set<int> getDestinations(int src, int r);
-
-    vector<Node> getNodes() const;
-
     int getNumEdges();
-
     int getCompanies();
-
     int getDiameter();
-
+    set<int> getDestinations(int src, int r);
+    vector<Node> getNodes() const;
     vector<pii> getTopAirports(int i);
-
     set<int> getArticulationPoints();
-    void articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first = false);
     set<int> getArticulationPoints(set<string> &airlines_to_consider);
-    set<int> articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, set<string> &airlines_to_consider, bool first = false);
 
+    list<li> least_flights(vector<int> sources, vector<int> destination);
+    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider);
     list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider);
-
     list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest);
+
+    void articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, bool first = false);
+    set<int> articulationPointsDFS(int v, int index, vector<int>& num, vector<int>& low, unordered_set<int>& s, set<int>& ap, set<string> &airlines_to_consider, bool first = false);
 };
 
 #endif
