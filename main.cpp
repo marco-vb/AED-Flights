@@ -253,7 +253,10 @@ void read_flights() {
         getline(ss, destination, ',');
         getline(ss, airline);
 
-        graph.addEdge(airport_codes[origin], airport_codes[destination], airline);
+        Airport origin_airport = airports.at(airport_codes.at(origin));
+        Airport destination_airport = airports.at(airport_codes.at(destination));
+        int distance = (int) haversine({origin_airport.getLatitude(), origin_airport.getLongitude()}, {destination_airport.getLatitude(), destination_airport.getLongitude()});
+        graph.addEdge(airport_codes[origin], airport_codes[destination], airline, distance);
 
         if (airport_airlines.find(airline) == airport_airlines.end()) {
             vector<int> v; v.push_back(airport_codes[origin]);
