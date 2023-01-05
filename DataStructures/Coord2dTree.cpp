@@ -2,11 +2,13 @@
 
 Coord2dTree::Coord2dTree() {
     root = nullptr;
+    size = 0;
 }
 
 Node* Coord2dTree::insert(pair<double, double> x, Node* t, int cd){
     if(t == nullptr) {
         t = new Node{x, nullptr, nullptr};
+        size++;
     }
     else if (x == t -> data)
         throw "Error! Duplicate point!";
@@ -91,6 +93,73 @@ vector<pair<double, double>> Coord2dTree::in_radius(pair<double, double> p, doub
     in_radius(p, root, 0, BB, best, radius);
     if(radius > haversine(p.first, p.second, p.first, 180)) {
         in_radius(make_pair(p.first, (p.second < 0 ? 360 + p.second : -360 + p.second)), root, 0, BB, best, radius);
+    }
+    return best;
+}
+
+void Coord2dTree::nearestN(pair<double, double> Q, Node* t, int cd, Rect BB, priority_queue<pair<double, pair<double, double>>>& bestN, int n){
+    if(t == nullptr || (bestN.size() >= n && distance(Q, BB) > 1.1*bestN.top().first && bestN.top().first <= 4000)) return;
+
+    double dist = haversine(Q, t -> data);
+    if(bestN.size() < n)
+        bestN.push(make_pair(dist, t -> data));
+    else if(dist < bestN.top().first){
+        bestN.push(make_pair(dist, t -> data));
+        bestN.pop();
+    }
+
+    double curr; double curr_data;
+    if(cd == 0){ curr = Q.first; curr_data = t -> data.first; }
+    else { curr = Q.second; curr_data = t -> data.second; }
+    int next_cd = (cd + 1) % 2;
+
+    if(curr < curr_data){
+        nearestN(Q, t -> left, next_cd, BB.trimLeft(cd, curr_data), bestN, n);
+        nearestN(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), bestN, n);
+    }
+    else {
+        nearestN(Q, t -> right, next_cd, BB.trimRight(cd, curr_data), bestN, n);
+        nearestN(Q, t -> left, next_cd, BB.trimLeft(cd,curr_data), bestN, n);
+    }
+}
+
+vector<pair<double, double>> Coord2dTree::nearestN(pair<double, double> Q, int n) {
+    if(n == 0) return {};
+    if(n > size){
+        cout << "Demasiados elementos pedidos" << endl;
+        return {};
+    }
+    double lat = Q.first;
+    double lon = Q.second;
+    priority_queue<pair<double, pair<double, double>>> bestN;
+    Rect BB = Rect(-90, 90, -180, 180);
+
+    nearestN(Q, root, 0, BB, bestN, n);
+
+    vector<pair<double, double>> best;
+
+    if(!bestN.empty() && bestN.top().first > haversine(Q.first, Q.second, Q.first, 180)) {
+        priority_queue<pair<double, pair<double, double>>> bestN2;
+        nearestN(make_pair(lat, (lon < 0 ? 360 + lon : -360 + lon)), root, 0, BB, bestN2, n);
+        set<pair<double, pair<double, double>>> s;
+        while(!bestN.empty()){
+            s.insert({((double) round(100*bestN.top().first)) / 100, bestN.top().second});
+            bestN.pop();
+        }
+        while(!bestN2.empty()){
+            s.insert({((double) round(100*bestN2.top().first)) / 100, bestN2.top().second});
+            bestN2.pop();
+        }
+        int i = 0;
+        for(auto it = s.begin(); it != s.end(); it++){
+            if(i >= n) break;
+            best.push_back(it -> second);
+            i++;
+        }
+
+    } else while(!bestN.empty()){
+        best.push_back(bestN.top().second);
+        bestN.pop();
     }
     return best;
 }

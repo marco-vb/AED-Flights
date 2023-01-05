@@ -36,6 +36,7 @@ int get_airport(bool);
 vector<int> get_city(bool);
 int get_coordinates(bool);
 vector<int> get_coordinates_km(bool);
+vector<int> get_n_coordinates(bool);
 
 int getCitiesNumber(set<int> &);
 int getCountriesNumber(set<int> &);
@@ -214,6 +215,7 @@ void print_menu1() {
         cout << "| 2. Cidade                                |" << endl;
         cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
         cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 5. N pontos mais proximos                |" << endl;
         cout << "| 0. Voltar                                |" << endl;
         cout << "--------------------------------------------" << endl;
         cout << "Escolha: ";
@@ -247,6 +249,12 @@ void print_menu1() {
                     break;
                 }
 
+                case 5: {
+                    src = get_n_coordinates(true);
+                    wait();
+                    break;
+                }
+
                 default:
                     opcao_invalida = true;
                     cout << "Opcao invalida!" << endl;
@@ -264,6 +272,7 @@ void print_menu1() {
         cout << "| 2. Cidade                                |" << endl;
         cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
         cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 5. N pontos mais proximos                |" << endl;
         cout << "| 0. Voltar                                |" << endl;
         cout << "--------------------------------------------" << endl;
         cout << "Escolha: ";
@@ -293,6 +302,12 @@ void print_menu1() {
 
                 case 4: {
                     dest = get_coordinates_km(false);
+                    wait();
+                    break;
+                }
+
+                case 5: {
+                    dest = get_n_coordinates(false);
                     wait();
                     break;
                 }
@@ -324,6 +339,7 @@ void print_menu2() {
         cout << "| 2. Cidade                                |" << endl;
         cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
         cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 5. N pontos mais proximos                |" << endl;
         cout << "| 0. Voltar                                |" << endl;
         cout << "--------------------------------------------" << endl;
         cout << "Escolha: ";
@@ -358,6 +374,12 @@ void print_menu2() {
                     break;
                 }
 
+                case 5: {
+                    src = get_n_coordinates(true);
+                    wait();
+                    break;
+                }
+
                 default:
                     opcao_invalida = true;
                     cout << "Opcao invalida!" << endl;
@@ -375,6 +397,7 @@ void print_menu2() {
         cout << "| 2. Cidade                                |" << endl;
         cout << "| 3. Ponto mais proximo das Coordenadas    |" << endl;
         cout << "| 4. Todos os pontos a Xkm das Coordenadas |" << endl;
+        cout << "| 5. N pontos mais proximos                |" << endl;
         cout << "| 0. Voltar                                |" << endl;
         cout << "--------------------------------------------" << endl;
         cout << "Escolha: ";
@@ -405,6 +428,12 @@ void print_menu2() {
 
                 case 4: {
                     dest = get_coordinates_km(false);
+                    wait();
+                    break;
+                }
+
+                case 5: {
+                    dest = get_n_coordinates(false);
                     wait();
                     break;
                 }
@@ -606,6 +635,38 @@ vector<int> get_coordinates_km(bool is_origin) {
 
     return airports_in_radius_src;
 }
+
+vector<int> get_n_coordinates(bool is_origin) {
+    string src;
+    string s;
+    if(is_origin) s = "origem";
+    else s = "destino";
+    cout << "Escolha as coordenadas de " << s << " (e.g. '16.23N 42.13W' or '16.23,-42.13'): ";
+    getline(cin >> ws, src);
+    pair <double, double> coords = string_to_coords(src);
+    if (coords.first == 100 &&
+        coords.second == 200) {
+        cout << "Erro ao introduzir as coordenadas!" << endl;
+        return {};
+    }
+    cout << endl << "Escolha o numero de pontos de pesquisa: ";
+    int n;
+    cin >> n;
+
+    vector <pair<double, double>> src_pairs = tree.nearestN(coords, n);
+    if(src_pairs.empty()) {
+        cout << "Nao foram encontrados aeroportos na zona de " << s << "!" << endl;
+        return {};
+    }
+
+    vector <int> airports_src;for(int i = 0; i < src_pairs.size(); i++) {
+        airports_src.push_back(airport_coords[src_pairs[i]]);
+    }
+
+    return airports_src;
+}
+
+
 int getCountriesNumber(set<int> &set1) {
     set<string> countries;
     for (int id : set1) {

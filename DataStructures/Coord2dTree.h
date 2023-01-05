@@ -3,6 +3,8 @@
 
 #include <utility>
 #include <list>
+#include <set>
+#include <iostream>
 #include "../HelperClasses/Rect.h"
 #include "../HelperClasses/Haversine.h"
 using namespace std;
@@ -42,6 +44,7 @@ private:
      * @brief Apontador para a raiz da árvore
      */
     Node* root;
+    int size;
     
     /**
      * @brief Método auxiliar para inserir um ponto na árvore
@@ -179,6 +182,9 @@ public:
      * @return Vetor de pontos dentro do raio
      */
     vector<pair<double, double>> in_radius(pair<double, double> p, double radius);
+
+    void nearestN(pair<double, double> Q, Node* t, int cd, Rect BB, priority_queue<pair<double, pair<double, double>>>& bestN, int n);
+    vector<pair<double, double>> nearestN(pair<double, double> p, int n);
 };
 
 #endif
