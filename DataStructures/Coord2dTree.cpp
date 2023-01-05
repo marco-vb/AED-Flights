@@ -3,10 +3,10 @@
 Coord2dTree::Coord2dTree() {
     root = nullptr;
 }
+
 Node* Coord2dTree::insert(pair<double, double> x, Node* t, int cd){
     if(t == nullptr) {
         t = new Node{x, nullptr, nullptr};
-        all.push_back(x);
     }
     else if (x == t -> data)
         throw "Error! Duplicate point!";
@@ -59,7 +59,7 @@ void Coord2dTree::nearest(pair<double, double> Q, Node* t, int cd, Rect BB, pair
     }
 }
 pair<double, double> Coord2dTree::nearest(pair<double, double> p) {
-    pair<double, double> best = make_pair(0, 0);
+    pair<double, double> best = make_pair(-1, -1);
     double best_dist = 1000000000;
     Rect BB = Rect(-90, 90, -180, 180);
     nearest(p, root, 0, BB, best, best_dist);
@@ -69,7 +69,7 @@ pair<double, double> Coord2dTree::nearest(pair<double, double> p) {
     return best;
 }
 void Coord2dTree::in_radius(pair<double, double> Q, Node* t, int cd, Rect BB, vector<pair<double, double>> &best, double radius){
-    if(t == nullptr)// || distance2(Q, BB) > radius)
+    if((t == nullptr) || (distance(Q, BB) > 1.1*radius && radius <= 1500))
         return;
 
     double dist = haversine(Q, t -> data);
