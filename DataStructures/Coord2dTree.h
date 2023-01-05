@@ -97,7 +97,7 @@ private:
      *
      * Método auxiliar para procurar o ponto mais próximo de outro dado as suas coordenadas.
      * Esta método é recursiva e é chamada pela método publico in_radius().
-     * Cada ponto tem um retangulo associado a si, onde todos os filhos desse ponto se encontram.
+     * Cada ponto tem um retangul.o associado a si, onde todos os filhos desse ponto se encontram.
      * Dado que x é o ponto passado por argumento, t o nó atual, e BB o retangulo correspondente ao nó atual,
      * se a raio de pesquisa < distancia(x, BB), significa que nenhum ponto dentro do retangulo BB poderá estar dentro do raio que pretendemos, ou seja,
      * nenhum filho de t poderá estar mais proximo de x do que o b, logo é desnecessario procurar nesta sub-árvore.
@@ -107,7 +107,7 @@ private:
      *
      * Complexidade Temporal:
      *  - Em média: O(log n)
-     *  - No pior caso: O(n)
+     *  - No pior caso e se o raio > 1500km: O(n)
      *
      * @param x Par de coordenadas do ponto a procurar
      * @param t Apontador para o nó atual
@@ -131,6 +131,10 @@ public:
      *
      * Insere um ponto na árvore através do método privado insert() e retorna true se o ponto foi inserido com sucesso, false caso contrário.
      *
+     * Complexidade Temporal:
+     *  - Em média: O(log n)
+     *  - No pior caso: O(n)
+     *
      * @param lat Latitude do ponto a inserir
      * @param lon Longitude do ponto a inserir
      * @return true se o ponto foi inserido com sucesso, false caso contrário
@@ -139,6 +143,10 @@ public:
 
     /**
      * @brief Procura o ponto mais próximo de outro dado as suas coordenadas
+     *
+     * Complexidade Temporal:
+     *  - Em média: O(log n)
+     *  - No pior caso: O(n)
      *
      * Procura o ponto mais próximo de outro dado as suas coordenadas.
      * Caso a árvore esteja vazia, retorna um par de coordenadas (-1, -1).
@@ -154,6 +162,10 @@ public:
 
     /**
      * @brief Procura os pontos dentro de um raio dado as suas coordenadas
+     *
+     * Complexidade Temporal:
+     *  - Em média: O(log n)
+     *  - No pior caso e se o raio > 1500km: O(n)
      *
      * Procura os pontos dentro de um raio dado as suas coordenadas.
      * Caso a árvore esteja vazia, retorna um vetor vazio.
