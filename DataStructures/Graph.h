@@ -11,6 +11,8 @@ using namespace std;
 typedef list<int> li;
 typedef vector<int> vi;
 typedef pair<int, int> pii;
+typedef pair<int, string> pis;
+typedef list<pis> lp;
 
 /**
  * @brief Classe usada para representar um grafo dirigido.
@@ -191,7 +193,7 @@ public:
      * @param destination
      * @return list<list<int>> com os caminhos mais curtos (em número de voos).
      */
-    list<li> least_flights(vector<int> sources, vector<int> destination);
+    list<lp> least_flights(vector<int> sources, vector<int> destination);
 
     /**
      * @brief Retorna os caminhos mais curtos em numero de voos, considerando apenas algumas companhias aéreas.
@@ -207,7 +209,7 @@ public:
      * @param airlines_to_consider
      * @return list<list<int>> com os caminhos mais curtos (em número de voos), considerando apenas as companhias aéreas passadas.
      */
-    list<li> least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider);
+    list<lp> least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider);
 
     /**
      * @brief Retorna os caminhos mais curtos em distância física entre os aeroportos de origem e os de destino.
@@ -221,7 +223,7 @@ public:
      * @param destination
      * @return list<list<int>> com os caminhos mais curtos (em distância).
      */
-    list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest);
+    list<lp> least_flights_with_distance(const vector<int>& src, const vector<int>& dest);
 
     /**
      * @brief Retorna os caminhos mais curtos em distância física entre os aeroportos de origem e os de destino, considerando apenas algumas companhias aéreas.
@@ -237,7 +239,7 @@ public:
      * @param airlines_to_consider
      * @return list<list<int>> com os caminhos mais curtos (em distância), considerando apenas as companhias aéreas passadas.
      */
-    list<li> least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider);
+    list<lp> least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider);
 
     /**
      * @brief Função usada para determinar os pontos de articulação da rede.

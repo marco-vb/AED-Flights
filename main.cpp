@@ -858,7 +858,7 @@ int getCitiesNumber(set<int> &set1) {
  * @param dest Vetor de inteiros com os aeroportos de destino
  */
 void list_shortest_paths(const vector<int> &src, const vector<int> &dest) {
-    list<li> path = graph.least_flights(src, dest);
+    list<lp> path = graph.least_flights(src, dest);
     set<string> o; set<string> d; string src_string; string dst_string;
     if(src.size() == 1)
         src_string = airports.at(src[0]).getName();
@@ -883,9 +883,9 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest) {
     for (auto &l : path) {
         for (auto &k: l) {
             if (k == l.back())
-                cout << airports.at(k).getName() << endl;
+                cout << airports.at(k.first).getName() << endl;
             else
-                cout << airports.at(k).getName() << " -> ";
+                cout << airports.at(k.first).getName() << " --(" << k.second << ")-> ";
         }
         cout << endl;
     }
@@ -903,7 +903,7 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest) {
  * @param airlines_to_consider Set com as companhias aereas a utilizar
  */
 void list_shortest_paths(const vector<int> &src, const vector<int> &dest, const set<string> &airlines_to_consider) {
-    list<li> path = graph.least_flights(src, dest, airlines_to_consider);
+    list<lp> path = graph.least_flights(src, dest, airlines_to_consider);
 
     cout << "Companhias aéreas consideradas: ";
     for (const auto& a : airlines_to_consider) cout << a << " ";
@@ -917,9 +917,9 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest, const 
     for (auto &l : path) {
         for (auto &k: l) {
             if (k == l.back())
-                cout << airports.at(k).getName() << endl;
+                cout << airports.at(k.first).getName() << endl;
             else
-                cout << airports.at(k).getName() << " -> ";
+                cout << airports.at(k.first).getName() << " --(" << k.second << ")-> ";
         }
         cout << endl;
     }
@@ -936,7 +936,7 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest, const 
  * @param dest Vetor de inteiros com os aeroportos de destino
  */
 void list_shortest_paths_with_distance(const vector<int> &src, const vector<int> &dest) {
-    list<li> path = graph.least_flights_with_distance(src, dest);
+    list<lp> path = graph.least_flights_with_distance(src, dest);
     set<string> o; set<string> d; string src_string; string dst_string;
     if(src.size() == 1)
         src_string = airports.at(src[0]).getName();
@@ -961,11 +961,11 @@ void list_shortest_paths_with_distance(const vector<int> &src, const vector<int>
     for (auto &l : path) {
         for (auto &k: l) {
             if (k == l.front())
-                cout << "(" <<k << " Km) ";
+                cout << "(" <<k.first << " Km) ";
             else if (k == l.back())
-                cout << airports.at(k).getName() << endl;
+                cout << airports.at(k.first).getName() << endl;
             else
-                cout << airports.at(k).getName() << " -> ";
+                cout << airports.at(k.first).getName() << " --(" << k.second << ")-> ";
         }
         cout << endl;
     }
@@ -982,7 +982,7 @@ void list_shortest_paths_with_distance(const vector<int> &src, const vector<int>
  * @param dest Vetor de inteiros com os aeroportos de destino
  */
 void list_shortest_paths_with_distance(const vector<int> &src, const vector<int> &dest, const set<string>& airlines_to_consider) {
-    list<li> path = graph.least_flights_with_distance(src, dest, airlines_to_consider);
+    list<lp> path = graph.least_flights_with_distance(src, dest, airlines_to_consider);
 
     cout << "Companhias aéreas consideradas: ";
     for (const auto& a : airlines_to_consider) cout << a << " ";
@@ -996,11 +996,11 @@ void list_shortest_paths_with_distance(const vector<int> &src, const vector<int>
     for (auto &l : path) {
         for (auto &k: l) {
             if (k == l.front())
-                cout << "(" <<k << " Km) ";
+                cout << "(" <<k.first << " Km) ";
             else if (k == l.back())
-                cout << airports.at(k).getName() << endl;
+                cout << airports.at(k.first).getName() << endl;
             else
-                cout << airports.at(k).getName() << " -> ";
+                cout << airports.at(k.first).getName() << " --(" << k.second << ")-> ";
         }
         cout << endl;
     }
@@ -1051,7 +1051,9 @@ void print_shortest_paths_distance(const vector<int> &src, const vector<int> &de
         set<string> airlines_to_consider;
         cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
         string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
+        while (cin >> airline) {
+            transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
+            if (airline == "FIM") break;
             if (airline_codes.find(airline) != airline_codes.end()) {
                 airlines_to_consider.insert(airline);
             } else {
@@ -1109,8 +1111,9 @@ void print_shortest_paths(const vector<int>& src, const vector<int>& dest) {
         set<string> airlines_to_consider;
         cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
         string airline;
-        transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
-        while (cin >> airline && airline != "FIM") {
+        while (cin >> airline) {
+            transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
+            if (airline == "FIM") break;
             if (airline_codes.find(airline) != airline_codes.end()) {
                 airlines_to_consider.insert(airline);
             } else {
@@ -1139,8 +1142,9 @@ void print_articulation_points() {
         set<string> airlines_to_consider;
         cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
         string airline;
-        transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
-        while (cin >> airline && airline != "FIM") {
+        while (cin >> airline) {
+            transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
+            if (airline == "FIM") break;
             if (airline_codes.find(airline) != airline_codes.end()) {
                 airlines_to_consider.insert(airline);
             } else {

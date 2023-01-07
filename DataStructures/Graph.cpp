@@ -206,9 +206,9 @@ set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector
     return ap;
 }
 
-list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
+list<lp> Graph::least_flights(vector<int> sources, vector<int> destination) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
-    vector<vi> previous(n+1, vi());
+    vector<vector<pis>> previous(n+1, vector<pis>());
 
     queue<int> q;
     for(const auto& s : sources) {
@@ -224,38 +224,38 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
                 q.push(w);
                 nodes[w].visited = true;
                 nodes[w].distance = nodes[u].distance + 1;
-                previous[w].push_back(u);
+                previous[w].push_back({u, *e.airlines.begin()});
             } else if (nodes[w].distance == nodes[u].distance + 1) {
-                previous[w].push_back(u);
+                previous[w].push_back({u, *e.airlines.begin()});
             }
         }
     }
 
-    li all_min;
+    lp all_min;
     int min_dist = INT_MAX;
-    for(int d : destinations) {
+    for(int d : destination) {
         if(nodes[d].distance != -1 && nodes[d].distance < min_dist) {
             min_dist = nodes[d].distance;
         }
     }
-    for(int d : destinations) {
+    for(int d : destination) {
         if(nodes[d].distance == min_dist) {
-            all_min.push_back(d);
+            all_min.push_back({d, ""});
         }
     }
 
-    list<li> paths;
+    list<lp> paths;
     if(min_dist == INT_MAX) return paths;
-    for(int d : all_min) {
-        li path;
+    for(auto d : all_min) {
+        lp path;
         path.push_back(d);
         paths.push_back(path);
     }
     for (int i = 0; i < min_dist; ++i) {
-        list<li> new_paths;
+        list<lp> new_paths;
         for (const auto& p : paths) {
-            for (const auto& node : previous[p.front()]) {
-                li new_path = p;
+            for (const auto& node : previous[p.front().first]) {
+                lp new_path = p;
                 new_path.push_front(node);
                 new_paths.push_back(new_path);
             }
@@ -264,9 +264,9 @@ list<li> Graph::least_flights(vector<int> sources, vector<int> destinations) {
     }
     return paths;
 }
-list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider) {
+list<lp> Graph::least_flights(const vector<int>& sources, const vector<int>& dest, const set<string> &airlines_to_consider) {
     for (int j = 1; j <= n; ++j) {nodes[j].visited = false; nodes[j].distance = -1;}
-    vector<vi> previous(n+1, vi());
+    vector<vector<pis>> previous(n+1, vector<pis>());
 
     queue<int> q;
     for(const auto& s : sources) {
@@ -286,14 +286,14 @@ list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& des
                 q.push(w);
                 nodes[w].visited = true;
                 nodes[w].distance = nodes[u].distance + 1;
-                previous[w].push_back(u);
+                previous[w].push_back({u, *intersection.begin()});
             } else if (nodes[w].distance == nodes[u].distance + 1) {
-                previous[w].push_back(u);
+                previous[w].push_back({u, *intersection.begin()});
             }
         }
     }
 
-    li all_min;
+    lp all_min;
     int min_dist = INT_MAX;
     for(int d : dest) {
         if(nodes[d].distance != -1 && nodes[d].distance < min_dist) {
@@ -302,22 +302,22 @@ list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& des
     }
     for(int d : dest) {
         if(nodes[d].distance == min_dist) {
-            all_min.push_back(d);
+            all_min.push_back({d, ""});
         }
     }
 
-    list<li> paths;
+    list<lp> paths;
     if(min_dist == INT_MAX) return paths;
-    for(int d : all_min) {
-        li path;
+    for(auto& d : all_min) {
+        lp path;
         path.push_back(d);
         paths.push_back(path);
     }
     for (int i = 0; i < min_dist; ++i) {
-        list<li> new_paths;
+        list<lp> new_paths;
         for (const auto& p : paths) {
-            for (const auto& node : previous[p.front()]) {
-                li new_path = p;
+            for (const auto& node : previous[p.front().first]) {
+                lp new_path = p;
                 new_path.push_front(node);
                 new_paths.push_back(new_path);
             }
@@ -326,14 +326,14 @@ list<li> Graph::least_flights(const vector<int>& sources, const vector<int>& des
     }
     return paths;
 }
-list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider) {
+list<lp> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest, const set<string>& airlines_to_consider) {
     for (int i = 1; i <= n; i++) {
         nodes[i].distance = INT_MAX;
         nodes[i].visited = false;
     }
 
     queue<int> q;
-    vector<int> prev(n+1);
+    vector<pis> prev(n+1, {0, ""});
 
     for (const int & i : src) {
         nodes[i].distance = 0;
@@ -352,38 +352,39 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
             int w = e.dest;
             if (nodes[w].distance > nodes[v].distance + e.weight) {
                 nodes[w].distance = nodes[v].distance + e.weight;
-                prev[w] = v;
+                prev[w] = {v, *intersection.begin()};
                 q.push(w);
             }
         }
     }
 
-    list<li> paths;
+    list<lp> paths;
     for (const int & i : dest) {
         if (nodes[i].distance == INT_MAX) continue;
-        list<int> path;
-        int v = i;
-        while (v != 0) {
+        lp path;
+        pis v = {i, ""};
+        while (v.first != 0) {
             path.push_front(v);
-            v = prev[v];
+            v = prev[v.first];
         }
         paths.push_back(path);
     }
 
     for (auto& p : paths) {
-        p.push_front(nodes[p.back()].distance);
+        p.push_front({nodes[p.back().first].distance, ""});
     }
 
     return paths;
 }
-list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest) {
+
+list<lp> Graph::least_flights_with_distance(const vector<int>& src, const vector<int>& dest) {
     for (int i = 1; i <= n; i++) {
         nodes[i].distance = INT_MAX;
         nodes[i].visited = false;
     }
 
     queue<int> q;
-    vector<int> prev(n + 1);
+    vector<pis> prev(n + 1, {0, ""});
 
     for (const int &i: src) {
         nodes[i].distance = 0;
@@ -400,27 +401,27 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
             int w = e.dest;
             if (nodes[w].distance > nodes[v].distance + e.weight) {
                 nodes[w].distance = nodes[v].distance + e.weight;
-                prev[w] = v;
+                prev[w] = {v, *e.airlines.begin()};
                 q.push(w);
             }
         }
     }
 
     //Find the shortest path between src and dest
-    list<li> paths;
+    list<lp> paths;
     for (const int &i: dest) {
         if (nodes[i].distance == INT_MAX) continue;
-        list<int> path;
-        int v = i;
-        while (v != 0) {
+        lp path;
+        pis v = {i, ""};
+        while (v.first != 0) {
             path.push_front(v);
-            v = prev[v];
+            v = prev[v.first];
         }
         paths.push_back(path);
     }
 
     for (auto &p: paths) {
-        p.push_front(nodes[p.back()].distance);
+        p.push_front({nodes[p.back().first].distance, ""});
     }
 
     return paths;
