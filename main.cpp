@@ -160,7 +160,7 @@ void read_airlines() {
         getline(ss, name, ',');
         getline(ss, callSign, ',');
         getline(ss, country);
-        country = country.substr(0, country.size() - 1);
+        if (country[country.size() - 1] == '\r') country.pop_back();
         Airline airline(code, name, callSign, country);
         airline_codes.insert({code, i});
         airlines.insert({i, airline});
@@ -185,7 +185,7 @@ void read_flights() {
         getline(ss, origin, ',');
         getline(ss, destination, ',');
         getline(ss, airline);
-        airline = airline.substr(0, airline.size() - 1);
+        if (airline[airline.size() - 1] == '\r') airline.pop_back();
 
         Airport origin_airport = airports.at(airport_codes.at(origin));
         Airport destination_airport = airports.at(airport_codes.at(destination));
