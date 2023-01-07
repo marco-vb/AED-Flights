@@ -93,6 +93,7 @@ void read_airports() {
 
     string line;
     int i = 1;
+    getline(airports_file, line);
     while (getline(airports_file, line)) {
         istringstream ss(line);
         string code, name, city, country;
@@ -151,6 +152,7 @@ void read_airlines() {
 
     string line;
     int i = 1;
+    getline(airlines_file, line);
     while (getline(airlines_file, line)) {
         istringstream ss(line);
         string code, name, callSign, country;
@@ -158,9 +160,11 @@ void read_airlines() {
         getline(ss, name, ',');
         getline(ss, callSign, ',');
         getline(ss, country);
+        country = country.substr(0, country.size() - 1);
         Airline airline(code, name, callSign, country);
         airline_codes.insert({code, i});
         airlines.insert({i, airline});
+        airport_airlines.insert({code, vector<int>()});
         i++;
     }
 }
@@ -181,18 +185,13 @@ void read_flights() {
         getline(ss, origin, ',');
         getline(ss, destination, ',');
         getline(ss, airline);
+        airline = airline.substr(0, airline.size() - 1);
 
         Airport origin_airport = airports.at(airport_codes.at(origin));
         Airport destination_airport = airports.at(airport_codes.at(destination));
         int distance = (int) haversine({origin_airport.getLatitude(), origin_airport.getLongitude()}, {destination_airport.getLatitude(), destination_airport.getLongitude()});
         graph.addEdge(airport_codes[origin], airport_codes[destination], airline, distance);
-
-        if (airport_airlines.find(airline) == airport_airlines.end()) {
-            vector<int> v; v.push_back(airport_codes[origin]);
-            airport_airlines.insert({airline, v});
-        } else {
-            airport_airlines.at(airline).push_back(airport_codes[origin]);
-        }
+        airport_airlines.at(airline).push_back(airport_codes[origin]);
     }
 }
 
@@ -1179,7 +1178,7 @@ void print_airline_stats() {
     }
 
     vector<int> airports_nodes = airport_airlines[airline];
-    Graph g = Graph((int) airports.size() + 1);
+    Graph g = Graph(graph.n + 1);
 
     for (int &node : airports_nodes) {
         for (auto const &edge : graph.nodes[node].adj) {
@@ -1197,13 +1196,15 @@ void print_airline_stats() {
     int n = rand() % 3 + 3;
     vector<pii> top_airports = g.getTopAirports(n);
 
-    cout << "A rede de " << airline << " tem um total de " << num_airports << " aeroportos," << endl;
+    cout << "A rede de " << airline << " voa a partir de " << num_airports << " aeroportos," << endl;
     cout << "com um total de " << num_flights << " voos." << endl;
 
     cout << "O diâmetro da rede é " << diameter << "." << endl;
     cout << "Os " << n << " aeroportos com mais voos são:" << endl;
     for (const auto & top_airport : top_airports) {
-        cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+        if (top_airport.second > 0) {
+            cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+        }
     }
     wait();
 }
@@ -1219,7 +1220,7 @@ void print_country_stats() {
         return;
     }
     vector <int> airports_nodes = airport_countries[country];
-    Graph country_graph = Graph((int) airports.size() + 1);
+    Graph country_graph = Graph(graph.n + 1);
 
     for (int &node : airports_nodes) {
         for (auto const &edge : graph.nodes[node].adj) {
@@ -1250,7 +1251,9 @@ void print_country_stats() {
     cout << "O diâmetro da rede é " << diameter << "." << endl;
     cout << "Os " << n << " aeroportos com mais voos são:" << endl;
     for (const auto & top_airport : top_airports) {
-        cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+        if (top_airport.second > 0) {
+            cout << "  - " << airports.at(top_airport.first).getName() << ", " << airports.at(top_airport.first).getCountry() << " (" << top_airport.second << " voos)" << endl;
+        }
     }
     wait();
 }
