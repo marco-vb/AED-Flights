@@ -60,6 +60,14 @@ unordered_map<string, unordered_set<string>> cities_country;
 Graph graph;
 Coord2dTree tree;
 
+/**
+ * @brief Main function
+ *
+ * Comecamos por ler o aeroports.csv, criamos o grafo a partir do size do data set, lemos airlines.csv e flights.csv, no qual adionamos as edges do grafo criado anteriormente
+ * Por fim imprimimos o menu principal.
+ *
+ * @return 0
+ */
 int main() {
     read_airports();
     graph = Graph((int) airport_codes.size());
@@ -69,6 +77,12 @@ int main() {
     return 0;
 }
 
+/**
+ * @brief Lê os aeroportos do ficheiro airports.csv e guarda-os nas estruturas de dados apropriadas.
+ *
+ * Nesta função lemos of ficheiro o aeroports.csv e adicionamos a informacao a varios unordered maps e à KdTree (Coord2dTree tree).
+ *
+ */
 void read_airports() {
     ifstream airports_file("../DataFiles/airports.csv");
 
@@ -120,6 +134,13 @@ void read_airports() {
         i++;
     }
 }
+
+/**
+ * @brief Lê as companhias aéreas do ficheiro airlines.csv e guarda-as nas estruturas de dados apropriadas.
+ *
+ * Nesta função lemos of ficheiro o airlines.csv e adicionamos a informacao a varios unordered maps.
+ *
+ */
 void read_airlines() {
     ifstream airlines_file("../DataFiles/airlines.csv");
 
@@ -138,6 +159,13 @@ void read_airlines() {
         i++;
     }
 }
+
+/**
+ * @brief Lê os voos do ficheiro flights.csv e guarda-os nas estruturas de dados apropriadas.
+ *
+ * Nesta função lemos of ficheiro o flights.csv e adicionamos ao grafo pincipal, cada voos representa um Edge do grafo principal.
+ *
+ */
 void read_flights() {
     ifstream flights_file("../DataFiles/flights.csv");
     string line;
@@ -163,6 +191,13 @@ void read_flights() {
     }
 }
 
+
+/**
+ * @brief Imprime o menu principal
+ *
+ * Imprime o menu principal e chama a função correspondente à opção escolhida.
+ *
+ */
 void print_menu() {
     int choice;
     do {
@@ -174,7 +209,6 @@ void print_menu() {
         cout << "| 3. Estatísticas da rede                |" << endl;
         cout << "| 4. Estudos sobre a rede                |" << endl;
         cout << "| 5. Informações sobre um aeroporto      |" << endl;
-        cout << "| 6. Pontos de Ariculacao                |" << endl;
         cout << "| 0. Sair                                |" << endl;
         cout << "------------------------------------------" << endl;
         cout << "Escolha: ";
@@ -191,8 +225,6 @@ void print_menu() {
                     print_menu4(); break;
                 case 5:
                     print_menu5(); break;
-                case 6:
-                    print_articulation_points(); break;
                 default:
                     break;
             }
@@ -201,6 +233,16 @@ void print_menu() {
 
     clear();
 }
+
+/**
+ * @brief Imprime o menu das rotas sem distâncias
+ *
+ * Imprime o menu das rotas sem distâncias e chama a função correspondente à opção escolhida.
+ * Aqui podemos escolher a origem e o destino do voo, e este irá imprimir a rota com o menor numero de voos entre esses dois pontos.
+ * A origem e o destino podem ser um aeroporto, uma cidade, o aeroporto mais proximo de umas dadas coordenadas, todos os aeroportos dentro de um dado raio
+ * ou os N aeroportos mais proximos das coordenadas.
+ *
+ */
 void print_menu1() {
     bool opcao_invalida = false;
     int choice;
@@ -325,6 +367,16 @@ void print_menu1() {
         }
     } while (choice != 0 && !opcao_invalida);
 }
+
+/**
+ * @brief Imprime o menu das rotas com distâncias
+ *
+ * Imprime o menu das rotas com distâncias e chama a função correspondente à opção escolhida.
+ * Aqui podemos escolher a origem e o destino do voo, e este irá imprimir a rota com o menor dsitancia entre esses dois pontos.
+ * A origem e o destino podem ser um aeroporto, uma cidade, o aeroporto mais proximo de umas dadas coordenadas, todos os aeroportos dentro de um dado raio
+ * ou os N aeroportos mais proximos das coordenadas.
+ *
+ */
 void print_menu2() {
     bool opcao_invalida = false;
     int choice;
@@ -451,6 +503,17 @@ void print_menu2() {
         }
     } while (choice != 0 && !opcao_invalida);
 }
+
+/**
+ * @brief Imprime o menu das estatisticas
+ *
+ * Imprime o menu das estatisticas e chama a função correspondente à opção escolhida.
+ * Temos as seguintes opções:
+ * - Estatisticas de toda a rede
+ * - Estatisticas de um país à escolha
+ * - Estatisticas de uma companhia aerea à escolha
+ *
+ */
 void print_menu3() {
     int choice;
     do {
@@ -484,7 +547,46 @@ void print_menu3() {
         }
     } while(choice != 0);
 }
-void print_menu4() {}
+
+/**
+ * @brief Imprime o menu dos estudos sobre a rede
+ *
+ * Imprime o menu das rotas mais baratas e chama a função correspondente à opção escolhida.
+ * Só temos uma opção:
+ * - Pontos de Articulação (Global ou apenas de uma ou varias companhias aereas)
+ *
+ */
+void print_menu4() {
+    int choice;
+    do {
+        clear();
+        cout << "------------------------------------------" << endl;
+        cout << "|         Simulador de Voos 3000         |" << endl;
+        cout << "|          Estudos sobre a rede          |" << endl;
+        cout << "| 1. Pontos de Ariculacao                |" << endl;
+        cout << "| 0. Sair                                |" << endl;
+        cout << "------------------------------------------" << endl;
+        cout << "Escolha: ";
+        cin >> choice;
+        if (choice != 0) {
+            switch (choice) {
+                case 1:
+                    print_articulation_points(); break;
+                default:
+                    break;
+            }
+        }
+    } while (choice != 0);
+
+    clear();
+}
+
+/**
+ * @brief Imprime informacoes sobre um areoporto
+ *
+ * Pede ao utilizador o nome do aeroporto e imprime as informacoes sobre esse aeroporto.
+ *
+ */
 void print_menu5() {
     string code;
     cout << "Escolha o código do aeroporto: ";
@@ -502,6 +604,11 @@ void print_menu5() {
     wait();
 }
 
+/**
+ * @brief Função que transforma um set numa string separada por virgulas
+ *
+ * @return String resultante da concatenação dos elementos do set
+ */
 string set_to_string(const set<string>& set) {
     std::stringstream result;
     bool first = true;
@@ -520,6 +627,16 @@ string set_to_string(const set<string>& set) {
     }
     return str;
 }
+
+/**
+ * @brief Função que transforma uma string com as coordenadas num par de doubles
+ *
+ * Função que transforma uma string com as coordenadas num par de doubles, aceitando os seguintes formatos:
+ * - "12.34,-56.78"
+ * - "12.34N 56.78W"
+ *
+ * @return Par de doubles com as coordenadas
+ */
 pair<double, double> string_to_coords(string s) {
     double lat; double lon;
     int i = 0;
@@ -543,6 +660,15 @@ pair<double, double> string_to_coords(string s) {
     if(lat < -90 || lat > 90 || lon < -180 || lon > 180) return make_pair(100, 200);
     return make_pair(lat, lon);
 }
+
+/**
+ * @brief Função que retorna o inteiro correspondente ao aeroporto pedido
+ *
+ * Função pede o codigo do aeroporto e retorna o inteiro correspondente ao aeroporto pedido.
+ * Através deste inteiro podemos aceder ao aeroporto pretendido no grafo.
+ *
+ * @return Inteiro correspondente ao aeroporto pedido
+ */
 int get_airport(bool is_origin) {
     string src;
     string s;
@@ -557,6 +683,15 @@ int get_airport(bool is_origin) {
     }
     return airport_codes[src];
 }
+
+/**
+ * @brief Função que retorna os inteiros correspondentes aos aeroportos de uma cidade
+ *
+ * Função pede o codigo do aeroporto e retorna o inteiro correspondente ao aeroporto pedido.
+ * Através deste inteiro podemos aceder ao aeroporto pretendido no grafo.
+ *
+ * @return Vetor de inteiro correspondentes aos aeroportos pedidos
+ */
 vector<int> get_city(bool is_origin) {
     string src;
     string s;
@@ -589,6 +724,15 @@ vector<int> get_city(bool is_origin) {
 
     return airport_list;
 }
+
+/**
+ * @brief Função que retorna o inteiro correspondente ao aeroporto mais próximo das coordenadas dadas
+ *
+ * Função pede o codigo do aeroporto e retorna o inteiro correspondente ao aeroporto mais próximo das coordenadas dadas.
+ * Através deste inteiro podemos aceder ao aeroporto pretendido no grafo.
+ *
+ * @return Inteiro correspondente ao aeroporto mais próximo das coordenadas dadas
+ */
 int get_coordinates(bool is_origin) {
     string src;
     string s;
@@ -606,6 +750,15 @@ int get_coordinates(bool is_origin) {
     }
     return airport_coords[src_coords];
 }
+
+/**
+ * @brief Função que retorna o inteiro correspondentes aos aeroportos dentro de um raio das coordenadas dadas
+ *
+ * Função pede o codigo do aeroporto e retorna o inteiro correspondente ao aeroporto mais próximo das coordenadas dadas.
+ * Através destes inteiros podemos aceder aos aeroportos pretendidos no grafo.
+ *
+ * @return Vetor de inteiros correspondentes aos aeroportos dentro de um raio das coordenadas dadas
+ */
 vector<int> get_coordinates_km(bool is_origin) {
     string src;
     string s;
@@ -636,6 +789,14 @@ vector<int> get_coordinates_km(bool is_origin) {
     return airports_in_radius_src;
 }
 
+/**
+ * @brief Função que retorna o inteiros correspondentes aos N aeroportos mais próximos das coordenadas dadas
+ *
+ * Função pede o codigo do aeroporto e retorna o inteiro correspondentes aos N aeroportos mais próximos das coordenadas dadas.
+ * Através destes inteiros podemos aceder aos aeroportos pretendidos no grafo.
+ *
+ * @return Vetor de inteiros correspondentes aos N aeroportos mais próximos das coordenadas dadas
+ */
 vector<int> get_n_coordinates(bool is_origin) {
     string src;
     string s;
@@ -682,6 +843,16 @@ int getCitiesNumber(set<int> &set1) {
     return (int) cities.size();
 }
 
+/**
+ * @brief Função que lista a rota com menos voos
+ *
+ * Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos de destino, a função
+ * lista as rotas com menos voos entre a origem e o destino.
+ * Esta função utiliza o método least_flights() da classe Graph.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ */
 void list_shortest_paths(const vector<int> &src, const vector<int> &dest) {
     list<li> path = graph.least_flights(src, dest);
     set<string> o; set<string> d; string src_string; string dst_string;
@@ -715,6 +886,18 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest) {
         cout << endl;
     }
 }
+
+/**
+ * @brief Função que lista a rota com menos voos, mas apenas voando em certas companhias.
+ *
+ * Dados um vetor de inteiros com os aeroportos de origem, outro com os aeroportos de destino e um set com as comapanhias aereas a utilizar,
+ * a função lista as rotas com menos voos entre a origem e o destino, mas apenas voando em certas companhias.
+ * Esta função utiliza o método least_flights() da classe Graph.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ * @param airlines_to_consider Set com as companhias aereas a utilizar
+ */
 void list_shortest_paths(const vector<int> &src, const vector<int> &dest, const set<string> &airlines_to_consider) {
     list<li> path = graph.least_flights(src, dest, airlines_to_consider);
 
@@ -737,6 +920,17 @@ void list_shortest_paths(const vector<int> &src, const vector<int> &dest, const 
         cout << endl;
     }
 }
+
+/**
+ * @brief Função que lista a rota com menor distancia
+ *
+ * Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos de destino, a função
+ * lista a rota com menor distnacia entre a origem e cada um dos aeroportos de destino.
+ * Esta função utiliza o método least_flights_with_distance() da classe Graph.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ */
 void list_shortest_paths_with_distance(const vector<int> &src, const vector<int> &dest) {
     list<li> path = graph.least_flights_with_distance(src, dest);
     set<string> o; set<string> d; string src_string; string dst_string;
@@ -772,6 +966,17 @@ void list_shortest_paths_with_distance(const vector<int> &src, const vector<int>
         cout << endl;
     }
 }
+
+/**
+ * @brief Função que lista a rota com menor distancia, mas apenas voando em certas companhias
+ *
+ * Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos de destino, a função
+ * lista a rota com menor distnacia entre a origem e cada um dos aeroportos de destino, , mas apenas voando em certas companhias.
+ * Esta função utiliza o método least_flights_with_distance() da classe Graph.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ */
 void list_shortest_paths_with_distance(const vector<int> &src, const vector<int> &dest, const set<string>& airlines_to_consider) {
     list<li> path = graph.least_flights_with_distance(src, dest, airlines_to_consider);
 
@@ -797,6 +1002,16 @@ void list_shortest_paths_with_distance(const vector<int> &src, const vector<int>
     }
 }
 
+/**
+ * @brief Função que imprime a origem e o destino e pede as companhias aéreas a considerar das rotas com distancia
+ *
+ * Esta função serve como passo intermedio entre o menu e a função list_shortest_paths_with_distance().
+ * Tem como objetivo verificar se a origem e/ou destino estão vazios, imprimir a origem e o destino,
+ * pedir ao utilizador as companhias aéreas a considerar e chamar a função list_shortest_paths_with_distance() de forma adequada.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ */
 void print_shortest_paths_distance(const vector<int> &src, const vector<int> &dest) {
     if(src.empty()) {
         cout << "Nao existem aeroportos de origem!" << endl;
@@ -844,6 +1059,17 @@ void print_shortest_paths_distance(const vector<int> &src, const vector<int> &de
         list_shortest_paths_with_distance(src, dest);
     }
 }
+
+/**
+ * @brief Função que imprime a origem e o destino e pede as companhias aéreas a considerar das rotas sem distancia
+ *
+ * Esta função serve como passo intermedio entre o menu e a função list_shortest_paths_with_distance().
+ * Tem como objetivo verificar se a origem e/ou destino estão vazios, imprimir a origem e o destino,
+ * pedir ao utilizador as companhias aéreas a considerar e chamar a função list_shortest_paths() de forma adequada.
+ *
+ * @param src Vetor de inteiros com os aeroportos de origem
+ * @param dest Vetor de inteiros com os aeroportos de destino
+ */
 void print_shortest_paths(const vector<int>& src, const vector<int>& dest) {
     if(src.empty()) {
         cout << "Nao existem aeroportos de origem!" << endl;
@@ -891,6 +1117,15 @@ void print_shortest_paths(const vector<int>& src, const vector<int>& dest) {
         list_shortest_paths(src, dest);
     }
 }
+
+/**
+ * @brief Função que imprime os pontos de articulação
+ *
+ * Esta função pergunta ao utilizador pretende pesquisar apenas para certas companhias aéreas, caso sim
+ * pede ao utilizador as companhias aéreas a considerar e imprime os pontos de articulação.
+ * Esta função utiliza o método getArticulationPoints() da classe Graph.
+ *
+ */
 void print_articulation_points() {
     cout << endl << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
     string op;
