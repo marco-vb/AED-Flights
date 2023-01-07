@@ -1109,7 +1109,8 @@ void print_shortest_paths(const vector<int>& src, const vector<int>& dest) {
         set<string> airlines_to_consider;
         cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
         string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
+        transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
+        while (cin >> airline && airline != "FIM") {
             if (airline_codes.find(airline) != airline_codes.end()) {
                 airlines_to_consider.insert(airline);
             } else {
@@ -1138,7 +1139,8 @@ void print_articulation_points() {
         set<string> airlines_to_consider;
         cout << "Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): ";
         string airline;
-        while (cin >> airline && airline != "fim" && airline != "FIM") {
+        transform(airline.begin(), airline.end(), airline.begin(), ::toupper);
+        while (cin >> airline && airline != "FIM") {
             if (airline_codes.find(airline) != airline_codes.end()) {
                 airlines_to_consider.insert(airline);
             } else {
@@ -1165,6 +1167,15 @@ void print_articulation_points() {
     }
     wait();
 }
+
+/**
+ * @brief Função que imprime as estatísticas de uma companhia aérea
+ *
+ * Esta função imprime as estatísticas da rede de uma companhia aérea.
+ * Para isto, formamos um novo grafo que contém todos os aeroportos do grafo original e apenas as rotas da companhia aérea pretendida.
+ *
+ * Complexidade: O(|V| * (|V| + |E|)), que é a complexidade do método mais custoso, que calcula o diametro do grafo.
+ */
 void print_airline_stats() {
     string airline;
     cout << "Escolha a companhia aérea: ";
@@ -1208,6 +1219,15 @@ void print_airline_stats() {
     }
     wait();
 }
+
+/**
+ * @brief Função que imprime as estatísticas de um país
+ *
+ * Esta função imprime as estatísticas da rede de um país.
+ * Para isto, formamos um novo grafo que contém todos os aeroportos do grafo original e apenas as rotas que ligam aeroportos desse país.
+ *
+ * Complexidade: O(|V| * (|V| + |E|)), que é a complexidade do método mais custoso, que calcula o diametro do grafo.
+ */
 void print_country_stats() {
     string country;
     cout << "Escolha o país: ";
@@ -1257,6 +1277,15 @@ void print_country_stats() {
     }
     wait();
 }
+
+/**
+ * @brief Função que imprime as estatísticas de um aeroporto.
+ *
+ * Esta função imprime as estatísticas da rede de um aeroporto.
+ * Para isto, lemos os dados guardados no objeto Airport e chamamos alguns métodos da classe Graph.
+ *
+ * Complexidade: O((|V| + |E|)), que é a complexidade do método mais custoso, uma BFS.
+ */
 void print_airport_stats(int id, const Airport &airport) {
     cout << "Código: " << airport.getCode() << endl;
     cout << "Nome: " << airport.getName() << endl;
@@ -1275,6 +1304,15 @@ void print_airport_stats(int id, const Airport &airport) {
     cout << "a " << getCitiesNumber(destinations) << " cidades diferentes ";
     cout << "e a " << getCountriesNumber(destinations) << " países diferentes." << endl;
 }
+
+/**
+ * @brief Função que imprime as estatísticas da rede global
+ *
+ * Esta função imprime as estatísticas da rede global.
+ * Para isto, chamamos alguns métodos da classe Graph.
+ *
+ * Complexidade: O(|V| * (|V| + |E|)), que é a complexidade do método mais custoso, que calcula o diametro do grafo.
+ */
 void print_global_stats() {
     int num_airports = (int) graph.getNodes().size();
     int num_flights = graph.getNumEdges();
