@@ -1,3 +1,8 @@
+/**
+ * @file main.cpp
+ * @brief Main file for the project
+ */
+
 #include <bits/stdc++.h>
 #include "HelperClasses/Airport.h"
 #include "HelperClasses/Airline.h"

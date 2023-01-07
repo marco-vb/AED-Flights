@@ -1,0 +1,171 @@
+\hypertarget{Coord2dTree_8cpp_source}{}\doxysection{Coord2d\+Tree.\+cpp}
+\label{Coord2dTree_8cpp_source}\index{/mnt/e/trabalhos(2)/FEUP/2o\_ano\_1o\_semestre/AED/projeto2/AED-\/Flights/DataStructures/Coord2dTree.cpp@{/mnt/e/trabalhos(2)/FEUP/2o\_ano\_1o\_semestre/AED/projeto2/AED-\/Flights/DataStructures/Coord2dTree.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}Coord2dTree.h"{}}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00003}\mbox{\hyperlink{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}{00003}} \mbox{\hyperlink{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}{Coord2dTree::Coord2dTree}}() \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00004}00004     root = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00005}00005     size = 0;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00006}00006 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00008}00008 \mbox{\hyperlink{structNode}{Node}}* Coord2dTree::insert(pair<double, double> x, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00009}00009     \textcolor{keywordflow}{if}(t == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00010}00010         t = \textcolor{keyword}{new} \mbox{\hyperlink{structNode}{Node}}\{x, \textcolor{keyword}{nullptr}, \textcolor{keyword}{nullptr}\};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00011}00011         size++;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00012}00012     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00013}00013     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (x == t -\/> data)}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00014}00014         \textcolor{keywordflow}{throw} \textcolor{stringliteral}{"{}Error! Duplicate point!"{}};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00016}00016     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(cd == 0)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00017}00017         \textcolor{keywordflow}{if}(x.first < t -\/> data.first)}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00018}00018             t -\/> left = insert(x, t-\/>left, 1);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00019}00019         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00020}00020             t -\/> right = insert(x, t-\/>right, 1);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00021}00021     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00023}00023     \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00024}00024         \textcolor{keywordflow}{if}(x.second < t -\/> data.second)}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00025}00025             t -\/> left = insert(x, t-\/>left, 0);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00026}00026         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00027}00027             t -\/> right = insert(x, t-\/>right, 0);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00029}00029     \textcolor{keywordflow}{return} t;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00031}\mbox{\hyperlink{classCoord2dTree_a338717f71dfb91275f7c029b98dd23ab}{00031}} \textcolor{keywordtype}{bool} Coord2dTree::insert(\textcolor{keywordtype}{double} lat, \textcolor{keywordtype}{double} lon) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00032}00032     pair<double, double> p = make\_pair(lat, lon);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00033}00033     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00034}00034         root = insert(p, root, 0);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00035}00035         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00036}00036     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}*)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00037}00037         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00039}00039 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00040}00040 \textcolor{keywordtype}{void} Coord2dTree::nearest(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, pair<double, double> \&best, \textcolor{keywordtype}{double} \&best\_dist)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00041}00041     \textcolor{keywordflow}{if}(t == \textcolor{keyword}{nullptr} || distance(Q, BB) > best\_dist) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00043}00043     \textcolor{keywordtype}{double} dist = haversine(Q, t -\/> data);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00044}00044     \textcolor{keywordflow}{if}(dist < best\_dist) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00045}00045         best = t -\/> data;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00046}00046         best\_dist = dist;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00047}00047     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00049}00049     \textcolor{keywordtype}{double} curr; \textcolor{keywordtype}{double} curr\_data;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00050}00050     \textcolor{keywordflow}{if}(cd == 0)\{ curr = Q.first; curr\_data = t -\/> data.first; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00051}00051     \textcolor{keywordflow}{else} \{ curr = Q.second; curr\_data = t -\/> data.second; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00052}00052     \textcolor{keywordtype}{int} next\_cd = (cd + 1) \% 2;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00054}00054     \textcolor{keywordflow}{if}(curr < curr\_data)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00055}00055         nearest(Q, t -\/> left, next\_cd, BB.\mbox{\hyperlink{classRect_acd764a4cbc394f71c837e6e92f0734c6}{trimLeft}}(cd, curr\_data), best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00056}00056         nearest(Q, t -\/> right, next\_cd, BB.\mbox{\hyperlink{classRect_a73f67cf5ad45799766cdff697fe67125}{trimRight}}(cd, curr\_data), best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00057}00057     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00058}00058     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00059}00059         nearest(Q, t -\/> right, next\_cd, BB.\mbox{\hyperlink{classRect_a73f67cf5ad45799766cdff697fe67125}{trimRight}}(cd, curr\_data), best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00060}00060         nearest(Q, t -\/> left, next\_cd, BB.\mbox{\hyperlink{classRect_acd764a4cbc394f71c837e6e92f0734c6}{trimLeft}}(cd,curr\_data), best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00062}00062 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00063}\mbox{\hyperlink{classCoord2dTree_a78878f4d3271dcb792077ad0efbdf336}{00063}} pair<double, double> Coord2dTree::nearest(pair<double, double> p) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00064}00064     pair<double, double> best = make\_pair(-\/1, -\/1);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00065}00065     \textcolor{keywordtype}{double} best\_dist = 1000000000;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00066}00066     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00067}00067     nearest(p, root, 0, BB, best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00068}00068     \textcolor{keywordflow}{if}(haversine(p, best) > haversine(p.first, p.second, p.first, 180)) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00069}00069         nearest(make\_pair(p.first, (p.second < 0 ? 360 + p.second : -\/360 + p.second)), root, 0, BB, best, best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00070}00070     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00071}00071     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00072}00072 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00073}00073 \textcolor{keywordtype}{void} Coord2dTree::in\_radius(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, vector<pair<double, double>> \&best, \textcolor{keywordtype}{double} radius)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00074}00074     \textcolor{keywordflow}{if}((t == \textcolor{keyword}{nullptr}) || (distance(Q, BB) > 1.1*radius \&\& radius <= 1500))}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00075}00075         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00077}00077     \textcolor{keywordtype}{double} dist = haversine(Q, t -\/> data);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00078}00078     \textcolor{keywordflow}{if}(dist < radius) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00079}00079         best.push\_back(t -\/> data);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00080}00080     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00081}00081 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00082}00082     \textcolor{keywordtype}{double} curr; \textcolor{keywordtype}{double} curr\_data;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00083}00083     \textcolor{keywordflow}{if}(cd == 0)\{ curr\_data = t -\/> data.first; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00084}00084     \textcolor{keywordflow}{else} \{ curr\_data = t -\/> data.second; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00085}00085     \textcolor{keywordtype}{int} next\_cd = (cd + 1) \% 2;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00086}00086 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00087}00087     in\_radius(Q, t -\/> left, next\_cd, BB.\mbox{\hyperlink{classRect_acd764a4cbc394f71c837e6e92f0734c6}{trimLeft}}(cd, curr\_data), best, radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00088}00088     in\_radius(Q, t -\/> right, next\_cd, BB.\mbox{\hyperlink{classRect_a73f67cf5ad45799766cdff697fe67125}{trimRight}}(cd, curr\_data), best, radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00089}00089 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00090}\mbox{\hyperlink{classCoord2dTree_a960d74984e997d8e3335da7c05d46df5}{00090}} vector<pair<double, double>> Coord2dTree::in\_radius(pair<double, double> p, \textcolor{keywordtype}{double} radius) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00091}00091     vector<pair<double, double>> best;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00092}00092     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00093}00093     in\_radius(p, root, 0, BB, best, radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00094}00094     \textcolor{keywordflow}{if}(radius > haversine(p.first, p.second, p.first, 180)) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00095}00095         in\_radius(make\_pair(p.first, (p.second < 0 ? 360 + p.second : -\/360 + p.second)), root, 0, BB, best, radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00096}00096     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00097}00097     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00098}00098 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00100}00100 \textcolor{keywordtype}{void} Coord2dTree::nearestN(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, priority\_queue<pair<\textcolor{keywordtype}{double}, pair<double, double>>>\& bestN, \textcolor{keywordtype}{int} n)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00101}00101     \textcolor{keywordflow}{if}(t == \textcolor{keyword}{nullptr} || (bestN.size() >= n \&\& distance(Q, BB) > 1.1*bestN.top().first \&\& bestN.top().first <= 4000)) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00103}00103     \textcolor{keywordtype}{double} dist = haversine(Q, t -\/> data);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00104}00104     \textcolor{keywordflow}{if}(bestN.size() < n)}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00105}00105         bestN.push(make\_pair(dist, t -\/> data));}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00106}00106     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(dist < bestN.top().first)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00107}00107         bestN.push(make\_pair(dist, t -\/> data));}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00108}00108         bestN.pop();}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00109}00109     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00110}00110 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00111}00111     \textcolor{keywordtype}{double} curr; \textcolor{keywordtype}{double} curr\_data;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00112}00112     \textcolor{keywordflow}{if}(cd == 0)\{ curr = Q.first; curr\_data = t -\/> data.first; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00113}00113     \textcolor{keywordflow}{else} \{ curr = Q.second; curr\_data = t -\/> data.second; \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00114}00114     \textcolor{keywordtype}{int} next\_cd = (cd + 1) \% 2;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00115}00115 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00116}00116     \textcolor{keywordflow}{if}(curr < curr\_data)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00117}00117         nearestN(Q, t -\/> left, next\_cd, BB.\mbox{\hyperlink{classRect_acd764a4cbc394f71c837e6e92f0734c6}{trimLeft}}(cd, curr\_data), bestN, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00118}00118         nearestN(Q, t -\/> right, next\_cd, BB.\mbox{\hyperlink{classRect_a73f67cf5ad45799766cdff697fe67125}{trimRight}}(cd, curr\_data), bestN, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00119}00119     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00120}00120     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00121}00121         nearestN(Q, t -\/> right, next\_cd, BB.\mbox{\hyperlink{classRect_a73f67cf5ad45799766cdff697fe67125}{trimRight}}(cd, curr\_data), bestN, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00122}00122         nearestN(Q, t -\/> left, next\_cd, BB.\mbox{\hyperlink{classRect_acd764a4cbc394f71c837e6e92f0734c6}{trimLeft}}(cd,curr\_data), bestN, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00123}00123     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00124}00124 \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00126}\mbox{\hyperlink{classCoord2dTree_a19bd74cd4ceb5151cad0c13316607112}{00126}} vector<pair<double, double>> Coord2dTree::nearestN(pair<double, double> Q, \textcolor{keywordtype}{int} n) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00127}00127     \textcolor{keywordflow}{if}(n == 0) \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00128}00128     \textcolor{keywordflow}{if}(n > size)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00129}00129         cout << \textcolor{stringliteral}{"{}Demasiados elementos pedidos"{}} << endl;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00130}00130         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00131}00131     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00132}00132     \textcolor{keywordtype}{double} lat = Q.first;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00133}00133     \textcolor{keywordtype}{double} lon = Q.second;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00134}00134     priority\_queue<pair<double, pair<double, double>>> bestN;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00135}00135     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00136}00136 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00137}00137     nearestN(Q, root, 0, BB, bestN, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00138}00138 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00139}00139     vector<pair<double, double>> best;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00140}00140 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00141}00141     \textcolor{keywordflow}{if}(!bestN.empty() \&\& bestN.top().first > haversine(Q.first, Q.second, Q.first, 180)) \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00142}00142         priority\_queue<pair<double, pair<double, double>>> bestN2;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00143}00143         nearestN(make\_pair(lat, (lon < 0 ? 360 + lon : -\/360 + lon)), root, 0, BB, bestN2, n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00144}00144         set<pair<double, pair<double, double>>> s;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00145}00145         \textcolor{keywordflow}{while}(!bestN.empty())\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00146}00146             s.insert(\{((double) round(100*bestN.top().first)) / 100, bestN.top().second\});}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00147}00147             bestN.pop();}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00148}00148         \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00149}00149         \textcolor{keywordflow}{while}(!bestN2.empty())\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00150}00150             s.insert(\{((double) round(100*bestN2.top().first)) / 100, bestN2.top().second\});}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00151}00151             bestN2.pop();}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00152}00152         \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00153}00153         \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00154}00154         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = s.begin(); it != s.end(); it++)\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00155}00155             \textcolor{keywordflow}{if}(i >= n) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00156}00156             best.push\_back(it -\/> second);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00157}00157             i++;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00158}00158         \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00160}00160     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{while}(!bestN.empty())\{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00161}00161         best.push\_back(bestN.top().second);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00162}00162         bestN.pop();}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00163}00163     \}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00164}00164     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8cpp_source_l00165}00165 \}}
+
+\end{DoxyCode}

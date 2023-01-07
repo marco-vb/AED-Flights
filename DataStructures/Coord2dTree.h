@@ -141,6 +141,7 @@ private:
      * Complexidade Temporal:
      *  - Em média: O((log n + N) * log N)
      *  - No pior caso: O(n * log N)
+     *
      *  Onde N é o numero de pontos a procurar e n é o numero total de pontos na árvore
      *
      * @param x Par de coordenadas do ponto a procurar
@@ -228,6 +229,7 @@ public:
      * Complexidade Temporal:
      *  - Em média: O((log n + N) * log N)
      *  - No pior caso: O(n * log N)
+     *
      *  Onde N é o numero de pontos a procurar e n é o numero total de pontos na árvore
      *
      * @param p Par de coordenadas do ponto a procurar

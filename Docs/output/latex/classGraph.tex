@@ -1,0 +1,816 @@
+\hypertarget{classGraph}{}\doxysection{Graph Class Reference}
+\label{classGraph}\index{Graph@{Graph}}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structGraph_1_1Edge}{Edge}}
+\item 
+struct \mbox{\hyperlink{structGraph_1_1Node}{Node}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classGraph_a284b99bdb07994225dee3c2cdb59c80a}{Graph}} (int nodes)
+\item 
+void \mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{add\+Edge}} (int src, int dest, string airline, int weight=1)
+\item 
+int \mbox{\hyperlink{classGraph_a8b19b670048cbe95ab868ec7b1d3127d}{get\+Out\+Degree}} (int i)
+\item 
+int \mbox{\hyperlink{classGraph_a42356d6e2e2824d73ee457e8c38e9997}{get\+Airlines\+Number}} (int i)
+\item 
+int \mbox{\hyperlink{classGraph_aa96dae4ef07978b18640b4277f4b106b}{get\+Destinations\+Number}} (int i)
+\item 
+int \mbox{\hyperlink{classGraph_a73cc61bf3df3c833b831c2073c946b56}{get\+Destinations\+Countries}} (int i, unordered\+\_\+map$<$ int, \mbox{\hyperlink{classAirport}{Airport}} $>$ \&airports)
+\item 
+int \mbox{\hyperlink{classGraph_a383b200b23ce590c216adc97f0be6742}{get\+Num\+Edges}} ()
+\item 
+int \mbox{\hyperlink{classGraph_a742a13abf5fcadc712dba088e963fcc3}{get\+Companies}} ()
+\item 
+int \mbox{\hyperlink{classGraph_a88224c6e2978264d31b58d33167c5cd7}{get\+Diameter}} ()
+\item 
+set$<$ int $>$ \mbox{\hyperlink{classGraph_ae62996682bfad8d45c5457325b0896f8}{get\+Destinations}} (int src, int r)
+\item 
+vector$<$ \mbox{\hyperlink{structGraph_1_1Node}{Node}} $>$ \mbox{\hyperlink{classGraph_adc4daf6c35b3e73211dc5503479f8dca}{get\+Nodes}} () const
+\item 
+vector$<$ pii $>$ \mbox{\hyperlink{classGraph_a436a278b4fad166e19f0ed2ee266ad85}{get\+Top\+Airports}} (int i)
+\item 
+set$<$ int $>$ \mbox{\hyperlink{classGraph_a1989c9e26e73c1268afac4123597e20c}{get\+Articulation\+Points}} ()
+\item 
+set$<$ int $>$ \mbox{\hyperlink{classGraph_a552647319308325bf4bbbf5b71d49d02}{get\+Articulation\+Points}} (set$<$ string $>$ \&airlines\+\_\+to\+\_\+consider)
+\item 
+list$<$ li $>$ \mbox{\hyperlink{classGraph_a8c9434eda6bf9199959806f494bacf9e}{least\+\_\+flights}} (vector$<$ int $>$ sources, vector$<$ int $>$ destination)
+\item 
+list$<$ li $>$ \mbox{\hyperlink{classGraph_a3f79f046fad861aec74460717ddeb96b}{least\+\_\+flights}} (const vector$<$ int $>$ \&sources, const vector$<$ int $>$ \&dest, const set$<$ string $>$ \&airlines\+\_\+to\+\_\+consider)
+\item 
+list$<$ li $>$ \mbox{\hyperlink{classGraph_aad8523a0a44d8283782a5c8236d84c1f}{least\+\_\+flights\+\_\+with\+\_\+distance}} (const vector$<$ int $>$ \&src, const vector$<$ int $>$ \&dest, const set$<$ string $>$ \&airlines\+\_\+to\+\_\+consider)
+\item 
+list$<$ li $>$ \mbox{\hyperlink{classGraph_a13291e578c550d7a52742a9c17f6aee1}{least\+\_\+flights\+\_\+with\+\_\+distance}} (const vector$<$ int $>$ \&src, const vector$<$ int $>$ \&dest)
+\item 
+void \mbox{\hyperlink{classGraph_a1cecaf0263febab8146b7e8138321b05}{articulation\+Points\+DFS}} (int v, int index, vector$<$ int $>$ \&num, vector$<$ int $>$ \&low, unordered\+\_\+set$<$ int $>$ \&s, set$<$ int $>$ \&ap, bool first=false)
+\item 
+set$<$ int $>$ \mbox{\hyperlink{classGraph_a22e738fa0870c6ef1e68a88854eaaee0}{articulation\+Points\+DFS}} (int v, int index, vector$<$ int $>$ \&num, vector$<$ int $>$ \&low, unordered\+\_\+set$<$ int $>$ \&s, set$<$ int $>$ \&ap, set$<$ string $>$ \&airlines\+\_\+to\+\_\+consider, bool first=false)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{n}}
+\item 
+vector$<$ \mbox{\hyperlink{structGraph_1_1Node}{Node}} $>$ \mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{Graph_8h_source_l00015}{15}} of file \mbox{\hyperlink{Graph_8h_source}{Graph.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}\label{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00004}{4}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00004              \{}
+\DoxyCodeLine{00005     n = 0;}
+\DoxyCodeLine{00006 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a284b99bdb07994225dee3c2cdb59c80a}\label{classGraph_a284b99bdb07994225dee3c2cdb59c80a}} 
+\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{Graph()}{Graph()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Graph\+::\+Graph (\begin{DoxyParamCaption}\item[{int}]{nodes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00007}{7}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00007 : n(num), nodes(num+1) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}\label{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}} 
+\index{Graph@{Graph}!addEdge@{addEdge}}
+\index{addEdge@{addEdge}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{addEdge()}{addEdge()}}
+{\footnotesize\ttfamily void Graph\+::add\+Edge (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{dest,  }\item[{string}]{airline,  }\item[{int}]{weight = {\ttfamily 1} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009                                                                  \{}
+\DoxyCodeLine{00010     \textcolor{keywordflow}{if} (src<1 || src>n || dest<1 || dest>n) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00011     \textcolor{keywordflow}{for} (Edge \&e : nodes[src].adj)}
+\DoxyCodeLine{00012         \textcolor{keywordflow}{if} (e.dest == dest) \{}
+\DoxyCodeLine{00013             e.airlines.insert(airline);}
+\DoxyCodeLine{00014             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00015         \}}
+\DoxyCodeLine{00016     nodes[src].adj.push\_back(\{dest, weight, \{airline\}\});}
+\DoxyCodeLine{00017 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a1cecaf0263febab8146b7e8138321b05}\label{classGraph_a1cecaf0263febab8146b7e8138321b05}} 
+\index{Graph@{Graph}!articulationPointsDFS@{articulationPointsDFS}}
+\index{articulationPointsDFS@{articulationPointsDFS}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{articulationPointsDFS()}{articulationPointsDFS()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily void Graph\+::articulation\+Points\+DFS (\begin{DoxyParamCaption}\item[{int}]{v,  }\item[{int}]{index,  }\item[{vector$<$ int $>$ \&}]{num,  }\item[{vector$<$ int $>$ \&}]{low,  }\item[{unordered\+\_\+set$<$ int $>$ \&}]{s,  }\item[{set$<$ int $>$ \&}]{ap,  }\item[{bool}]{first = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00150                                                                                                                                       \{}
+\DoxyCodeLine{00151     nodes[v].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00152     num[v] = index;}
+\DoxyCodeLine{00153     low[v] = index;}
+\DoxyCodeLine{00154     index++;}
+\DoxyCodeLine{00155     \textcolor{keywordtype}{bool} is\_ap = \textcolor{keyword}{false};}
+\DoxyCodeLine{00156     s.insert(v);}
+\DoxyCodeLine{00157     \textcolor{keywordtype}{int} n\_adj = 0;}
+\DoxyCodeLine{00158     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} e : nodes[v].adj) \{}
+\DoxyCodeLine{00159         \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00160         \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00161             n\_adj++;}
+\DoxyCodeLine{00162             articulationPointsDFS(w, index, num, low, s, ap);}
+\DoxyCodeLine{00163             low[v] = min(low[v], low[w]);}
+\DoxyCodeLine{00164             \textcolor{keywordflow}{if}(low[w] >= num[v]) \{}
+\DoxyCodeLine{00165                 is\_ap = \textcolor{keyword}{true};}
+\DoxyCodeLine{00166                 ap.insert(v);}
+\DoxyCodeLine{00167             \}}
+\DoxyCodeLine{00168         \}}
+\DoxyCodeLine{00169         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (s.find(w) != s.end())}
+\DoxyCodeLine{00170             low[v] = min(low[v], num[w]);}
+\DoxyCodeLine{00171     \}}
+\DoxyCodeLine{00172     \textcolor{keywordflow}{if}(is\_ap \&\& first \&\& n\_adj <= 1)}
+\DoxyCodeLine{00173         ap.erase(v);}
+\DoxyCodeLine{00174     s.erase(v);}
+\DoxyCodeLine{00175 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a22e738fa0870c6ef1e68a88854eaaee0}\label{classGraph_a22e738fa0870c6ef1e68a88854eaaee0}} 
+\index{Graph@{Graph}!articulationPointsDFS@{articulationPointsDFS}}
+\index{articulationPointsDFS@{articulationPointsDFS}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{articulationPointsDFS()}{articulationPointsDFS()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily set$<$ int $>$ Graph\+::articulation\+Points\+DFS (\begin{DoxyParamCaption}\item[{int}]{v,  }\item[{int}]{index,  }\item[{vector$<$ int $>$ \&}]{num,  }\item[{vector$<$ int $>$ \&}]{low,  }\item[{unordered\+\_\+set$<$ int $>$ \&}]{s,  }\item[{set$<$ int $>$ \&}]{ap,  }\item[{set$<$ string $>$ \&}]{airlines\+\_\+to\+\_\+consider,  }\item[{bool}]{first = {\ttfamily false} }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00176}{176}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00176                                                                                                                                                                              \{}
+\DoxyCodeLine{00177     nodes[v].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00178     num[v] = index;}
+\DoxyCodeLine{00179     low[v] = index;}
+\DoxyCodeLine{00180     index++;}
+\DoxyCodeLine{00181     \textcolor{keywordtype}{bool} is\_ap = \textcolor{keyword}{false};}
+\DoxyCodeLine{00182     s.insert(v);}
+\DoxyCodeLine{00183     \textcolor{keywordtype}{int} n\_adj = 0;}
+\DoxyCodeLine{00184     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} e : nodes[v].adj) \{}
+\DoxyCodeLine{00185         set<string> intersection;}
+\DoxyCodeLine{00186         set\_intersection(e.airlines.begin(), e.airlines.end(), airlines\_to\_consider.begin(), airlines\_to\_consider.end(), inserter(intersection, intersection.begin()));}
+\DoxyCodeLine{00187         \textcolor{keywordflow}{if} (intersection.empty()) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00188 }
+\DoxyCodeLine{00189         \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00190         \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00191             n\_adj++;}
+\DoxyCodeLine{00192             set<int> temp = articulationPointsDFS(w, index, num, low, s, ap, airlines\_to\_consider);}
+\DoxyCodeLine{00193             \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} t : temp) ap.insert(t);}
+\DoxyCodeLine{00194             low[v] = min(low[v], low[w]);}
+\DoxyCodeLine{00195             \textcolor{keywordflow}{if}(low[w] >= num[v] \&\& !first) \{}
+\DoxyCodeLine{00196 \textcolor{comment}{//                cout << v << "{} -\/ is first: "{} << first << endl;}}
+\DoxyCodeLine{00197 \textcolor{comment}{//                cout << w << "{} -\/ the curr destiny"{} << endl;}}
+\DoxyCodeLine{00198                 is\_ap = \textcolor{keyword}{true};}
+\DoxyCodeLine{00199                 ap.insert(v);}
+\DoxyCodeLine{00200             \}}
+\DoxyCodeLine{00201         \}}
+\DoxyCodeLine{00202         \textcolor{keywordflow}{if}(is\_ap \&\& first \&\& n\_adj <= 1)}
+\DoxyCodeLine{00203             ap.erase(v);}
+\DoxyCodeLine{00204         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (s.find(w) != s.end())}
+\DoxyCodeLine{00205             low[v] = min(low[v], num[w]);}
+\DoxyCodeLine{00206     \}}
+\DoxyCodeLine{00207     s.erase(v);}
+\DoxyCodeLine{00208     \textcolor{keywordflow}{return} ap;}
+\DoxyCodeLine{00209 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a42356d6e2e2824d73ee457e8c38e9997}\label{classGraph_a42356d6e2e2824d73ee457e8c38e9997}} 
+\index{Graph@{Graph}!getAirlinesNumber@{getAirlinesNumber}}
+\index{getAirlinesNumber@{getAirlinesNumber}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getAirlinesNumber()}{getAirlinesNumber()}}
+{\footnotesize\ttfamily int Graph\+::get\+Airlines\+Number (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00023}{23}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00023                                   \{}
+\DoxyCodeLine{00024     set<string> airlines;}
+\DoxyCodeLine{00025     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[i].adj)}
+\DoxyCodeLine{00026         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& a : e.airlines)}
+\DoxyCodeLine{00027             airlines.insert(a);}
+\DoxyCodeLine{00028 }
+\DoxyCodeLine{00029     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) airlines.size();}
+\DoxyCodeLine{00030 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a1989c9e26e73c1268afac4123597e20c}\label{classGraph_a1989c9e26e73c1268afac4123597e20c}} 
+\index{Graph@{Graph}!getArticulationPoints@{getArticulationPoints}}
+\index{getArticulationPoints@{getArticulationPoints}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getArticulationPoints()}{getArticulationPoints()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily set$<$ int $>$ Graph\+::get\+Articulation\+Points (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00123}{123}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00123                                       \{}
+\DoxyCodeLine{00124     set<int> articulationPoints;}
+\DoxyCodeLine{00125     vector<int> low(n+1);}
+\DoxyCodeLine{00126     vector<int> num(n+1);}
+\DoxyCodeLine{00127     unordered\_set<int> s;}
+\DoxyCodeLine{00128     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= n; i++)}
+\DoxyCodeLine{00129         nodes[i].visited = \textcolor{keyword}{false};}
+\DoxyCodeLine{00130     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= n; i++)}
+\DoxyCodeLine{00131         \textcolor{keywordflow}{if}(!nodes[i].visited)\{}
+\DoxyCodeLine{00132             articulationPointsDFS(i, 0, num, low, s, articulationPoints, \textcolor{keyword}{true});}
+\DoxyCodeLine{00133         \}}
+\DoxyCodeLine{00134     \textcolor{keywordflow}{return} articulationPoints;}
+\DoxyCodeLine{00135 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a552647319308325bf4bbbf5b71d49d02}\label{classGraph_a552647319308325bf4bbbf5b71d49d02}} 
+\index{Graph@{Graph}!getArticulationPoints@{getArticulationPoints}}
+\index{getArticulationPoints@{getArticulationPoints}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getArticulationPoints()}{getArticulationPoints()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily set$<$ int $>$ Graph\+::get\+Articulation\+Points (\begin{DoxyParamCaption}\item[{set$<$ string $>$ \&}]{airlines\+\_\+to\+\_\+consider }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00136}{136}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00136                                                                        \{}
+\DoxyCodeLine{00137     set<int> articulationPoints;}
+\DoxyCodeLine{00138     vector<int> low(n+1);}
+\DoxyCodeLine{00139     vector<int> num(n+1);}
+\DoxyCodeLine{00140     unordered\_set<int> s;}
+\DoxyCodeLine{00141     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= n; i++)}
+\DoxyCodeLine{00142         nodes[i].visited = \textcolor{keyword}{false};}
+\DoxyCodeLine{00143     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i <= n; i++)}
+\DoxyCodeLine{00144         \textcolor{keywordflow}{if}(!nodes[i].visited)\{}
+\DoxyCodeLine{00145             articulationPointsDFS(i, 0, num, low, s, articulationPoints, airlines\_to\_consider, \textcolor{keyword}{true});}
+\DoxyCodeLine{00146         \}}
+\DoxyCodeLine{00147     \textcolor{keywordflow}{return} articulationPoints;}
+\DoxyCodeLine{00148 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a742a13abf5fcadc712dba088e963fcc3}\label{classGraph_a742a13abf5fcadc712dba088e963fcc3}} 
+\index{Graph@{Graph}!getCompanies@{getCompanies}}
+\index{getCompanies@{getCompanies}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getCompanies()}{getCompanies()}}
+{\footnotesize\ttfamily int Graph\+::get\+Companies (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00052                         \{}
+\DoxyCodeLine{00053     set<string> companies;}
+\DoxyCodeLine{00054     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= n; ++i)}
+\DoxyCodeLine{00055         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[i].adj)}
+\DoxyCodeLine{00056             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& c : e.airlines)}
+\DoxyCodeLine{00057                 companies.insert(c);}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) companies.size();}
+\DoxyCodeLine{00060 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_ae62996682bfad8d45c5457325b0896f8}\label{classGraph_ae62996682bfad8d45c5457325b0896f8}} 
+\index{Graph@{Graph}!getDestinations@{getDestinations}}
+\index{getDestinations@{getDestinations}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDestinations()}{getDestinations()}}
+{\footnotesize\ttfamily set$<$ int $>$ Graph\+::get\+Destinations (\begin{DoxyParamCaption}\item[{int}]{src,  }\item[{int}]{r }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00086}{86}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00086                                               \{}
+\DoxyCodeLine{00087     set<int> destinations;}
+\DoxyCodeLine{00088     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 1; j <= n; ++j) \{nodes[j].visited = \textcolor{keyword}{false}; nodes[j].distance = -\/1;\}}
+\DoxyCodeLine{00089     queue<int> q;}
+\DoxyCodeLine{00090     q.push(src);}
+\DoxyCodeLine{00091     nodes[src].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00092     nodes[src].distance = 0;}
+\DoxyCodeLine{00093 }
+\DoxyCodeLine{00094     \textcolor{keywordflow}{while} (!q.empty()) \{}
+\DoxyCodeLine{00095         \textcolor{keywordtype}{int} u = q.front(); q.pop();}
+\DoxyCodeLine{00096         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[u].adj) \{}
+\DoxyCodeLine{00097             \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00098             \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00099                 nodes[w].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00100                 nodes[w].distance = nodes[u].distance + 1;}
+\DoxyCodeLine{00101                 \textcolor{keywordflow}{if} (nodes[w].distance <= r) \{}
+\DoxyCodeLine{00102                     q.push(w);}
+\DoxyCodeLine{00103                     destinations.insert(w);}
+\DoxyCodeLine{00104                 \}}
+\DoxyCodeLine{00105             \}}
+\DoxyCodeLine{00106         \}}
+\DoxyCodeLine{00107     \}}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109     \textcolor{keywordflow}{return} destinations;}
+\DoxyCodeLine{00110 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a73cc61bf3df3c833b831c2073c946b56}\label{classGraph_a73cc61bf3df3c833b831c2073c946b56}} 
+\index{Graph@{Graph}!getDestinationsCountries@{getDestinationsCountries}}
+\index{getDestinationsCountries@{getDestinationsCountries}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDestinationsCountries()}{getDestinationsCountries()}}
+{\footnotesize\ttfamily int Graph\+::get\+Destinations\+Countries (\begin{DoxyParamCaption}\item[{int}]{i,  }\item[{unordered\+\_\+map$<$ int, \mbox{\hyperlink{classAirport}{Airport}} $>$ \&}]{airports }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00038                                                                                 \{}
+\DoxyCodeLine{00039     set<string> countries;}
+\DoxyCodeLine{00040     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[i].adj)}
+\DoxyCodeLine{00041         countries.insert(airports.at(e.dest).getCountry());}
+\DoxyCodeLine{00042 }
+\DoxyCodeLine{00043     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) countries.size();}
+\DoxyCodeLine{00044 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_aa96dae4ef07978b18640b4277f4b106b}\label{classGraph_aa96dae4ef07978b18640b4277f4b106b}} 
+\index{Graph@{Graph}!getDestinationsNumber@{getDestinationsNumber}}
+\index{getDestinationsNumber@{getDestinationsNumber}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDestinationsNumber()}{getDestinationsNumber()}}
+{\footnotesize\ttfamily int Graph\+::get\+Destinations\+Number (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031                                       \{}
+\DoxyCodeLine{00032     set<int> destinations;}
+\DoxyCodeLine{00033     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[i].adj)}
+\DoxyCodeLine{00034         destinations.insert(e.dest);}
+\DoxyCodeLine{00035 }
+\DoxyCodeLine{00036     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) destinations.size();}
+\DoxyCodeLine{00037 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a88224c6e2978264d31b58d33167c5cd7}\label{classGraph_a88224c6e2978264d31b58d33167c5cd7}} 
+\index{Graph@{Graph}!getDiameter@{getDiameter}}
+\index{getDiameter@{getDiameter}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getDiameter()}{getDiameter()}}
+{\footnotesize\ttfamily int Graph\+::get\+Diameter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00061                        \{}
+\DoxyCodeLine{00062     \textcolor{keywordtype}{int} diameter = 0;}
+\DoxyCodeLine{00063     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= n; ++i) \{}
+\DoxyCodeLine{00064         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 1; j <= n; ++j) \{nodes[j].visited = \textcolor{keyword}{false}; nodes[j].distance = -\/1;\}}
+\DoxyCodeLine{00065         queue<int> q;}
+\DoxyCodeLine{00066         q.push(i);}
+\DoxyCodeLine{00067         nodes[i].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00068         nodes[i].distance = 0;}
+\DoxyCodeLine{00069 }
+\DoxyCodeLine{00070         \textcolor{keywordflow}{while} (!q.empty()) \{}
+\DoxyCodeLine{00071             \textcolor{keywordtype}{int} u = q.front(); q.pop();}
+\DoxyCodeLine{00072             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[u].adj) \{}
+\DoxyCodeLine{00073                 \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00074                 \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00075                     q.push(w);}
+\DoxyCodeLine{00076                     nodes[w].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00077                     nodes[w].distance = nodes[u].distance + 1;}
+\DoxyCodeLine{00078                     diameter = max(diameter, nodes[w].distance);}
+\DoxyCodeLine{00079                 \}}
+\DoxyCodeLine{00080             \}}
+\DoxyCodeLine{00081         \}}
+\DoxyCodeLine{00082     \}}
+\DoxyCodeLine{00083 }
+\DoxyCodeLine{00084     \textcolor{keywordflow}{return} diameter;}
+\DoxyCodeLine{00085 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_adc4daf6c35b3e73211dc5503479f8dca}\label{classGraph_adc4daf6c35b3e73211dc5503479f8dca}} 
+\index{Graph@{Graph}!getNodes@{getNodes}}
+\index{getNodes@{getNodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNodes()}{getNodes()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{structGraph_1_1Node}{Graph\+::\+Node}} $>$ Graph\+::get\+Nodes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00111}{111}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00111                                         \{}
+\DoxyCodeLine{00112     \textcolor{keywordflow}{return} nodes;}
+\DoxyCodeLine{00113 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a383b200b23ce590c216adc97f0be6742}\label{classGraph_a383b200b23ce590c216adc97f0be6742}} 
+\index{Graph@{Graph}!getNumEdges@{getNumEdges}}
+\index{getNumEdges@{getNumEdges}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getNumEdges()}{getNumEdges()}}
+{\footnotesize\ttfamily int Graph\+::get\+Num\+Edges (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00045}{45}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045                        \{}
+\DoxyCodeLine{00046     \textcolor{keywordtype}{int} num\_edges = 0;}
+\DoxyCodeLine{00047     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= n; ++i)}
+\DoxyCodeLine{00048         num\_edges += (\textcolor{keywordtype}{int}) nodes[i].adj.size();}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050     \textcolor{keywordflow}{return} num\_edges;}
+\DoxyCodeLine{00051 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a8b19b670048cbe95ab868ec7b1d3127d}\label{classGraph_a8b19b670048cbe95ab868ec7b1d3127d}} 
+\index{Graph@{Graph}!getOutDegree@{getOutDegree}}
+\index{getOutDegree@{getOutDegree}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getOutDegree()}{getOutDegree()}}
+{\footnotesize\ttfamily int Graph\+::get\+Out\+Degree (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019                              \{}
+\DoxyCodeLine{00020     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) nodes[i].adj.size();}
+\DoxyCodeLine{00021 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a436a278b4fad166e19f0ed2ee266ad85}\label{classGraph_a436a278b4fad166e19f0ed2ee266ad85}} 
+\index{Graph@{Graph}!getTopAirports@{getTopAirports}}
+\index{getTopAirports@{getTopAirports}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{getTopAirports()}{getTopAirports()}}
+{\footnotesize\ttfamily vector$<$ pii $>$ Graph\+::get\+Top\+Airports (\begin{DoxyParamCaption}\item[{int}]{i }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00114                                        \{}
+\DoxyCodeLine{00115     vector<pii> airports(n);}
+\DoxyCodeLine{00116     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} v = 1; v <= n; v++) \{}
+\DoxyCodeLine{00117         airports[v-\/1] = make\_pair(v, getDestinationsNumber(v));}
+\DoxyCodeLine{00118     \}}
+\DoxyCodeLine{00119     sort(airports.begin(), airports.end(), [](\textcolor{keyword}{const} pii\& a, \textcolor{keyword}{const} pii\& b) \{return a.second > b.second;\});}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121     \textcolor{keywordflow}{return} vector<pii>(airports.begin(), airports.begin() + i);}
+\DoxyCodeLine{00122 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a3f79f046fad861aec74460717ddeb96b}\label{classGraph_a3f79f046fad861aec74460717ddeb96b}} 
+\index{Graph@{Graph}!least\_flights@{least\_flights}}
+\index{least\_flights@{least\_flights}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{least\_flights()}{least\_flights()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily list$<$ li $>$ Graph\+::least\+\_\+flights (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{sources,  }\item[{const vector$<$ int $>$ \&}]{dest,  }\item[{const set$<$ string $>$ \&}]{airlines\+\_\+to\+\_\+consider }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00269}{269}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00269                                                                                                                           \{}
+\DoxyCodeLine{00270     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 1; j <= n; ++j) \{nodes[j].visited = \textcolor{keyword}{false}; nodes[j].distance = -\/1;\}}
+\DoxyCodeLine{00271     vector<vi> previous(n+1, vi());}
+\DoxyCodeLine{00272 }
+\DoxyCodeLine{00273     queue<int> q;}
+\DoxyCodeLine{00274     \textcolor{keywordflow}{for}(\textcolor{keyword}{const} \textcolor{keyword}{auto}\& s : sources) \{}
+\DoxyCodeLine{00275         q.push(s);}
+\DoxyCodeLine{00276         nodes[s].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00277         nodes[s].distance = 0;}
+\DoxyCodeLine{00278     \}}
+\DoxyCodeLine{00279 }
+\DoxyCodeLine{00280     \textcolor{keywordflow}{while}(!q.empty()) \{}
+\DoxyCodeLine{00281         \textcolor{keywordtype}{int} u = q.front(); q.pop();}
+\DoxyCodeLine{00282         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[u].adj) \{}
+\DoxyCodeLine{00283             set<string> intersection;}
+\DoxyCodeLine{00284             set\_intersection(e.airlines.begin(), e.airlines.end(), airlines\_to\_consider.begin(), airlines\_to\_consider.end(), inserter(intersection, intersection.begin()));}
+\DoxyCodeLine{00285             \textcolor{keywordflow}{if} (intersection.empty()) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00286             \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00287             \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00288                 q.push(w);}
+\DoxyCodeLine{00289                 nodes[w].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00290                 nodes[w].distance = nodes[u].distance + 1;}
+\DoxyCodeLine{00291                 previous[w].push\_back(u);}
+\DoxyCodeLine{00292             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nodes[w].distance == nodes[u].distance + 1) \{}
+\DoxyCodeLine{00293                 previous[w].push\_back(u);}
+\DoxyCodeLine{00294             \}}
+\DoxyCodeLine{00295         \}}
+\DoxyCodeLine{00296     \}}
+\DoxyCodeLine{00297 }
+\DoxyCodeLine{00298     li all\_min;}
+\DoxyCodeLine{00299     \textcolor{keywordtype}{int} min\_dist = INT\_MAX;}
+\DoxyCodeLine{00300     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : dest) \{}
+\DoxyCodeLine{00301         \textcolor{keywordflow}{if}(nodes[d].distance != -\/1 \&\& nodes[d].distance < min\_dist) \{}
+\DoxyCodeLine{00302             min\_dist = nodes[d].distance;}
+\DoxyCodeLine{00303         \}}
+\DoxyCodeLine{00304     \}}
+\DoxyCodeLine{00305     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : dest) \{}
+\DoxyCodeLine{00306         \textcolor{keywordflow}{if}(nodes[d].distance == min\_dist) \{}
+\DoxyCodeLine{00307             all\_min.push\_back(d);}
+\DoxyCodeLine{00308         \}}
+\DoxyCodeLine{00309     \}}
+\DoxyCodeLine{00310 }
+\DoxyCodeLine{00311     list<li> paths;}
+\DoxyCodeLine{00312     \textcolor{keywordflow}{if}(min\_dist == INT\_MAX) \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00313     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : all\_min) \{}
+\DoxyCodeLine{00314         li path;}
+\DoxyCodeLine{00315         path.push\_back(d);}
+\DoxyCodeLine{00316         paths.push\_back(path);}
+\DoxyCodeLine{00317     \}}
+\DoxyCodeLine{00318     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < min\_dist; ++i) \{}
+\DoxyCodeLine{00319         list<li> new\_paths;}
+\DoxyCodeLine{00320         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& p : paths) \{}
+\DoxyCodeLine{00321             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& node : previous[p.front()]) \{}
+\DoxyCodeLine{00322                 li new\_path = p;}
+\DoxyCodeLine{00323                 new\_path.push\_front(node);}
+\DoxyCodeLine{00324                 new\_paths.push\_back(new\_path);}
+\DoxyCodeLine{00325             \}}
+\DoxyCodeLine{00326         \}}
+\DoxyCodeLine{00327         paths = new\_paths;}
+\DoxyCodeLine{00328     \}}
+\DoxyCodeLine{00329     \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00330 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a8c9434eda6bf9199959806f494bacf9e}\label{classGraph_a8c9434eda6bf9199959806f494bacf9e}} 
+\index{Graph@{Graph}!least\_flights@{least\_flights}}
+\index{least\_flights@{least\_flights}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{least\_flights()}{least\_flights()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ li $>$ Graph\+::least\+\_\+flights (\begin{DoxyParamCaption}\item[{vector$<$ int $>$}]{sources,  }\item[{vector$<$ int $>$}]{destination }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00211}{211}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211                                                                            \{}
+\DoxyCodeLine{00212     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 1; j <= n; ++j) \{nodes[j].visited = \textcolor{keyword}{false}; nodes[j].distance = -\/1;\}}
+\DoxyCodeLine{00213     vector<vi> previous(n+1, vi());}
+\DoxyCodeLine{00214 }
+\DoxyCodeLine{00215     queue<int> q;}
+\DoxyCodeLine{00216     \textcolor{keywordflow}{for}(\textcolor{keyword}{const} \textcolor{keyword}{auto}\& s : sources) \{}
+\DoxyCodeLine{00217         q.push(s);}
+\DoxyCodeLine{00218         nodes[s].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00219         nodes[s].distance = 0;}
+\DoxyCodeLine{00220     \}}
+\DoxyCodeLine{00221     \textcolor{keywordflow}{while} (!q.empty()) \{}
+\DoxyCodeLine{00222         \textcolor{keywordtype}{int} u = q.front(); q.pop();}
+\DoxyCodeLine{00223         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[u].adj) \{}
+\DoxyCodeLine{00224             \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00225             \textcolor{keywordflow}{if} (!nodes[w].visited) \{}
+\DoxyCodeLine{00226                 q.push(w);}
+\DoxyCodeLine{00227                 nodes[w].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00228                 nodes[w].distance = nodes[u].distance + 1;}
+\DoxyCodeLine{00229                 previous[w].push\_back(u);}
+\DoxyCodeLine{00230             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (nodes[w].distance == nodes[u].distance + 1) \{}
+\DoxyCodeLine{00231                 previous[w].push\_back(u);}
+\DoxyCodeLine{00232             \}}
+\DoxyCodeLine{00233         \}}
+\DoxyCodeLine{00234     \}}
+\DoxyCodeLine{00235 }
+\DoxyCodeLine{00236     li all\_min;}
+\DoxyCodeLine{00237     \textcolor{keywordtype}{int} min\_dist = INT\_MAX;}
+\DoxyCodeLine{00238     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : destinations) \{}
+\DoxyCodeLine{00239         \textcolor{keywordflow}{if}(nodes[d].distance != -\/1 \&\& nodes[d].distance < min\_dist) \{}
+\DoxyCodeLine{00240             min\_dist = nodes[d].distance;}
+\DoxyCodeLine{00241         \}}
+\DoxyCodeLine{00242     \}}
+\DoxyCodeLine{00243     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : destinations) \{}
+\DoxyCodeLine{00244         \textcolor{keywordflow}{if}(nodes[d].distance == min\_dist) \{}
+\DoxyCodeLine{00245             all\_min.push\_back(d);}
+\DoxyCodeLine{00246         \}}
+\DoxyCodeLine{00247     \}}
+\DoxyCodeLine{00248 }
+\DoxyCodeLine{00249     list<li> paths;}
+\DoxyCodeLine{00250     \textcolor{keywordflow}{if}(min\_dist == INT\_MAX) \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00251     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} d : all\_min) \{}
+\DoxyCodeLine{00252         li path;}
+\DoxyCodeLine{00253         path.push\_back(d);}
+\DoxyCodeLine{00254         paths.push\_back(path);}
+\DoxyCodeLine{00255     \}}
+\DoxyCodeLine{00256     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < min\_dist; ++i) \{}
+\DoxyCodeLine{00257         list<li> new\_paths;}
+\DoxyCodeLine{00258         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& p : paths) \{}
+\DoxyCodeLine{00259             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& node : previous[p.front()]) \{}
+\DoxyCodeLine{00260                 li new\_path = p;}
+\DoxyCodeLine{00261                 new\_path.push\_front(node);}
+\DoxyCodeLine{00262                 new\_paths.push\_back(new\_path);}
+\DoxyCodeLine{00263             \}}
+\DoxyCodeLine{00264         \}}
+\DoxyCodeLine{00265         paths = new\_paths;}
+\DoxyCodeLine{00266     \}}
+\DoxyCodeLine{00267     \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00268 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_a13291e578c550d7a52742a9c17f6aee1}\label{classGraph_a13291e578c550d7a52742a9c17f6aee1}} 
+\index{Graph@{Graph}!least\_flights\_with\_distance@{least\_flights\_with\_distance}}
+\index{least\_flights\_with\_distance@{least\_flights\_with\_distance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{least\_flights\_with\_distance()}{least\_flights\_with\_distance()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily list$<$ li $>$ Graph\+::least\+\_\+flights\+\_\+with\+\_\+distance (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{src,  }\item[{const vector$<$ int $>$ \&}]{dest }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00381}{381}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00381                                                                                            \{}
+\DoxyCodeLine{00382     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= n; i++) \{}
+\DoxyCodeLine{00383         nodes[i].distance = INT\_MAX;}
+\DoxyCodeLine{00384         nodes[i].visited = \textcolor{keyword}{false};}
+\DoxyCodeLine{00385     \}}
+\DoxyCodeLine{00386 }
+\DoxyCodeLine{00387     queue<int> q;}
+\DoxyCodeLine{00388     vector<int> prev(n+1);}
+\DoxyCodeLine{00389 }
+\DoxyCodeLine{00390     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& i : src) \{}
+\DoxyCodeLine{00391         nodes[i].distance = 0;}
+\DoxyCodeLine{00392         q.push(i);}
+\DoxyCodeLine{00393     \}}
+\DoxyCodeLine{00394 }
+\DoxyCodeLine{00395     \textcolor{comment}{//Dijkstra's algorithm}}
+\DoxyCodeLine{00396     \textcolor{keywordflow}{while} (!q.empty()) \{}
+\DoxyCodeLine{00397         \textcolor{keywordtype}{int} v = q.front();}
+\DoxyCodeLine{00398         q.pop();}
+\DoxyCodeLine{00399         \textcolor{keywordflow}{if} (nodes[v].visited) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00400         nodes[v].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00401         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[v].adj) \{}
+\DoxyCodeLine{00402             \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00403             \textcolor{keywordflow}{if} (nodes[w].distance > nodes[v].distance + e.weight) \{}
+\DoxyCodeLine{00404                 nodes[w].distance = nodes[v].distance + e.weight;}
+\DoxyCodeLine{00405                 prev[w] = v;}
+\DoxyCodeLine{00406                 q.push(w);}
+\DoxyCodeLine{00407             \}}
+\DoxyCodeLine{00408         \}}
+\DoxyCodeLine{00409     \}}
+\DoxyCodeLine{00410 }
+\DoxyCodeLine{00411     \textcolor{comment}{//Find the shortest path between src and dest}}
+\DoxyCodeLine{00412     list<li> paths;}
+\DoxyCodeLine{00413     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& i : dest) \{}
+\DoxyCodeLine{00414         \textcolor{keywordflow}{if} (nodes[i].distance == INT\_MAX) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00415         list<int> path;}
+\DoxyCodeLine{00416         \textcolor{keywordtype}{int} v = i;}
+\DoxyCodeLine{00417         \textcolor{keywordflow}{while} (v != 0) \{}
+\DoxyCodeLine{00418             path.push\_front(v);}
+\DoxyCodeLine{00419             v = prev[v];}
+\DoxyCodeLine{00420         \}}
+\DoxyCodeLine{00421         paths.push\_back(path);}
+\DoxyCodeLine{00422     \}}
+\DoxyCodeLine{00423 }
+\DoxyCodeLine{00424     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}\& p : paths) \{}
+\DoxyCodeLine{00425         p.push\_front(nodes[p.back()].distance);}
+\DoxyCodeLine{00426     \}}
+\DoxyCodeLine{00427 }
+\DoxyCodeLine{00428     \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00429 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classGraph_aad8523a0a44d8283782a5c8236d84c1f}\label{classGraph_aad8523a0a44d8283782a5c8236d84c1f}} 
+\index{Graph@{Graph}!least\_flights\_with\_distance@{least\_flights\_with\_distance}}
+\index{least\_flights\_with\_distance@{least\_flights\_with\_distance}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{least\_flights\_with\_distance()}{least\_flights\_with\_distance()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily list$<$ li $>$ Graph\+::least\+\_\+flights\+\_\+with\+\_\+distance (\begin{DoxyParamCaption}\item[{const vector$<$ int $>$ \&}]{src,  }\item[{const vector$<$ int $>$ \&}]{dest,  }\item[{const set$<$ string $>$ \&}]{airlines\+\_\+to\+\_\+consider }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8cpp_source_l00331}{331}} of file \mbox{\hyperlink{Graph_8cpp_source}{Graph.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00331                                                                                                                                     \{}
+\DoxyCodeLine{00332     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i <= n; i++) \{}
+\DoxyCodeLine{00333         nodes[i].distance = INT\_MAX;}
+\DoxyCodeLine{00334         nodes[i].visited = \textcolor{keyword}{false};}
+\DoxyCodeLine{00335     \}}
+\DoxyCodeLine{00336 }
+\DoxyCodeLine{00337     queue<int> q;}
+\DoxyCodeLine{00338     vector<int> prev(n+1);}
+\DoxyCodeLine{00339 }
+\DoxyCodeLine{00340     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& i : src) \{}
+\DoxyCodeLine{00341         nodes[i].distance = 0;}
+\DoxyCodeLine{00342         q.push(i);}
+\DoxyCodeLine{00343     \}}
+\DoxyCodeLine{00344 }
+\DoxyCodeLine{00345     \textcolor{keywordflow}{while} (!q.empty()) \{}
+\DoxyCodeLine{00346         \textcolor{keywordtype}{int} v = q.front();}
+\DoxyCodeLine{00347         q.pop();}
+\DoxyCodeLine{00348         \textcolor{keywordflow}{if} (nodes[v].visited) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00349         nodes[v].visited = \textcolor{keyword}{true};}
+\DoxyCodeLine{00350         \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& e : nodes[v].adj) \{}
+\DoxyCodeLine{00351             set<string> intersection;}
+\DoxyCodeLine{00352             set\_intersection(e.airlines.begin(), e.airlines.end(), airlines\_to\_consider.begin(), airlines\_to\_consider.end(), inserter(intersection, intersection.begin()));}
+\DoxyCodeLine{00353             \textcolor{keywordflow}{if} (intersection.empty()) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00354             \textcolor{keywordtype}{int} w = e.dest;}
+\DoxyCodeLine{00355             \textcolor{keywordflow}{if} (nodes[w].distance > nodes[v].distance + e.weight) \{}
+\DoxyCodeLine{00356                 nodes[w].distance = nodes[v].distance + e.weight;}
+\DoxyCodeLine{00357                 prev[w] = v;}
+\DoxyCodeLine{00358                 q.push(w);}
+\DoxyCodeLine{00359             \}}
+\DoxyCodeLine{00360         \}}
+\DoxyCodeLine{00361     \}}
+\DoxyCodeLine{00362 }
+\DoxyCodeLine{00363     list<li> paths;}
+\DoxyCodeLine{00364     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} \& i : dest) \{}
+\DoxyCodeLine{00365         \textcolor{keywordflow}{if} (nodes[i].distance == INT\_MAX) \textcolor{keywordflow}{continue};}
+\DoxyCodeLine{00366         list<int> path;}
+\DoxyCodeLine{00367         \textcolor{keywordtype}{int} v = i;}
+\DoxyCodeLine{00368         \textcolor{keywordflow}{while} (v != 0) \{}
+\DoxyCodeLine{00369             path.push\_front(v);}
+\DoxyCodeLine{00370             v = prev[v];}
+\DoxyCodeLine{00371         \}}
+\DoxyCodeLine{00372         paths.push\_back(path);}
+\DoxyCodeLine{00373     \}}
+\DoxyCodeLine{00374 }
+\DoxyCodeLine{00375     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}\& p : paths) \{}
+\DoxyCodeLine{00376         p.push\_front(nodes[p.back()].distance);}
+\DoxyCodeLine{00377     \}}
+\DoxyCodeLine{00378 }
+\DoxyCodeLine{00379     \textcolor{keywordflow}{return} paths;}
+\DoxyCodeLine{00380 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classGraph_a81a76a428e630453ef019a15b9092967}\label{classGraph_a81a76a428e630453ef019a15b9092967}} 
+\index{Graph@{Graph}!n@{n}}
+\index{n@{n}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{n}{n}}
+{\footnotesize\ttfamily int Graph\+::n}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8h_source_l00028}{28}} of file \mbox{\hyperlink{Graph_8h_source}{Graph.\+h}}.
+
+\mbox{\Hypertarget{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}\label{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}} 
+\index{Graph@{Graph}!nodes@{nodes}}
+\index{nodes@{nodes}!Graph@{Graph}}
+\doxysubsubsection{\texorpdfstring{nodes}{nodes}}
+{\footnotesize\ttfamily vector$<$\mbox{\hyperlink{structGraph_1_1Node}{Node}}$>$ Graph\+::nodes}
+
+
+
+Definition at line \mbox{\hyperlink{Graph_8h_source_l00029}{29}} of file \mbox{\hyperlink{Graph_8h_source}{Graph.\+h}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Data\+Structures/Graph.\+h\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Data\+Structures/Graph.\+cpp\end{DoxyCompactItemize}

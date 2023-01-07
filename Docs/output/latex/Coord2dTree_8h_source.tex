@@ -1,0 +1,49 @@
+\hypertarget{Coord2dTree_8h_source}{}\doxysection{Coord2d\+Tree.\+h}
+\label{Coord2dTree_8h_source}\index{/mnt/e/trabalhos(2)/FEUP/2o\_ano\_1o\_semestre/AED/projeto2/AED-\/Flights/DataStructures/Coord2dTree.h@{/mnt/e/trabalhos(2)/FEUP/2o\_ano\_1o\_semestre/AED/projeto2/AED-\/Flights/DataStructures/Coord2dTree.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00001}00001 \textcolor{preprocessor}{\#ifndef AED2223\_P12\_COORD2DTREE\_H}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00002}00002 \textcolor{preprocessor}{\#define AED2223\_P12\_COORD2DTREE\_H}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00004}00004 \textcolor{preprocessor}{\#include <utility>}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00005}00005 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00006}00006 \textcolor{preprocessor}{\#include <set>}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00007}00007 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00008}00008 \textcolor{preprocessor}{\#include "{}../HelperClasses/Rect.h"{}}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00009}00009 \textcolor{preprocessor}{\#include "{}../HelperClasses/Haversine.h"{}}}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00010}00010 \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00017}\mbox{\hyperlink{structNode}{00017}} \textcolor{keyword}{struct }\mbox{\hyperlink{structNode}{Node}} \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00018}00018     pair<double, double> data;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00019}00019     \mbox{\hyperlink{structNode}{Node}} *left;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00020}00020     \mbox{\hyperlink{structNode}{Node}} *right;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00021}00021 \};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00042}\mbox{\hyperlink{classCoord2dTree}{00042}} \textcolor{keyword}{class }\mbox{\hyperlink{classCoord2dTree}{Coord2dTree}} \{}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00043}00043 \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00045}00045     \mbox{\hyperlink{structNode}{Node}}* root;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00048}00048     \textcolor{keywordtype}{int} size;}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00049}00049     }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00070}00070     \mbox{\hyperlink{structNode}{Node}}* insert(pair<double, double> x, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00071}00071     }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00097}00097     \textcolor{keywordtype}{void} nearest(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, pair<double, double> \&best, \textcolor{keywordtype}{double} \&best\_dist);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00123}00123     \textcolor{keywordtype}{void} in\_radius(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, vector<pair<double, double>> \&best, \textcolor{keywordtype}{double} radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00124}00124 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00154}00154     \textcolor{keywordtype}{void} nearestN(pair<double, double> Q, \mbox{\hyperlink{structNode}{Node}}* t, \textcolor{keywordtype}{int} cd, \mbox{\hyperlink{classRect}{Rect}} BB, priority\_queue<pair<\textcolor{keywordtype}{double}, pair<double, double>>>\& bestN, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00155}00155 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00162}00162     \mbox{\hyperlink{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}{Coord2dTree}}();}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00177}00177     \textcolor{keywordtype}{bool} insert(\textcolor{keywordtype}{double} lat, \textcolor{keywordtype}{double} lon);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00196}00196     pair<double, double> nearest(pair<double, double> p);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00216}00216     vector<pair<double, double>> in\_radius(pair<double, double> p, \textcolor{keywordtype}{double} radius);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00239}00239     vector<pair<double, double>> nearestN(pair<double, double> p, \textcolor{keywordtype}{int} n);}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00240}00240 \};}
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00241}00241 }
+\DoxyCodeLine{\Hypertarget{Coord2dTree_8h_source_l00242}00242 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

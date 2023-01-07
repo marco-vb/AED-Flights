@@ -1,0 +1,289 @@
+\hypertarget{classCoord2dTree}{}\doxysection{Coord2d\+Tree Class Reference}
+\label{classCoord2dTree}\index{Coord2dTree@{Coord2dTree}}
+
+
+Classe que representa uma árvore de coordenadas 2D.  
+
+
+
+
+{\ttfamily \#include $<$Coord2d\+Tree.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}{Coord2d\+Tree}} ()
+\begin{DoxyCompactList}\small\item\em Construtor da classe. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classCoord2dTree_a338717f71dfb91275f7c029b98dd23ab}{insert}} (double lat, double lon)
+\begin{DoxyCompactList}\small\item\em Insere um ponto na árvore. \end{DoxyCompactList}\item 
+pair$<$ double, double $>$ \mbox{\hyperlink{classCoord2dTree_a78878f4d3271dcb792077ad0efbdf336}{nearest}} (pair$<$ double, double $>$ p)
+\begin{DoxyCompactList}\small\item\em Procura o ponto mais próximo de outro dado as suas coordenadas. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classCoord2dTree_a960d74984e997d8e3335da7c05d46df5}{in\+\_\+radius}} (pair$<$ double, double $>$ p, double radius)
+\begin{DoxyCompactList}\small\item\em Procura os pontos dentro de um raio dado as suas coordenadas. \end{DoxyCompactList}\item 
+vector$<$ pair$<$ double, double $>$ $>$ \mbox{\hyperlink{classCoord2dTree_a19bd74cd4ceb5151cad0c13316607112}{nearestN}} (pair$<$ double, double $>$ p, int n)
+\begin{DoxyCompactList}\small\item\em Procura os N pontos mais próximos de um certo ponto de um dado as suas coordenadas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma árvore de coordenadas 2D. 
+
+Esta classe representa uma árvore de coordenadas 2D, que permite\+:
+\begin{DoxyItemize}
+\item a inserção das coordenadas de um ponto
+\item procurar o ponto mais próximo de outro dadas as suas coordenadas
+\item procurar todos os pontos dentro de um raio dado
+\item procurar os N pontos mais próximos de um dado ponto
+\end{DoxyItemize}
+
+Esta implementação tem como base a implementação dos slides do professor Carl Kingsford, professor da Universidade Carnegie Mellon (\href{https://www.cs.cmu.edu/~ckingsf/bioinfo-lectures/kdtrees.pdf}{\texttt{ https\+://www.\+cs.\+cmu.\+edu/$\sim$ckingsf/bioinfo-\/lectures/kdtrees.\+pdf}}). A implementação original usa um array para represar as coordenadas e apenas foi desenhada para funcionar no plano. A nossa implementação usa um par de double para representar as coordenadas e foi ajustada para funcionar numa superficie esferica como a superficie da Terra. Nesta classe foi utilizada a função Haversine para calcular a distância entre dois pontos e a classe \mbox{\hyperlink{classRect}{Rect}} para representar um retângulo.
+
+Cada nível tem uma dimensão associada (neste caso longitude e latitude) Ao percorrer árvore devemos ir alternando as dimensões. Cada nó tem umas coordenadas associadas (lat, lon) 
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8h_source_l00042}{42}} of file \mbox{\hyperlink{Coord2dTree_8h_source}{Coord2d\+Tree.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}\label{classCoord2dTree_a933267ddbe05557ba63c99ac6844305b}} 
+\index{Coord2dTree@{Coord2dTree}!Coord2dTree@{Coord2dTree}}
+\index{Coord2dTree@{Coord2dTree}!Coord2dTree@{Coord2dTree}}
+\doxysubsubsection{\texorpdfstring{Coord2dTree()}{Coord2dTree()}}
+{\footnotesize\ttfamily Coord2d\+Tree\+::\+Coord2d\+Tree (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe. 
+
+Construtor da classe. Inicializa a árvore vazia, com root = nullptr. 
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{Coord2dTree_8cpp_source}{Coord2d\+Tree.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003                          \{}
+\DoxyCodeLine{00004     root = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{00005     size = 0;}
+\DoxyCodeLine{00006 \}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCoord2dTree_a960d74984e997d8e3335da7c05d46df5}\label{classCoord2dTree_a960d74984e997d8e3335da7c05d46df5}} 
+\index{Coord2dTree@{Coord2dTree}!in\_radius@{in\_radius}}
+\index{in\_radius@{in\_radius}!Coord2dTree@{Coord2dTree}}
+\doxysubsubsection{\texorpdfstring{in\_radius()}{in\_radius()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ double, double $>$ $>$ Coord2d\+Tree\+::in\+\_\+radius (\begin{DoxyParamCaption}\item[{pair$<$ double, double $>$}]{p,  }\item[{double}]{radius }\end{DoxyParamCaption})}
+
+
+
+Procura os pontos dentro de um raio dado as suas coordenadas. 
+
+Procura os pontos dentro de um raio dado as suas coordenadas. Caso a árvore esteja vazia, retorna um vetor vazio. Para isso, chama o método privado in\+\_\+radius(). Caso o raio seja inferior à distancia entre p e o meridiano de 180º, volta a correr o método in\+\_\+radius(), mas com a longitude equivalente à do ponto p mas como se estivesse no outro lado do meridiano, por exemplo, se o ponto p tem longitude -\/173º, o ponto p\textquotesingle{} tem longitude 187º.
+
+Complexidade Temporal\+:
+\begin{DoxyItemize}
+\item Em média\+: O(log n)
+\item No pior caso e se o raio \texorpdfstring{$>$}{>} 1500km\+: O(n)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Par de coordenadas do ponto a procurar \\
+\hline
+{\em radius} & Raio de procura \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vetor de pontos dentro do raio 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8cpp_source_l00090}{90}} of file \mbox{\hyperlink{Coord2dTree_8cpp_source}{Coord2d\+Tree.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00090                                                                                          \{}
+\DoxyCodeLine{00091     vector<pair<double, double>> best;}
+\DoxyCodeLine{00092     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{00093     in\_radius(p, root, 0, BB, best, radius);}
+\DoxyCodeLine{00094     \textcolor{keywordflow}{if}(radius > haversine(p.first, p.second, p.first, 180)) \{}
+\DoxyCodeLine{00095         in\_radius(make\_pair(p.first, (p.second < 0 ? 360 + p.second : -\/360 + p.second)), root, 0, BB, best, radius);}
+\DoxyCodeLine{00096     \}}
+\DoxyCodeLine{00097     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{00098 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCoord2dTree_a338717f71dfb91275f7c029b98dd23ab}\label{classCoord2dTree_a338717f71dfb91275f7c029b98dd23ab}} 
+\index{Coord2dTree@{Coord2dTree}!insert@{insert}}
+\index{insert@{insert}!Coord2dTree@{Coord2dTree}}
+\doxysubsubsection{\texorpdfstring{insert()}{insert()}}
+{\footnotesize\ttfamily bool Coord2d\+Tree\+::insert (\begin{DoxyParamCaption}\item[{double}]{lat,  }\item[{double}]{lon }\end{DoxyParamCaption})}
+
+
+
+Insere um ponto na árvore. 
+
+Insere um ponto na árvore através do método privado insert() e retorna true se o ponto foi inserido com sucesso, false caso contrário.
+
+Complexidade Temporal\+:
+\begin{DoxyItemize}
+\item Em média\+: O(log n)
+\item No pior caso\+: O(n)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em lat} & Latitude do ponto a inserir \\
+\hline
+{\em lon} & Longitude do ponto a inserir \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true se o ponto foi inserido com sucesso, false caso contrário 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8cpp_source_l00031}{31}} of file \mbox{\hyperlink{Coord2dTree_8cpp_source}{Coord2d\+Tree.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031                                                \{}
+\DoxyCodeLine{00032     pair<double, double> p = make\_pair(lat, lon);}
+\DoxyCodeLine{00033     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{00034         root = insert(p, root, 0);}
+\DoxyCodeLine{00035         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00036     \} \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} \textcolor{keywordtype}{char}*)\{}
+\DoxyCodeLine{00037         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00038     \}}
+\DoxyCodeLine{00039 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCoord2dTree_a78878f4d3271dcb792077ad0efbdf336}\label{classCoord2dTree_a78878f4d3271dcb792077ad0efbdf336}} 
+\index{Coord2dTree@{Coord2dTree}!nearest@{nearest}}
+\index{nearest@{nearest}!Coord2dTree@{Coord2dTree}}
+\doxysubsubsection{\texorpdfstring{nearest()}{nearest()}}
+{\footnotesize\ttfamily pair$<$ double, double $>$ Coord2d\+Tree\+::nearest (\begin{DoxyParamCaption}\item[{pair$<$ double, double $>$}]{p }\end{DoxyParamCaption})}
+
+
+
+Procura o ponto mais próximo de outro dado as suas coordenadas. 
+
+Procura o ponto mais próximo de outro dado as suas coordenadas. Caso a árvore esteja vazia, retorna um par de coordenadas (-\/1, -\/1). Para isso, chama o método privado nearest(). Caso a distancia entre o ponto mais proximo e o ponto p seja inferior à distancia entre p e o meridiano de 180º, volta a correr o método nearest(), mas com a longitude equivalente à do ponto p mas como se estivesse no outro lado do meridiano, por exemplo, se o ponto p tem longitude -\/173º, o ponto p\textquotesingle{} tem longitude 187º.
+
+Complexidade Temporal\+:
+\begin{DoxyItemize}
+\item Em média\+: O(log n)
+\item No pior caso\+: O(n)
+\end{DoxyItemize}
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Par de coordenadas do ponto a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Par de coordenadas do ponto mais proximo de (lat, lon) 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8cpp_source_l00063}{63}} of file \mbox{\hyperlink{Coord2dTree_8cpp_source}{Coord2d\+Tree.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00063                                                                 \{}
+\DoxyCodeLine{00064     pair<double, double> best = make\_pair(-\/1, -\/1);}
+\DoxyCodeLine{00065     \textcolor{keywordtype}{double} best\_dist = 1000000000;}
+\DoxyCodeLine{00066     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{00067     nearest(p, root, 0, BB, best, best\_dist);}
+\DoxyCodeLine{00068     \textcolor{keywordflow}{if}(haversine(p, best) > haversine(p.first, p.second, p.first, 180)) \{}
+\DoxyCodeLine{00069         nearest(make\_pair(p.first, (p.second < 0 ? 360 + p.second : -\/360 + p.second)), root, 0, BB, best, best\_dist);}
+\DoxyCodeLine{00070     \}}
+\DoxyCodeLine{00071     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{00072 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classCoord2dTree_a19bd74cd4ceb5151cad0c13316607112}\label{classCoord2dTree_a19bd74cd4ceb5151cad0c13316607112}} 
+\index{Coord2dTree@{Coord2dTree}!nearestN@{nearestN}}
+\index{nearestN@{nearestN}!Coord2dTree@{Coord2dTree}}
+\doxysubsubsection{\texorpdfstring{nearestN()}{nearestN()}}
+{\footnotesize\ttfamily vector$<$ pair$<$ double, double $>$ $>$ Coord2d\+Tree\+::nearestN (\begin{DoxyParamCaption}\item[{pair$<$ double, double $>$}]{p,  }\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Procura os N pontos mais próximos de um certo ponto de um dado as suas coordenadas. 
+
+Procura os N pontos mais próximos de um dado as suas coordenadas. Caso a árvore esteja vazia ou o numero de pontos pedidos for 0, retorna um vetor vazio. Para isso, chama o método privado nearest\+N(). Caso a distancia entre o maximo da fila de prioridade e o ponto p seja inferior à distancia entre p e o meridiano de 180º, volta a correr o método nearest\+N(), mas com a longitude equivalente à do ponto p, mas como se estivesse no outro lado do meridiano, por exemplo, se o ponto p tem longitude -\/173º, o ponto p\textquotesingle{} tem longitude 187º. Depois junta as duas filas de prioridade e mantem apenas os N pontos mais proximos.
+
+Complexidade Temporal\+:
+\begin{DoxyItemize}
+\item Em média\+: O((log n + N) $\ast$ log N)
+\item No pior caso\+: O(n $\ast$ log N)
+\end{DoxyItemize}
+
+Onde N é o numero de pontos a procurar e n é o numero total de pontos na árvore
+
+
+\begin{DoxyParams}{Parameters}
+{\em p} & Par de coordenadas do ponto a procurar \\
+\hline
+{\em n} & Número de pontos a procurar \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vetor de pontos mais próximos de p ordenados por ordem crescente de distância 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Coord2dTree_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{Coord2dTree_8cpp_source}{Coord2d\+Tree.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00126                                                                                 \{}
+\DoxyCodeLine{00127     \textcolor{keywordflow}{if}(n == 0) \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00128     \textcolor{keywordflow}{if}(n > size)\{}
+\DoxyCodeLine{00129         cout << \textcolor{stringliteral}{"{}Demasiados elementos pedidos"{}} << endl;}
+\DoxyCodeLine{00130         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00131     \}}
+\DoxyCodeLine{00132     \textcolor{keywordtype}{double} lat = Q.first;}
+\DoxyCodeLine{00133     \textcolor{keywordtype}{double} lon = Q.second;}
+\DoxyCodeLine{00134     priority\_queue<pair<double, pair<double, double>>> bestN;}
+\DoxyCodeLine{00135     \mbox{\hyperlink{classRect}{Rect}} BB = \mbox{\hyperlink{classRect}{Rect}}(-\/90, 90, -\/180, 180);}
+\DoxyCodeLine{00136 }
+\DoxyCodeLine{00137     nearestN(Q, root, 0, BB, bestN, n);}
+\DoxyCodeLine{00138 }
+\DoxyCodeLine{00139     vector<pair<double, double>> best;}
+\DoxyCodeLine{00140 }
+\DoxyCodeLine{00141     \textcolor{keywordflow}{if}(!bestN.empty() \&\& bestN.top().first > haversine(Q.first, Q.second, Q.first, 180)) \{}
+\DoxyCodeLine{00142         priority\_queue<pair<double, pair<double, double>>> bestN2;}
+\DoxyCodeLine{00143         nearestN(make\_pair(lat, (lon < 0 ? 360 + lon : -\/360 + lon)), root, 0, BB, bestN2, n);}
+\DoxyCodeLine{00144         set<pair<double, pair<double, double>>> s;}
+\DoxyCodeLine{00145         \textcolor{keywordflow}{while}(!bestN.empty())\{}
+\DoxyCodeLine{00146             s.insert(\{((double) round(100*bestN.top().first)) / 100, bestN.top().second\});}
+\DoxyCodeLine{00147             bestN.pop();}
+\DoxyCodeLine{00148         \}}
+\DoxyCodeLine{00149         \textcolor{keywordflow}{while}(!bestN2.empty())\{}
+\DoxyCodeLine{00150             s.insert(\{((double) round(100*bestN2.top().first)) / 100, bestN2.top().second\});}
+\DoxyCodeLine{00151             bestN2.pop();}
+\DoxyCodeLine{00152         \}}
+\DoxyCodeLine{00153         \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{00154         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = s.begin(); it != s.end(); it++)\{}
+\DoxyCodeLine{00155             \textcolor{keywordflow}{if}(i >= n) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00156             best.push\_back(it -\/> second);}
+\DoxyCodeLine{00157             i++;}
+\DoxyCodeLine{00158         \}}
+\DoxyCodeLine{00159 }
+\DoxyCodeLine{00160     \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{while}(!bestN.empty())\{}
+\DoxyCodeLine{00161         best.push\_back(bestN.top().second);}
+\DoxyCodeLine{00162         bestN.pop();}
+\DoxyCodeLine{00163     \}}
+\DoxyCodeLine{00164     \textcolor{keywordflow}{return} best;}
+\DoxyCodeLine{00165 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Data\+Structures/Coord2d\+Tree.\+h\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Data\+Structures/Coord2d\+Tree.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,228 @@
+\hypertarget{classAirport}{}\doxysection{Airport Class Reference}
+\label{classAirport}\index{Airport@{Airport}}
+
+
+Classe que representa um aeroporto.  
+
+
+
+
+{\ttfamily \#include $<$Airport.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string \mbox{\hyperlink{classAirport_ad1369e1d47c87e205f1718b853a66d54}{get\+Code}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o codigo do aeroporto. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAirport_a93efcd09328d24469d97a81e8048b776}{get\+Name}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o nome do aeroporto. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAirport_adff088d0536ead7d1c060c385da03f32}{get\+City}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a cidade em que se encontra aeroporto. \end{DoxyCompactList}\item 
+string \mbox{\hyperlink{classAirport_ac0ce4ad3ce71653f13b96e5d40648588}{get\+Country}} () const
+\begin{DoxyCompactList}\small\item\em Retorna o pais em que se encontra aeroporto. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{get\+Latitude}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a latitude do aeroporto. \end{DoxyCompactList}\item 
+double \mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{get\+Longitude}} () const
+\begin{DoxyCompactList}\small\item\em Retorna a longitude do aeroporto. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classAirport_aeae5e687aa86cbf63c39befb0264730a}{Airport}} (string code, string name, string city, string country, double latitude, double longitude)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \mbox{\hyperlink{classAirport}{Airport}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um aeroporto. 
+
+Esta classe representa um aeroporto, com o seu nome, codigo, cidade, pais, latitude e longitude 
+
+Definition at line \mbox{\hyperlink{Airport_8h_source_l00012}{12}} of file \mbox{\hyperlink{Airport_8h_source}{Airport.\+h}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classAirport_aeae5e687aa86cbf63c39befb0264730a}\label{classAirport_aeae5e687aa86cbf63c39befb0264730a}} 
+\index{Airport@{Airport}!Airport@{Airport}}
+\index{Airport@{Airport}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{Airport()}{Airport()}}
+{\footnotesize\ttfamily Airport\+::\+Airport (\begin{DoxyParamCaption}\item[{string}]{code,  }\item[{string}]{name,  }\item[{string}]{city,  }\item[{string}]{country,  }\item[{double}]{latitude,  }\item[{double}]{longitude }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe \mbox{\hyperlink{classAirport}{Airport}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & Codigo do aeroporto \\
+\hline
+{\em name} & Nome do aeroporto \\
+\hline
+{\em city} & Cidade do aeroporto \\
+\hline
+{\em country} & Pais do aeroporto \\
+\hline
+{\em latitude} & Latitude do aeroporto \\
+\hline
+{\em longitude} & Longitude do aeroporto \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00021}{21}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00021                                                                                                          :}
+\DoxyCodeLine{00022     Code(code), Name(name), City(city), Country(country), Latitude(latitude), Longitude(longitude) \{\}}
+
+\end{DoxyCode}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classAirport_adff088d0536ead7d1c060c385da03f32}\label{classAirport_adff088d0536ead7d1c060c385da03f32}} 
+\index{Airport@{Airport}!getCity@{getCity}}
+\index{getCity@{getCity}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCity()}{getCity()}}
+{\footnotesize\ttfamily string Airport\+::get\+City (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a cidade em que se encontra aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+A cidade em que se encontra aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00009}{9}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00009                               \{}
+\DoxyCodeLine{00010     \textcolor{keywordflow}{return} City;}
+\DoxyCodeLine{00011 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAirport_ad1369e1d47c87e205f1718b853a66d54}\label{classAirport_ad1369e1d47c87e205f1718b853a66d54}} 
+\index{Airport@{Airport}!getCode@{getCode}}
+\index{getCode@{getCode}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCode()}{getCode()}}
+{\footnotesize\ttfamily string Airport\+::get\+Code (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna o codigo do aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+O codigo do aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00003}{3}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00003                               \{}
+\DoxyCodeLine{00004     \textcolor{keywordflow}{return} Code;}
+\DoxyCodeLine{00005 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAirport_ac0ce4ad3ce71653f13b96e5d40648588}\label{classAirport_ac0ce4ad3ce71653f13b96e5d40648588}} 
+\index{Airport@{Airport}!getCountry@{getCountry}}
+\index{getCountry@{getCountry}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getCountry()}{getCountry()}}
+{\footnotesize\ttfamily string Airport\+::get\+Country (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna o pais em que se encontra aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+O pais em que se encontra aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00012                                  \{}
+\DoxyCodeLine{00013     \textcolor{keywordflow}{return} Country;}
+\DoxyCodeLine{00014 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAirport_aed71ba4592b2a1401eb182931f2d3f06}\label{classAirport_aed71ba4592b2a1401eb182931f2d3f06}} 
+\index{Airport@{Airport}!getLatitude@{getLatitude}}
+\index{getLatitude@{getLatitude}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getLatitude()}{getLatitude()}}
+{\footnotesize\ttfamily double Airport\+::get\+Latitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a latitude do aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+A latitude do aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00015                                   \{}
+\DoxyCodeLine{00016     \textcolor{keywordflow}{return} Latitude;}
+\DoxyCodeLine{00017 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAirport_ad8cd931389b14d63e5933a1658b653a3}\label{classAirport_ad8cd931389b14d63e5933a1658b653a3}} 
+\index{Airport@{Airport}!getLongitude@{getLongitude}}
+\index{getLongitude@{getLongitude}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getLongitude()}{getLongitude()}}
+{\footnotesize\ttfamily double Airport\+::get\+Longitude (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna a longitude do aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+A longitude do aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00018                                    \{}
+\DoxyCodeLine{00019     \textcolor{keywordflow}{return} Longitude;}
+\DoxyCodeLine{00020 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classAirport_a93efcd09328d24469d97a81e8048b776}\label{classAirport_a93efcd09328d24469d97a81e8048b776}} 
+\index{Airport@{Airport}!getName@{getName}}
+\index{getName@{getName}!Airport@{Airport}}
+\doxysubsubsection{\texorpdfstring{getName()}{getName()}}
+{\footnotesize\ttfamily string Airport\+::get\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Retorna o nome do aeroporto. 
+
+\begin{DoxyReturn}{Returns}
+O nome do aeroporto 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{Airport_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{Airport_8cpp_source}{Airport.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00006                               \{}
+\DoxyCodeLine{00007     \textcolor{keywordflow}{return} Name;}
+\DoxyCodeLine{00008 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Helper\+Classes/Airport.\+h\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\+Helper\+Classes/Airport.\+cpp\end{DoxyCompactItemize}

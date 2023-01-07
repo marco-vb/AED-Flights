@@ -1,0 +1,39 @@
+\hypertarget{structpair__hash}{}\doxysection{pair\+\_\+hash Struct Reference}
+\label{structpair__hash}\index{pair\_hash@{pair\_hash}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+size\+\_\+t \mbox{\hyperlink{structpair__hash_a4efcd2cee835bafba33f784b29ef54da}{operator()}} (const std\+::pair$<$ double, double $>$ \&pair) const
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{structpair__hash_a4efcd2cee835bafba33f784b29ef54da}\label{structpair__hash_a4efcd2cee835bafba33f784b29ef54da}} 
+\index{pair\_hash@{pair\_hash}!operator()@{operator()}}
+\index{operator()@{operator()}!pair\_hash@{pair\_hash}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily size\+\_\+t pair\+\_\+hash\+::operator() (\begin{DoxyParamCaption}\item[{const std\+::pair$<$ double, double $>$ \&}]{pair }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00019}{19}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00019                                                                    \{}
+\DoxyCodeLine{00020         \textcolor{keywordflow}{return} std::hash<double>()(pair.first) \string^ std::hash<double>()(pair.second);}
+\DoxyCodeLine{00021     \}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/e/trabalhos(2)/\+FEUP/2o\+\_\+ano\+\_\+1o\+\_\+semestre/\+AED/projeto2/\+AED-\/\+Flights/\mbox{\hyperlink{main_8cpp}{main.\+cpp}}\end{DoxyCompactItemize}
