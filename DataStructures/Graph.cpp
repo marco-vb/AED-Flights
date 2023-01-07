@@ -193,8 +193,6 @@ set<int> Graph::articulationPointsDFS(int v, int index, vector<int>& num, vector
             for(int t : temp) ap.insert(t);
             low[v] = min(low[v], low[w]);
             if(low[w] >= num[v] && !first) {
-//                cout << v << " - is first: " << first << endl;
-//                cout << w << " - the curr destiny" << endl;
                 is_ap = true;
                 ap.insert(v);
             }
@@ -385,9 +383,9 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
     }
 
     queue<int> q;
-    vector<int> prev(n+1);
+    vector<int> prev(n + 1);
 
-    for (const int & i : src) {
+    for (const int &i: src) {
         nodes[i].distance = 0;
         q.push(i);
     }
@@ -398,7 +396,7 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
         q.pop();
         if (nodes[v].visited) continue;
         nodes[v].visited = true;
-        for (const auto& e : nodes[v].adj) {
+        for (const auto &e: nodes[v].adj) {
             int w = e.dest;
             if (nodes[w].distance > nodes[v].distance + e.weight) {
                 nodes[w].distance = nodes[v].distance + e.weight;
@@ -410,7 +408,7 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
 
     //Find the shortest path between src and dest
     list<li> paths;
-    for (const int & i : dest) {
+    for (const int &i: dest) {
         if (nodes[i].distance == INT_MAX) continue;
         list<int> path;
         int v = i;
@@ -421,10 +419,9 @@ list<li> Graph::least_flights_with_distance(const vector<int>& src, const vector
         paths.push_back(path);
     }
 
-    for (auto& p : paths) {
+    for (auto &p: paths) {
         p.push_front(nodes[p.back()].distance);
     }
 
     return paths;
 }
-
