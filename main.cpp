@@ -1129,12 +1129,29 @@ void print_shortest_paths(const vector<int>& src, const vector<int>& dest) {
 /**
  * @brief Função que imprime os pontos de articulação
  *
- * Esta função pergunta ao utilizador pretende pesquisar apenas para certas companhias aéreas, caso sim
- * pede ao utilizador as companhias aéreas a considerar e imprime os pontos de articulação.
+ * Esta função cria um novo grafo, ap_graph, que é equivalente ao grafo de aeroportos, mas não dirigido.
+ * Deseguida pergunta ao utilizador pretende pesquisar apenas para certas companhias aéreas, caso sim
+ * pede ao utilizador as companhias aéreas a considerar e imprime os pontos de articulação do ap_graph.
  * Esta função utiliza o método getArticulationPoints() da classe Graph.
  *
  */
 void print_articulation_points() {
+    Graph ap_graph = graph;
+    for(int i = 1; i < graph.nodes.size(); i++) {
+        for(auto e: graph.nodes[i].adj) {
+            bool ret = false;
+            for (auto f: graph.nodes[e.dest].adj)
+                if (f.dest == i) {
+                    ret = true;
+                }
+            if(!ret) {
+                for (string airline: e.airlines) {
+                    ap_graph.addEdge(e.dest, i, airline, e.weight);
+                }
+            }
+        }
+    }
+
     cout << endl << "Pretende pesquisar apenas para certas companhias aéreas? (s/n) ";
     string op;
     cin >> op;
@@ -1151,7 +1168,7 @@ void print_articulation_points() {
                 cout << "Companhia aérea não encontrada!" << endl;
             }
         }
-        set<int> ap = graph.getArticulationPoints(airlines_to_consider);
+        set<int> ap = ap_graph.getArticulationPoints(airlines_to_consider);
         if(ap.empty()) cout << "Sem pontos de articulacao" << endl;
         else {
             cout << "Pontos de Articulacao: " << endl;
@@ -1160,12 +1177,12 @@ void print_articulation_points() {
             }
         }
     } else {
-        set<int> ap = graph.getArticulationPoints();
+        set<int> ap = ap_graph.getArticulationPoints();
         if(ap.empty()) cout << "Sem pontos de articulacao" << endl;
         else {
             cout << "Pontos de Articulacao: " << endl;
             for(auto &a : ap) {
-                cout << airports.at(a).getCode() << '-' << airports.at(a).getName() << '-' << a << endl;
+                cout << airports.at(a).getCode() << '-' << airports.at(a).getName() << endl;
             }
         }
     }
