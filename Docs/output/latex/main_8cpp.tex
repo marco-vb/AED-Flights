@@ -68,13 +68,13 @@ int \mbox{\hyperlink{main_8cpp_a9fdc2f355ac7022b834b6d322badd69d}{get\+Cities\+N
 int \mbox{\hyperlink{main_8cpp_ae96b56f0278b5f16196360aebdb3b4b0}{get\+Countries\+Number}} (set$<$ int $>$ \&)
 \item 
 void \mbox{\hyperlink{main_8cpp_a077376a310d7f3098f0c63ca1d63df01}{print\+\_\+global\+\_\+stats}} ()
-\item 
-void \mbox{\hyperlink{main_8cpp_a5c3070efff21e667ae88739eabd8fd6d}{print\+\_\+airport\+\_\+stats}} (int, const \mbox{\hyperlink{classAirport}{Airport}} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Função que imprime as estatísticas da rede global. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a86b72aecd71f918b974747365432a2e5}{print\+\_\+airport\+\_\+stats}} (int id, const \mbox{\hyperlink{classAirport}{Airport}} \&airport)
+\begin{DoxyCompactList}\small\item\em Função que imprime as estatísticas de um aeroporto. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_a4bbb294a9a360290ff006a1af3dbef8f}{print\+\_\+country\+\_\+stats}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Função que imprime as estatísticas de um país. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_a539d4ab5ef1ed1fffdd2b20cafd767ac}{print\+\_\+airline\+\_\+stats}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Função que imprime as estatísticas de uma companhia aérea. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{main_8cpp_ad071036de8bbc73f7725cdc9fc752c7e}{print\+\_\+articulation\+\_\+points}} ()
 \begin{DoxyCompactList}\small\item\em Função que imprime os pontos de articulação. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
@@ -169,24 +169,24 @@ Inteiro correspondente ao aeroporto pedido
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00677}{677}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00676}{676}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00677                                 \{}
-\DoxyCodeLine{00678     \textcolor{keywordtype}{string} src;}
-\DoxyCodeLine{00679     \textcolor{keywordtype}{string} s;}
-\DoxyCodeLine{00680     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
-\DoxyCodeLine{00681     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
-\DoxyCodeLine{00682     cout << \textcolor{stringliteral}{"{}Escolha o aeroporto de "{}} << s << \textcolor{stringliteral}{"{}: "{}}; cin >> src;}
-\DoxyCodeLine{00683     transform(src.begin(), src.end(), src.begin(), ::toupper);}
-\DoxyCodeLine{00684 }
-\DoxyCodeLine{00685     \textcolor{keywordflow}{if} (airport\_codes.find(src) == airport\_codes.end()) \{}
-\DoxyCodeLine{00686         cout << \textcolor{stringliteral}{"{}Aeroporto nao encontrado!"{}} << endl; wait();}
-\DoxyCodeLine{00687         \textcolor{keywordflow}{return} -\/1;}
-\DoxyCodeLine{00688     \}}
-\DoxyCodeLine{00689     \textcolor{keywordflow}{return} airport\_codes[src];}
-\DoxyCodeLine{00690 \}}
+\DoxyCodeLine{00676                                 \{}
+\DoxyCodeLine{00677     \textcolor{keywordtype}{string} src;}
+\DoxyCodeLine{00678     \textcolor{keywordtype}{string} s;}
+\DoxyCodeLine{00679     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
+\DoxyCodeLine{00680     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
+\DoxyCodeLine{00681     cout << \textcolor{stringliteral}{"{}Escolha o aeroporto de "{}} << s << \textcolor{stringliteral}{"{}: "{}}; cin >> src;}
+\DoxyCodeLine{00682     transform(src.begin(), src.end(), src.begin(), ::toupper);}
+\DoxyCodeLine{00683 }
+\DoxyCodeLine{00684     \textcolor{keywordflow}{if} (airport\_codes.find(src) == airport\_codes.end()) \{}
+\DoxyCodeLine{00685         cout << \textcolor{stringliteral}{"{}Aeroporto nao encontrado!"{}} << endl; wait();}
+\DoxyCodeLine{00686         \textcolor{keywordflow}{return} -\/1;}
+\DoxyCodeLine{00687     \}}
+\DoxyCodeLine{00688     \textcolor{keywordflow}{return} airport\_codes[src];}
+\DoxyCodeLine{00689 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}\label{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}} 
@@ -206,42 +206,42 @@ Vetor de inteiro correspondentes aos aeroportos pedidos
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00700}{700}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00699}{699}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00700                                      \{}
-\DoxyCodeLine{00701     \textcolor{keywordtype}{string} src;}
-\DoxyCodeLine{00702     \textcolor{keywordtype}{string} s;}
-\DoxyCodeLine{00703     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
-\DoxyCodeLine{00704     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
-\DoxyCodeLine{00705     cout << \textcolor{stringliteral}{"{}Escolha a cidade de "{}} << s << \textcolor{stringliteral}{"{}: "{}};}
-\DoxyCodeLine{00706     getline(cin >> ws, src);}
-\DoxyCodeLine{00707     transform(src.begin(), src.end(), src.begin(), ::toupper);}
-\DoxyCodeLine{00708     \textcolor{keywordflow}{if} (airport\_cities.find(src) == airport\_cities.end()) \{}
-\DoxyCodeLine{00709         cout << \textcolor{stringliteral}{"{}Cidade nao encontrada!"{}} << endl;}
-\DoxyCodeLine{00710         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00711     \}}
-\DoxyCodeLine{00712 }
-\DoxyCodeLine{00713     vector<int> airport\_list = airport\_cities[src];}
-\DoxyCodeLine{00714 }
-\DoxyCodeLine{00715     \textcolor{keywordflow}{if}(cities\_country.find(src) -\/> second.size() > 1) \{}
-\DoxyCodeLine{00716         cout << \textcolor{stringliteral}{"{}Escolha o pais: "{}};}
-\DoxyCodeLine{00717         \textcolor{keywordtype}{string} country;}
-\DoxyCodeLine{00718         getline(cin >> ws, country);}
-\DoxyCodeLine{00719         transform(country.begin(), country.end(), country.begin(), ::toupper);}
-\DoxyCodeLine{00720         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = airport\_list.begin(); it != airport\_list.end(); it++) \{}
-\DoxyCodeLine{00721             \textcolor{keywordtype}{string} c = airports.at(*it).getCountry();}
-\DoxyCodeLine{00722             transform(c.begin(), c.end(), c.begin(), ::toupper);}
-\DoxyCodeLine{00723             \textcolor{keywordflow}{if}(c != country) \{}
-\DoxyCodeLine{00724                 airport\_list.erase(it);}
-\DoxyCodeLine{00725                 it-\/-\/;}
-\DoxyCodeLine{00726             \}}
-\DoxyCodeLine{00727         \}}
-\DoxyCodeLine{00728     \}}
-\DoxyCodeLine{00729 }
-\DoxyCodeLine{00730     \textcolor{keywordflow}{return} airport\_list;}
-\DoxyCodeLine{00731 \}}
+\DoxyCodeLine{00699                                      \{}
+\DoxyCodeLine{00700     \textcolor{keywordtype}{string} src;}
+\DoxyCodeLine{00701     \textcolor{keywordtype}{string} s;}
+\DoxyCodeLine{00702     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
+\DoxyCodeLine{00703     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
+\DoxyCodeLine{00704     cout << \textcolor{stringliteral}{"{}Escolha a cidade de "{}} << s << \textcolor{stringliteral}{"{}: "{}};}
+\DoxyCodeLine{00705     getline(cin >> ws, src);}
+\DoxyCodeLine{00706     transform(src.begin(), src.end(), src.begin(), ::toupper);}
+\DoxyCodeLine{00707     \textcolor{keywordflow}{if} (airport\_cities.find(src) == airport\_cities.end()) \{}
+\DoxyCodeLine{00708         cout << \textcolor{stringliteral}{"{}Cidade nao encontrada!"{}} << endl;}
+\DoxyCodeLine{00709         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00710     \}}
+\DoxyCodeLine{00711 }
+\DoxyCodeLine{00712     vector<int> airport\_list = airport\_cities[src];}
+\DoxyCodeLine{00713 }
+\DoxyCodeLine{00714     \textcolor{keywordflow}{if}(cities\_country.find(src) -\/> second.size() > 1) \{}
+\DoxyCodeLine{00715         cout << \textcolor{stringliteral}{"{}Escolha o pais: "{}};}
+\DoxyCodeLine{00716         \textcolor{keywordtype}{string} country;}
+\DoxyCodeLine{00717         getline(cin >> ws, country);}
+\DoxyCodeLine{00718         transform(country.begin(), country.end(), country.begin(), ::toupper);}
+\DoxyCodeLine{00719         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} it = airport\_list.begin(); it != airport\_list.end(); it++) \{}
+\DoxyCodeLine{00720             \textcolor{keywordtype}{string} c = airports.at(*it).getCountry();}
+\DoxyCodeLine{00721             transform(c.begin(), c.end(), c.begin(), ::toupper);}
+\DoxyCodeLine{00722             \textcolor{keywordflow}{if}(c != country) \{}
+\DoxyCodeLine{00723                 airport\_list.erase(it);}
+\DoxyCodeLine{00724                 it-\/-\/;}
+\DoxyCodeLine{00725             \}}
+\DoxyCodeLine{00726         \}}
+\DoxyCodeLine{00727     \}}
+\DoxyCodeLine{00728 }
+\DoxyCodeLine{00729     \textcolor{keywordflow}{return} airport\_list;}
+\DoxyCodeLine{00730 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}\label{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}} 
@@ -261,27 +261,27 @@ Inteiro correspondente ao aeroporto mais próximo das coordenadas dadas
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00741}{741}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00740}{740}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00741                                     \{}
-\DoxyCodeLine{00742     \textcolor{keywordtype}{string} src;}
-\DoxyCodeLine{00743     \textcolor{keywordtype}{string} s;}
-\DoxyCodeLine{00744     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
-\DoxyCodeLine{00745     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
-\DoxyCodeLine{00746     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
-\DoxyCodeLine{00747     getline(cin >> ws, src);}
-\DoxyCodeLine{00748     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
-\DoxyCodeLine{00749     pair <double, double> src\_coords = tree.nearest(coords);}
-\DoxyCodeLine{00750 }
-\DoxyCodeLine{00751     \textcolor{keywordflow}{if} (src\_coords.first == 100 \&\&}
-\DoxyCodeLine{00752         src\_coords.second == 200) \{}
-\DoxyCodeLine{00753         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
-\DoxyCodeLine{00754         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00755     \}}
-\DoxyCodeLine{00756     \textcolor{keywordflow}{return} airport\_coords[src\_coords];}
-\DoxyCodeLine{00757 \}}
+\DoxyCodeLine{00740                                     \{}
+\DoxyCodeLine{00741     \textcolor{keywordtype}{string} src;}
+\DoxyCodeLine{00742     \textcolor{keywordtype}{string} s;}
+\DoxyCodeLine{00743     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
+\DoxyCodeLine{00744     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
+\DoxyCodeLine{00745     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
+\DoxyCodeLine{00746     getline(cin >> ws, src);}
+\DoxyCodeLine{00747     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
+\DoxyCodeLine{00748     pair <double, double> src\_coords = tree.nearest(coords);}
+\DoxyCodeLine{00749 }
+\DoxyCodeLine{00750     \textcolor{keywordflow}{if} (src\_coords.first == 100 \&\&}
+\DoxyCodeLine{00751         src\_coords.second == 200) \{}
+\DoxyCodeLine{00752         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
+\DoxyCodeLine{00753         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00754     \}}
+\DoxyCodeLine{00755     \textcolor{keywordflow}{return} airport\_coords[src\_coords];}
+\DoxyCodeLine{00756 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a49820625f81ed6037cca5cf609ee454f}\label{main_8cpp_a49820625f81ed6037cca5cf609ee454f}} 
@@ -301,39 +301,39 @@ Vetor de inteiros correspondentes aos aeroportos dentro de um raio das coordenad
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00767}{767}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00766}{766}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00767                                                \{}
-\DoxyCodeLine{00768     \textcolor{keywordtype}{string} src;}
-\DoxyCodeLine{00769     \textcolor{keywordtype}{string} s;}
-\DoxyCodeLine{00770     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
-\DoxyCodeLine{00771     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
-\DoxyCodeLine{00772     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
-\DoxyCodeLine{00773     getline(cin >> ws, src);}
-\DoxyCodeLine{00774     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
-\DoxyCodeLine{00775     \textcolor{keywordflow}{if} (coords.first == 100 \&\&}
-\DoxyCodeLine{00776         coords.second == 200) \{}
-\DoxyCodeLine{00777         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
-\DoxyCodeLine{00778         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00779     \}}
-\DoxyCodeLine{00780     cout << endl << \textcolor{stringliteral}{"{}Escolha o raio de pesquisa (em km): "{}};}
-\DoxyCodeLine{00781     \textcolor{keywordtype}{double} radius\_src;}
-\DoxyCodeLine{00782     cin >> radius\_src;}
-\DoxyCodeLine{00783 }
-\DoxyCodeLine{00784     vector <pair<double, double>> src\_pairs = tree.in\_radius(coords, radius\_src);}
-\DoxyCodeLine{00785     \textcolor{keywordflow}{if}(src\_pairs.empty()) \{}
-\DoxyCodeLine{00786         cout << \textcolor{stringliteral}{"{}Nao foram encontrados aeroportos na zona de "{}} << s << \textcolor{stringliteral}{"{}!"{}} << endl;}
-\DoxyCodeLine{00787         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00788     \}}
-\DoxyCodeLine{00789 }
-\DoxyCodeLine{00790     vector <int> airports\_in\_radius\_src;\textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src\_pairs.size(); i++) \{}
-\DoxyCodeLine{00791         airports\_in\_radius\_src.push\_back(airport\_coords[src\_pairs[i]]);}
-\DoxyCodeLine{00792     \}}
-\DoxyCodeLine{00793 }
-\DoxyCodeLine{00794     \textcolor{keywordflow}{return} airports\_in\_radius\_src;}
-\DoxyCodeLine{00795 \}}
+\DoxyCodeLine{00766                                                \{}
+\DoxyCodeLine{00767     \textcolor{keywordtype}{string} src;}
+\DoxyCodeLine{00768     \textcolor{keywordtype}{string} s;}
+\DoxyCodeLine{00769     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
+\DoxyCodeLine{00770     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
+\DoxyCodeLine{00771     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
+\DoxyCodeLine{00772     getline(cin >> ws, src);}
+\DoxyCodeLine{00773     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
+\DoxyCodeLine{00774     \textcolor{keywordflow}{if} (coords.first == 100 \&\&}
+\DoxyCodeLine{00775         coords.second == 200) \{}
+\DoxyCodeLine{00776         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
+\DoxyCodeLine{00777         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00778     \}}
+\DoxyCodeLine{00779     cout << endl << \textcolor{stringliteral}{"{}Escolha o raio de pesquisa (em km): "{}};}
+\DoxyCodeLine{00780     \textcolor{keywordtype}{double} radius\_src;}
+\DoxyCodeLine{00781     cin >> radius\_src;}
+\DoxyCodeLine{00782 }
+\DoxyCodeLine{00783     vector <pair<double, double>> src\_pairs = tree.in\_radius(coords, radius\_src);}
+\DoxyCodeLine{00784     \textcolor{keywordflow}{if}(src\_pairs.empty()) \{}
+\DoxyCodeLine{00785         cout << \textcolor{stringliteral}{"{}Nao foram encontrados aeroportos na zona de "{}} << s << \textcolor{stringliteral}{"{}!"{}} << endl;}
+\DoxyCodeLine{00786         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00787     \}}
+\DoxyCodeLine{00788 }
+\DoxyCodeLine{00789     vector <int> airports\_in\_radius\_src;\textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src\_pairs.size(); i++) \{}
+\DoxyCodeLine{00790         airports\_in\_radius\_src.push\_back(airport\_coords[src\_pairs[i]]);}
+\DoxyCodeLine{00791     \}}
+\DoxyCodeLine{00792 }
+\DoxyCodeLine{00793     \textcolor{keywordflow}{return} airports\_in\_radius\_src;}
+\DoxyCodeLine{00794 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}\label{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}} 
@@ -353,39 +353,39 @@ Vetor de inteiros correspondentes aos N aeroportos mais próximos das coordenada
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00805}{805}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00804}{804}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00805                                               \{}
-\DoxyCodeLine{00806     \textcolor{keywordtype}{string} src;}
-\DoxyCodeLine{00807     \textcolor{keywordtype}{string} s;}
-\DoxyCodeLine{00808     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
-\DoxyCodeLine{00809     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
-\DoxyCodeLine{00810     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
-\DoxyCodeLine{00811     getline(cin >> ws, src);}
-\DoxyCodeLine{00812     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
-\DoxyCodeLine{00813     \textcolor{keywordflow}{if} (coords.first == 100 \&\&}
-\DoxyCodeLine{00814         coords.second == 200) \{}
-\DoxyCodeLine{00815         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
-\DoxyCodeLine{00816         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00817     \}}
-\DoxyCodeLine{00818     cout << endl << \textcolor{stringliteral}{"{}Escolha o numero de pontos de pesquisa: "{}};}
-\DoxyCodeLine{00819     \textcolor{keywordtype}{int} n;}
-\DoxyCodeLine{00820     cin >> n;}
-\DoxyCodeLine{00821 }
-\DoxyCodeLine{00822     vector <pair<double, double>> src\_pairs = tree.nearestN(coords, n);}
-\DoxyCodeLine{00823     \textcolor{keywordflow}{if}(src\_pairs.empty()) \{}
-\DoxyCodeLine{00824         cout << \textcolor{stringliteral}{"{}Nao foram encontrados aeroportos na zona de "{}} << s << \textcolor{stringliteral}{"{}!"{}} << endl;}
-\DoxyCodeLine{00825         \textcolor{keywordflow}{return} \{\};}
-\DoxyCodeLine{00826     \}}
-\DoxyCodeLine{00827 }
-\DoxyCodeLine{00828     vector <int> airports\_src;\textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src\_pairs.size(); i++) \{}
-\DoxyCodeLine{00829         airports\_src.push\_back(airport\_coords[src\_pairs[i]]);}
-\DoxyCodeLine{00830     \}}
-\DoxyCodeLine{00831 }
-\DoxyCodeLine{00832     \textcolor{keywordflow}{return} airports\_src;}
-\DoxyCodeLine{00833 \}}
+\DoxyCodeLine{00804                                               \{}
+\DoxyCodeLine{00805     \textcolor{keywordtype}{string} src;}
+\DoxyCodeLine{00806     \textcolor{keywordtype}{string} s;}
+\DoxyCodeLine{00807     \textcolor{keywordflow}{if}(is\_origin) s = \textcolor{stringliteral}{"{}origem"{}};}
+\DoxyCodeLine{00808     \textcolor{keywordflow}{else} s = \textcolor{stringliteral}{"{}destino"{}};}
+\DoxyCodeLine{00809     cout << \textcolor{stringliteral}{"{}Escolha as coordenadas de "{}} << s << \textcolor{stringliteral}{"{} (e.g. '16.23N 42.13W' or '16.23,-\/42.13'): "{}};}
+\DoxyCodeLine{00810     getline(cin >> ws, src);}
+\DoxyCodeLine{00811     pair <double, double> coords = \mbox{\hyperlink{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}{string\_to\_coords}}(src);}
+\DoxyCodeLine{00812     \textcolor{keywordflow}{if} (coords.first == 100 \&\&}
+\DoxyCodeLine{00813         coords.second == 200) \{}
+\DoxyCodeLine{00814         cout << \textcolor{stringliteral}{"{}Erro ao introduzir as coordenadas!"{}} << endl;}
+\DoxyCodeLine{00815         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00816     \}}
+\DoxyCodeLine{00817     cout << endl << \textcolor{stringliteral}{"{}Escolha o numero de pontos de pesquisa: "{}};}
+\DoxyCodeLine{00818     \textcolor{keywordtype}{int} n;}
+\DoxyCodeLine{00819     cin >> n;}
+\DoxyCodeLine{00820 }
+\DoxyCodeLine{00821     vector <pair<double, double>> src\_pairs = tree.nearestN(coords, n);}
+\DoxyCodeLine{00822     \textcolor{keywordflow}{if}(src\_pairs.empty()) \{}
+\DoxyCodeLine{00823         cout << \textcolor{stringliteral}{"{}Nao foram encontrados aeroportos na zona de "{}} << s << \textcolor{stringliteral}{"{}!"{}} << endl;}
+\DoxyCodeLine{00824         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{00825     \}}
+\DoxyCodeLine{00826 }
+\DoxyCodeLine{00827     vector <int> airports\_src;\textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src\_pairs.size(); i++) \{}
+\DoxyCodeLine{00828         airports\_src.push\_back(airport\_coords[src\_pairs[i]]);}
+\DoxyCodeLine{00829     \}}
+\DoxyCodeLine{00830 }
+\DoxyCodeLine{00831     \textcolor{keywordflow}{return} airports\_src;}
+\DoxyCodeLine{00832 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a9fdc2f355ac7022b834b6d322badd69d}\label{main_8cpp_a9fdc2f355ac7022b834b6d322badd69d}} 
@@ -396,17 +396,17 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l00805}{805}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00843}{843}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00842}{842}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00843                                     \{}
-\DoxyCodeLine{00844     set<string> cities;}
-\DoxyCodeLine{00845     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} : set1) \{}
-\DoxyCodeLine{00846         cities.insert(airports.at(\textcolor{keywordtype}{id}).getCity());}
-\DoxyCodeLine{00847     \}}
-\DoxyCodeLine{00848     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) cities.size();}
-\DoxyCodeLine{00849 \}}
+\DoxyCodeLine{00842                                     \{}
+\DoxyCodeLine{00843     set<string> cities;}
+\DoxyCodeLine{00844     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} : set1) \{}
+\DoxyCodeLine{00845         cities.insert(airports.at(\textcolor{keywordtype}{id}).getCity());}
+\DoxyCodeLine{00846     \}}
+\DoxyCodeLine{00847     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) cities.size();}
+\DoxyCodeLine{00848 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_ae96b56f0278b5f16196360aebdb3b4b0}\label{main_8cpp_ae96b56f0278b5f16196360aebdb3b4b0}} 
@@ -417,17 +417,17 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l00843}{843}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00836}{836}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00835}{835}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00836                                        \{}
-\DoxyCodeLine{00837     set<string> countries;}
-\DoxyCodeLine{00838     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} : set1) \{}
-\DoxyCodeLine{00839         countries.insert(airports.at(\textcolor{keywordtype}{id}).getCountry());}
-\DoxyCodeLine{00840     \}}
-\DoxyCodeLine{00841     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) countries.size();}
-\DoxyCodeLine{00842 \}}
+\DoxyCodeLine{00835                                        \{}
+\DoxyCodeLine{00836     set<string> countries;}
+\DoxyCodeLine{00837     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \textcolor{keywordtype}{id} : set1) \{}
+\DoxyCodeLine{00838         countries.insert(airports.at(\textcolor{keywordtype}{id}).getCountry());}
+\DoxyCodeLine{00839     \}}
+\DoxyCodeLine{00840     \textcolor{keywordflow}{return} (\textcolor{keywordtype}{int}) countries.size();}
+\DoxyCodeLine{00841 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}\label{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}} 
@@ -451,43 +451,43 @@ Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00861}{861}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00860}{860}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00861                                                                           \{}
-\DoxyCodeLine{00862     list<li> path = graph.least\_flights(src, dest);}
-\DoxyCodeLine{00863     set<string> o; set<string> d; \textcolor{keywordtype}{string} src\_string; \textcolor{keywordtype}{string} dst\_string;}
-\DoxyCodeLine{00864     \textcolor{keywordflow}{if}(src.size() == 1)}
-\DoxyCodeLine{00865         src\_string = airports.at(src[0]).getName();}
-\DoxyCodeLine{00866     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00867         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: src)}
-\DoxyCodeLine{00868             o.insert(airports.at(s).getCity());}
-\DoxyCodeLine{00869         src\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(o);}
-\DoxyCodeLine{00870     \}}
-\DoxyCodeLine{00871     \textcolor{keywordflow}{if}(dest.size() == 1)}
-\DoxyCodeLine{00872         dst\_string = airports.at(dest[0]).getName();}
-\DoxyCodeLine{00873     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00874         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: dest)}
-\DoxyCodeLine{00875             d.insert(airports.at(s).getCity());}
-\DoxyCodeLine{00876         dst\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(d);}
-\DoxyCodeLine{00877     \}}
-\DoxyCodeLine{00878 }
-\DoxyCodeLine{00879     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << src\_string << \textcolor{stringliteral}{"{} para "{}} << dst\_string << endl << endl;}
-\DoxyCodeLine{00880 }
-\DoxyCodeLine{00881     \textcolor{keywordflow}{if} (path.empty())}
-\DoxyCodeLine{00882         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
-\DoxyCodeLine{00883 }
-\DoxyCodeLine{00884     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
-\DoxyCodeLine{00885         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
-\DoxyCodeLine{00886             \textcolor{keywordflow}{if} (k == l.back())}
-\DoxyCodeLine{00887                 cout << airports.at(k).getName() << endl;}
-\DoxyCodeLine{00888             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00889                 cout << airports.at(k).getName() << \textcolor{stringliteral}{"{} -\/> "{}};}
-\DoxyCodeLine{00890         \}}
-\DoxyCodeLine{00891         cout << endl;}
-\DoxyCodeLine{00892     \}}
-\DoxyCodeLine{00893 \}}
+\DoxyCodeLine{00860                                                                           \{}
+\DoxyCodeLine{00861     list<lp> path = graph.\mbox{\hyperlink{classGraph_ae407422b47c174d4471f349bab61e638}{least\_flights}}(src, dest);}
+\DoxyCodeLine{00862     set<string> o; set<string> d; \textcolor{keywordtype}{string} src\_string; \textcolor{keywordtype}{string} dst\_string;}
+\DoxyCodeLine{00863     \textcolor{keywordflow}{if}(src.size() == 1)}
+\DoxyCodeLine{00864         src\_string = airports.at(src[0]).getName();}
+\DoxyCodeLine{00865     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00866         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: src)}
+\DoxyCodeLine{00867             o.insert(airports.at(s).getCity());}
+\DoxyCodeLine{00868         src\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(o);}
+\DoxyCodeLine{00869     \}}
+\DoxyCodeLine{00870     \textcolor{keywordflow}{if}(dest.size() == 1)}
+\DoxyCodeLine{00871         dst\_string = airports.at(dest[0]).getName();}
+\DoxyCodeLine{00872     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00873         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: dest)}
+\DoxyCodeLine{00874             d.insert(airports.at(s).getCity());}
+\DoxyCodeLine{00875         dst\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(d);}
+\DoxyCodeLine{00876     \}}
+\DoxyCodeLine{00877 }
+\DoxyCodeLine{00878     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << src\_string << \textcolor{stringliteral}{"{} para "{}} << dst\_string << endl << endl;}
+\DoxyCodeLine{00879 }
+\DoxyCodeLine{00880     \textcolor{keywordflow}{if} (path.empty())}
+\DoxyCodeLine{00881         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
+\DoxyCodeLine{00882 }
+\DoxyCodeLine{00883     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
+\DoxyCodeLine{00884         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
+\DoxyCodeLine{00885             \textcolor{keywordflow}{if} (k == l.back())}
+\DoxyCodeLine{00886                 cout << airports.at(k.first).getName() << endl;}
+\DoxyCodeLine{00887             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00888                 cout << airports.at(k.first).getName() << \textcolor{stringliteral}{"{} -\/-\/("{}} << k.second << \textcolor{stringliteral}{"{})-\/> "{}};}
+\DoxyCodeLine{00889         \}}
+\DoxyCodeLine{00890         cout << endl;}
+\DoxyCodeLine{00891     \}}
+\DoxyCodeLine{00892 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_acda4969d352a18980be0bcd8f2f18674}\label{main_8cpp_acda4969d352a18980be0bcd8f2f18674}} 
@@ -513,32 +513,32 @@ Dados um vetor de inteiros com os aeroportos de origem, outro com os aeroportos 
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00906}{906}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00905}{905}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00906                                                                                                                    \{}
-\DoxyCodeLine{00907     list<li> path = graph.least\_flights(src, dest, airlines\_to\_consider);}
-\DoxyCodeLine{00908 }
-\DoxyCodeLine{00909     cout << \textcolor{stringliteral}{"{}Companhias aéreas consideradas: "{}};}
-\DoxyCodeLine{00910     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& a : airlines\_to\_consider) cout << a << \textcolor{stringliteral}{"{} "{}};}
-\DoxyCodeLine{00911     cout << endl;}
-\DoxyCodeLine{00912 }
-\DoxyCodeLine{00913     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << airports.at(src.front()).getCity() << \textcolor{stringliteral}{"{} para "{}} << airports.at(dest.front()).getCity() << endl;}
-\DoxyCodeLine{00914 }
-\DoxyCodeLine{00915     \textcolor{keywordflow}{if} (path.empty())}
-\DoxyCodeLine{00916         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
-\DoxyCodeLine{00917 }
-\DoxyCodeLine{00918     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
-\DoxyCodeLine{00919         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
-\DoxyCodeLine{00920             \textcolor{keywordflow}{if} (k == l.back())}
-\DoxyCodeLine{00921                 cout << airports.at(k).getName() << endl;}
-\DoxyCodeLine{00922             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00923                 cout << airports.at(k).getName() << \textcolor{stringliteral}{"{} -\/> "{}};}
-\DoxyCodeLine{00924         \}}
-\DoxyCodeLine{00925         cout << endl;}
-\DoxyCodeLine{00926     \}}
-\DoxyCodeLine{00927 \}}
+\DoxyCodeLine{00905                                                                                                                    \{}
+\DoxyCodeLine{00906     list<lp> path = graph.\mbox{\hyperlink{classGraph_ae407422b47c174d4471f349bab61e638}{least\_flights}}(src, dest, airlines\_to\_consider);}
+\DoxyCodeLine{00907 }
+\DoxyCodeLine{00908     cout << \textcolor{stringliteral}{"{}Companhias aéreas consideradas: "{}};}
+\DoxyCodeLine{00909     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& a : airlines\_to\_consider) cout << a << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{00910     cout << endl;}
+\DoxyCodeLine{00911 }
+\DoxyCodeLine{00912     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << airports.at(src.front()).getCity() << \textcolor{stringliteral}{"{} para "{}} << airports.at(dest.front()).getCity() << endl;}
+\DoxyCodeLine{00913 }
+\DoxyCodeLine{00914     \textcolor{keywordflow}{if} (path.empty())}
+\DoxyCodeLine{00915         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
+\DoxyCodeLine{00916 }
+\DoxyCodeLine{00917     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
+\DoxyCodeLine{00918         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
+\DoxyCodeLine{00919             \textcolor{keywordflow}{if} (k == l.back())}
+\DoxyCodeLine{00920                 cout << airports.at(k.first).getName() << endl;}
+\DoxyCodeLine{00921             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00922                 cout << airports.at(k.first).getName() << \textcolor{stringliteral}{"{} -\/-\/("{}} << k.second << \textcolor{stringliteral}{"{})-\/> "{}};}
+\DoxyCodeLine{00923         \}}
+\DoxyCodeLine{00924         cout << endl;}
+\DoxyCodeLine{00925     \}}
+\DoxyCodeLine{00926 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a25c988dad9b5be64b64b3804e0afdfce}\label{main_8cpp_a25c988dad9b5be64b64b3804e0afdfce}} 
@@ -562,45 +562,45 @@ Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00939}{939}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00938}{938}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00939                                                                                         \{}
-\DoxyCodeLine{00940     list<li> path = graph.least\_flights\_with\_distance(src, dest);}
-\DoxyCodeLine{00941     set<string> o; set<string> d; \textcolor{keywordtype}{string} src\_string; \textcolor{keywordtype}{string} dst\_string;}
-\DoxyCodeLine{00942     \textcolor{keywordflow}{if}(src.size() == 1)}
-\DoxyCodeLine{00943         src\_string = airports.at(src[0]).getName();}
-\DoxyCodeLine{00944     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00945         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: src)}
-\DoxyCodeLine{00946             o.insert(airports.at(s).getCity());}
-\DoxyCodeLine{00947         src\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(o);}
-\DoxyCodeLine{00948     \}}
-\DoxyCodeLine{00949     \textcolor{keywordflow}{if}(dest.size() == 1)}
-\DoxyCodeLine{00950         dst\_string = airports.at(dest[0]).getName();}
-\DoxyCodeLine{00951     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00952         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: dest)}
-\DoxyCodeLine{00953             d.insert(airports.at(s).getCity());}
-\DoxyCodeLine{00954         dst\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(d);}
-\DoxyCodeLine{00955     \}}
-\DoxyCodeLine{00956 }
-\DoxyCodeLine{00957     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << src\_string << \textcolor{stringliteral}{"{} para "{}} << dst\_string << endl << endl;}
-\DoxyCodeLine{00958 }
-\DoxyCodeLine{00959     \textcolor{keywordflow}{if} (path.empty())}
-\DoxyCodeLine{00960         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
-\DoxyCodeLine{00961 }
-\DoxyCodeLine{00962     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
-\DoxyCodeLine{00963         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
-\DoxyCodeLine{00964             \textcolor{keywordflow}{if} (k == l.front())}
-\DoxyCodeLine{00965                 cout << \textcolor{stringliteral}{"{}("{}} <<k << \textcolor{stringliteral}{"{} Km) "{}};}
-\DoxyCodeLine{00966             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k == l.back())}
-\DoxyCodeLine{00967                 cout << airports.at(k).getName() << endl;}
-\DoxyCodeLine{00968             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{00969                 cout << airports.at(k).getName() << \textcolor{stringliteral}{"{} -\/> "{}};}
-\DoxyCodeLine{00970         \}}
-\DoxyCodeLine{00971         cout << endl;}
-\DoxyCodeLine{00972     \}}
-\DoxyCodeLine{00973 \}}
+\DoxyCodeLine{00938                                                                                         \{}
+\DoxyCodeLine{00939     list<lp> path = graph.\mbox{\hyperlink{classGraph_a1b0e33d6078cb7c319316e95b1716adf}{least\_flights\_with\_distance}}(src, dest);}
+\DoxyCodeLine{00940     set<string> o; set<string> d; \textcolor{keywordtype}{string} src\_string; \textcolor{keywordtype}{string} dst\_string;}
+\DoxyCodeLine{00941     \textcolor{keywordflow}{if}(src.size() == 1)}
+\DoxyCodeLine{00942         src\_string = airports.at(src[0]).getName();}
+\DoxyCodeLine{00943     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00944         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: src)}
+\DoxyCodeLine{00945             o.insert(airports.at(s).getCity());}
+\DoxyCodeLine{00946         src\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(o);}
+\DoxyCodeLine{00947     \}}
+\DoxyCodeLine{00948     \textcolor{keywordflow}{if}(dest.size() == 1)}
+\DoxyCodeLine{00949         dst\_string = airports.at(dest[0]).getName();}
+\DoxyCodeLine{00950     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00951         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&s: dest)}
+\DoxyCodeLine{00952             d.insert(airports.at(s).getCity());}
+\DoxyCodeLine{00953         dst\_string = \mbox{\hyperlink{main_8cpp_a82adfca00402553d6af70af425c1d158}{set\_to\_string}}(d);}
+\DoxyCodeLine{00954     \}}
+\DoxyCodeLine{00955 }
+\DoxyCodeLine{00956     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << src\_string << \textcolor{stringliteral}{"{} para "{}} << dst\_string << endl << endl;}
+\DoxyCodeLine{00957 }
+\DoxyCodeLine{00958     \textcolor{keywordflow}{if} (path.empty())}
+\DoxyCodeLine{00959         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
+\DoxyCodeLine{00960 }
+\DoxyCodeLine{00961     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
+\DoxyCodeLine{00962         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
+\DoxyCodeLine{00963             \textcolor{keywordflow}{if} (k == l.front())}
+\DoxyCodeLine{00964                 cout << \textcolor{stringliteral}{"{}("{}} <<k.first << \textcolor{stringliteral}{"{} Km) "{}};}
+\DoxyCodeLine{00965             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k == l.back())}
+\DoxyCodeLine{00966                 cout << airports.at(k.first).getName() << endl;}
+\DoxyCodeLine{00967             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00968                 cout << airports.at(k.first).getName() << \textcolor{stringliteral}{"{} -\/-\/("{}} << k.second << \textcolor{stringliteral}{"{})-\/> "{}};}
+\DoxyCodeLine{00969         \}}
+\DoxyCodeLine{00970         cout << endl;}
+\DoxyCodeLine{00971     \}}
+\DoxyCodeLine{00972 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a221026311c13465c2f5a9907e60c70e3}\label{main_8cpp_a221026311c13465c2f5a9907e60c70e3}} 
@@ -624,34 +624,34 @@ Dados um vetor de inteiros com os aeroportos de origem e outro com os aeroportos
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00985}{985}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00984}{984}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00985                                                                                                                                  \{}
-\DoxyCodeLine{00986     list<li> path = graph.least\_flights\_with\_distance(src, dest, airlines\_to\_consider);}
-\DoxyCodeLine{00987 }
-\DoxyCodeLine{00988     cout << \textcolor{stringliteral}{"{}Companhias aéreas consideradas: "{}};}
-\DoxyCodeLine{00989     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& a : airlines\_to\_consider) cout << a << \textcolor{stringliteral}{"{} "{}};}
-\DoxyCodeLine{00990     cout << endl;}
-\DoxyCodeLine{00991 }
-\DoxyCodeLine{00992     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << airports.at(src.front()).getCity() << \textcolor{stringliteral}{"{} para "{}} << airports.at(dest.front()).getCity() << endl;}
-\DoxyCodeLine{00993 }
-\DoxyCodeLine{00994     \textcolor{keywordflow}{if} (path.empty())}
-\DoxyCodeLine{00995         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
-\DoxyCodeLine{00996 }
-\DoxyCodeLine{00997     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
-\DoxyCodeLine{00998         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
-\DoxyCodeLine{00999             \textcolor{keywordflow}{if} (k == l.front())}
-\DoxyCodeLine{01000                 cout << \textcolor{stringliteral}{"{}("{}} <<k << \textcolor{stringliteral}{"{} Km) "{}};}
-\DoxyCodeLine{01001             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k == l.back())}
-\DoxyCodeLine{01002                 cout << airports.at(k).getName() << endl;}
-\DoxyCodeLine{01003             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{01004                 cout << airports.at(k).getName() << \textcolor{stringliteral}{"{} -\/> "{}};}
-\DoxyCodeLine{01005         \}}
-\DoxyCodeLine{01006         cout << endl;}
-\DoxyCodeLine{01007     \}}
-\DoxyCodeLine{01008 \}}
+\DoxyCodeLine{00984                                                                                                                                  \{}
+\DoxyCodeLine{00985     list<lp> path = graph.\mbox{\hyperlink{classGraph_a1b0e33d6078cb7c319316e95b1716adf}{least\_flights\_with\_distance}}(src, dest, airlines\_to\_consider);}
+\DoxyCodeLine{00986 }
+\DoxyCodeLine{00987     cout << \textcolor{stringliteral}{"{}Companhias aéreas consideradas: "{}};}
+\DoxyCodeLine{00988     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& a : airlines\_to\_consider) cout << a << \textcolor{stringliteral}{"{} "{}};}
+\DoxyCodeLine{00989     cout << endl;}
+\DoxyCodeLine{00990 }
+\DoxyCodeLine{00991     cout << endl << \textcolor{stringliteral}{"{}Trajetos mais curtos de "{}} << airports.at(src.front()).getCity() << \textcolor{stringliteral}{"{} para "{}} << airports.at(dest.front()).getCity() << endl;}
+\DoxyCodeLine{00992 }
+\DoxyCodeLine{00993     \textcolor{keywordflow}{if} (path.empty())}
+\DoxyCodeLine{00994         cout << \textcolor{stringliteral}{"{}Não há trajetos disponíveis para os critérios especificados."{}} << endl;}
+\DoxyCodeLine{00995 }
+\DoxyCodeLine{00996     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&l : path) \{}
+\DoxyCodeLine{00997         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \&k: l) \{}
+\DoxyCodeLine{00998             \textcolor{keywordflow}{if} (k == l.front())}
+\DoxyCodeLine{00999                 cout << \textcolor{stringliteral}{"{}("{}} <<k.first << \textcolor{stringliteral}{"{} Km) "{}};}
+\DoxyCodeLine{01000             \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (k == l.back())}
+\DoxyCodeLine{01001                 cout << airports.at(k.first).getName() << endl;}
+\DoxyCodeLine{01002             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{01003                 cout << airports.at(k.first).getName() << \textcolor{stringliteral}{"{} -\/-\/("{}} << k.second << \textcolor{stringliteral}{"{})-\/> "{}};}
+\DoxyCodeLine{01004         \}}
+\DoxyCodeLine{01005         cout << endl;}
+\DoxyCodeLine{01006     \}}
+\DoxyCodeLine{01007 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
@@ -693,54 +693,62 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l00076}{76}} of file \mbox{
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01169}{1169}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Função que imprime as estatísticas de uma companhia aérea. 
+
+Esta função imprime as estatísticas da rede de uma companhia aérea. Para isto, formamos um novo grafo que contém todos os aeroportos do grafo original e apenas as rotas da companhia aérea pretendida.
+
+Complexidade\+: O($\vert$\+V$\vert$ $\ast$ ($\vert$\+V$\vert$ + $\vert$\+E$\vert$)), que é a complexidade do método mais custoso, que calcula o diametro do grafo. 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01200}{1200}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01169                            \{}
-\DoxyCodeLine{01170     \textcolor{keywordtype}{string} airline;}
-\DoxyCodeLine{01171     cout << \textcolor{stringliteral}{"{}Escolha a companhia aérea: "{}};}
-\DoxyCodeLine{01172     getline(cin >> ws, airline);}
-\DoxyCodeLine{01173     transform(airline.begin(), airline.end(), airline.begin(), ::toupper);}
-\DoxyCodeLine{01174 }
-\DoxyCodeLine{01175     \textcolor{keywordflow}{if} (airline\_codes.find(airline) == airline\_codes.end()) \{}
-\DoxyCodeLine{01176         cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
-\DoxyCodeLine{01177         wait();}
-\DoxyCodeLine{01178         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01179     \}}
-\DoxyCodeLine{01180 }
-\DoxyCodeLine{01181     vector<int> airports\_nodes = airport\_airlines[airline];}
-\DoxyCodeLine{01182     \mbox{\hyperlink{classGraph}{Graph}} g = \mbox{\hyperlink{classGraph}{Graph}}((\textcolor{keywordtype}{int}) airports.size() + 1);}
-\DoxyCodeLine{01183 }
-\DoxyCodeLine{01184     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \&node : airports\_nodes) \{}
-\DoxyCodeLine{01185         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} \&edge : graph.nodes[node].adj) \{}
-\DoxyCodeLine{01186             \textcolor{keywordflow}{if} (edge.airlines.find(airline) != edge.airlines.end()) \{}
-\DoxyCodeLine{01187                 g.addEdge(node, edge.dest, airline);}
-\DoxyCodeLine{01188             \}}
-\DoxyCodeLine{01189         \}}
-\DoxyCodeLine{01190     \}}
-\DoxyCodeLine{01191 }
-\DoxyCodeLine{01192     \textcolor{keywordtype}{int} num\_airports = (int) airports\_nodes.size();}
-\DoxyCodeLine{01193     \textcolor{keywordtype}{int} num\_flights = g.getNumEdges();}
-\DoxyCodeLine{01194     \textcolor{keywordtype}{int} num\_companies = g.getCompanies();}
-\DoxyCodeLine{01195     \textcolor{keywordtype}{int} diameter = g.getDiameter();}
-\DoxyCodeLine{01196     \textcolor{comment}{// random number between 3 and 5}}
-\DoxyCodeLine{01197     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
-\DoxyCodeLine{01198     vector<pii> top\_airports = g.getTopAirports(n);}
-\DoxyCodeLine{01199 }
-\DoxyCodeLine{01200     cout << \textcolor{stringliteral}{"{}A rede de "{}} << airline << \textcolor{stringliteral}{"{} tem um total de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
-\DoxyCodeLine{01201     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos."{}} << endl;}
-\DoxyCodeLine{01202 }
-\DoxyCodeLine{01203     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
-\DoxyCodeLine{01204     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
-\DoxyCodeLine{01205     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
-\DoxyCodeLine{01206         cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
-\DoxyCodeLine{01207     \}}
-\DoxyCodeLine{01208     wait();}
-\DoxyCodeLine{01209 \}}
+\DoxyCodeLine{01200                            \{}
+\DoxyCodeLine{01201     \textcolor{keywordtype}{string} airline;}
+\DoxyCodeLine{01202     cout << \textcolor{stringliteral}{"{}Escolha a companhia aérea: "{}};}
+\DoxyCodeLine{01203     getline(cin >> ws, airline);}
+\DoxyCodeLine{01204     transform(airline.begin(), airline.end(), airline.begin(), ::toupper);}
+\DoxyCodeLine{01205 }
+\DoxyCodeLine{01206     \textcolor{keywordflow}{if} (airline\_codes.find(airline) == airline\_codes.end()) \{}
+\DoxyCodeLine{01207         cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
+\DoxyCodeLine{01208         wait();}
+\DoxyCodeLine{01209         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01210     \}}
+\DoxyCodeLine{01211 }
+\DoxyCodeLine{01212     vector<int> airports\_nodes = airport\_airlines[airline];}
+\DoxyCodeLine{01213     \mbox{\hyperlink{classGraph}{Graph}} g = \mbox{\hyperlink{classGraph}{Graph}}(graph.\mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{n}} + 1);}
+\DoxyCodeLine{01214 }
+\DoxyCodeLine{01215     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \&node : airports\_nodes) \{}
+\DoxyCodeLine{01216         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} \&edge : graph.\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}[node].adj) \{}
+\DoxyCodeLine{01217             \textcolor{keywordflow}{if} (edge.airlines.find(airline) != edge.airlines.end()) \{}
+\DoxyCodeLine{01218                 g.\mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{addEdge}}(node, edge.dest, airline);}
+\DoxyCodeLine{01219             \}}
+\DoxyCodeLine{01220         \}}
+\DoxyCodeLine{01221     \}}
+\DoxyCodeLine{01222 }
+\DoxyCodeLine{01223     \textcolor{keywordtype}{int} num\_airports = (int) airports\_nodes.size();}
+\DoxyCodeLine{01224     \textcolor{keywordtype}{int} num\_flights = g.\mbox{\hyperlink{classGraph_a383b200b23ce590c216adc97f0be6742}{getNumEdges}}();}
+\DoxyCodeLine{01225     \textcolor{keywordtype}{int} num\_companies = g.\mbox{\hyperlink{classGraph_a742a13abf5fcadc712dba088e963fcc3}{getCompanies}}();}
+\DoxyCodeLine{01226     \textcolor{keywordtype}{int} diameter = g.\mbox{\hyperlink{classGraph_a88224c6e2978264d31b58d33167c5cd7}{getDiameter}}();}
+\DoxyCodeLine{01227     \textcolor{comment}{// random number between 3 and 5}}
+\DoxyCodeLine{01228     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
+\DoxyCodeLine{01229     vector<pii> top\_airports = g.\mbox{\hyperlink{classGraph_a436a278b4fad166e19f0ed2ee266ad85}{getTopAirports}}(n);}
+\DoxyCodeLine{01230 }
+\DoxyCodeLine{01231     cout << \textcolor{stringliteral}{"{}A rede de "{}} << airline << \textcolor{stringliteral}{"{} voa a partir de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
+\DoxyCodeLine{01232     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos."{}} << endl;}
+\DoxyCodeLine{01233 }
+\DoxyCodeLine{01234     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
+\DoxyCodeLine{01235     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
+\DoxyCodeLine{01236     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
+\DoxyCodeLine{01237         \textcolor{keywordflow}{if} (top\_airport.second > 0) \{}
+\DoxyCodeLine{01238             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
+\DoxyCodeLine{01239         \}}
+\DoxyCodeLine{01240     \}}
+\DoxyCodeLine{01241     wait();}
+\DoxyCodeLine{01242 \}}
 
 \end{DoxyCode}
-\mbox{\Hypertarget{main_8cpp_a5c3070efff21e667ae88739eabd8fd6d}\label{main_8cpp_a5c3070efff21e667ae88739eabd8fd6d}} 
+\mbox{\Hypertarget{main_8cpp_a86b72aecd71f918b974747365432a2e5}\label{main_8cpp_a86b72aecd71f918b974747365432a2e5}} 
 \index{main.cpp@{main.cpp}!print\_airport\_stats@{print\_airport\_stats}}
 \index{print\_airport\_stats@{print\_airport\_stats}!main.cpp@{main.cpp}}
 \doxysubsubsection{\texorpdfstring{print\_airport\_stats()}{print\_airport\_stats()}}
@@ -748,28 +756,34 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l01169}{1169}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01257}{1257}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Função que imprime as estatísticas de um aeroporto. 
+
+Esta função imprime as estatísticas da rede de um aeroporto. Para isto, lemos os dados guardados no objeto \mbox{\hyperlink{classAirport}{Airport}} e chamamos alguns métodos da classe \mbox{\hyperlink{classGraph}{Graph}}.
+
+Complexidade\+: O(($\vert$\+V$\vert$ + $\vert$\+E$\vert$)), que é a complexidade do método mais custoso, uma BFS. 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01310}{1310}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01257                                                          \{}
-\DoxyCodeLine{01258     cout << \textcolor{stringliteral}{"{}Código: "{}} << airport.\mbox{\hyperlink{classAirport_ad1369e1d47c87e205f1718b853a66d54}{getCode}}() << endl;}
-\DoxyCodeLine{01259     cout << \textcolor{stringliteral}{"{}Nome: "{}} << airport.\mbox{\hyperlink{classAirport_a93efcd09328d24469d97a81e8048b776}{getName}}() << endl;}
-\DoxyCodeLine{01260     cout << \textcolor{stringliteral}{"{}Cidade: "{}} << airport.\mbox{\hyperlink{classAirport_adff088d0536ead7d1c060c385da03f32}{getCity}}() << endl;}
-\DoxyCodeLine{01261     cout << \textcolor{stringliteral}{"{}País: "{}} << airport.\mbox{\hyperlink{classAirport_ac0ce4ad3ce71653f13b96e5d40648588}{getCountry}}() << endl;}
-\DoxyCodeLine{01262     cout << \textcolor{stringliteral}{"{}Coordenadas: "{}} << airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}() << \textcolor{stringliteral}{"{}, "{}} << airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}() << endl;}
-\DoxyCodeLine{01263     cout << \textcolor{stringliteral}{"{}Existem "{}} << graph.getOutDegree(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} voos de saída."{}} << endl;}
-\DoxyCodeLine{01264     cout << graph.getAirlinesNumber(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} companhias aéreas voam a partir deste aeroporto."{}} << endl;}
-\DoxyCodeLine{01265     cout << \textcolor{stringliteral}{"{}Existem voos para "{}} << graph.getDestinationsNumber(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} destinos diferentes,"{}} << endl;}
-\DoxyCodeLine{01266     cout << \textcolor{stringliteral}{"{}que pertencem a "{}} << graph.getDestinationsCountries(\textcolor{keywordtype}{id}, airports) << \textcolor{stringliteral}{"{} países diferentes."{}} << endl;}
-\DoxyCodeLine{01267 }
-\DoxyCodeLine{01268     \textcolor{comment}{//generate random number from 1 to 5}}
-\DoxyCodeLine{01269     \textcolor{keywordtype}{int} r = rand() \% 5 + 1;}
-\DoxyCodeLine{01270     set<int> destinations = graph.getDestinations(\textcolor{keywordtype}{id}, r);}
-\DoxyCodeLine{01271     cout << \textcolor{stringliteral}{"{}Com apenas "{}} << r << \textcolor{stringliteral}{"{} voos, é possível chegar a "{}} << destinations.size() << \textcolor{stringliteral}{"{} aeroportos diferentes,"{}} << endl;}
-\DoxyCodeLine{01272     cout << \textcolor{stringliteral}{"{}a "{}} << getCitiesNumber(destinations) << \textcolor{stringliteral}{"{} cidades diferentes "{}};}
-\DoxyCodeLine{01273     cout << \textcolor{stringliteral}{"{}e a "{}} << getCountriesNumber(destinations) << \textcolor{stringliteral}{"{} países diferentes."{}} << endl;}
-\DoxyCodeLine{01274 \}}
+\DoxyCodeLine{01310                                                          \{}
+\DoxyCodeLine{01311     cout << \textcolor{stringliteral}{"{}Código: "{}} << airport.\mbox{\hyperlink{classAirport_ad1369e1d47c87e205f1718b853a66d54}{getCode}}() << endl;}
+\DoxyCodeLine{01312     cout << \textcolor{stringliteral}{"{}Nome: "{}} << airport.\mbox{\hyperlink{classAirport_a93efcd09328d24469d97a81e8048b776}{getName}}() << endl;}
+\DoxyCodeLine{01313     cout << \textcolor{stringliteral}{"{}Cidade: "{}} << airport.\mbox{\hyperlink{classAirport_adff088d0536ead7d1c060c385da03f32}{getCity}}() << endl;}
+\DoxyCodeLine{01314     cout << \textcolor{stringliteral}{"{}País: "{}} << airport.\mbox{\hyperlink{classAirport_ac0ce4ad3ce71653f13b96e5d40648588}{getCountry}}() << endl;}
+\DoxyCodeLine{01315     cout << \textcolor{stringliteral}{"{}Coordenadas: "{}} << airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}() << \textcolor{stringliteral}{"{}, "{}} << airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}() << endl;}
+\DoxyCodeLine{01316     cout << \textcolor{stringliteral}{"{}Existem "{}} << graph.\mbox{\hyperlink{classGraph_a8b19b670048cbe95ab868ec7b1d3127d}{getOutDegree}}(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} voos de saída."{}} << endl;}
+\DoxyCodeLine{01317     cout << graph.\mbox{\hyperlink{classGraph_a42356d6e2e2824d73ee457e8c38e9997}{getAirlinesNumber}}(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} companhias aéreas voam a partir deste aeroporto."{}} << endl;}
+\DoxyCodeLine{01318     cout << \textcolor{stringliteral}{"{}Existem voos para "{}} << graph.\mbox{\hyperlink{classGraph_aa96dae4ef07978b18640b4277f4b106b}{getDestinationsNumber}}(\textcolor{keywordtype}{id}) << \textcolor{stringliteral}{"{} destinos diferentes,"{}} << endl;}
+\DoxyCodeLine{01319     cout << \textcolor{stringliteral}{"{}que pertencem a "{}} << graph.\mbox{\hyperlink{classGraph_a73cc61bf3df3c833b831c2073c946b56}{getDestinationsCountries}}(\textcolor{keywordtype}{id}, airports) << \textcolor{stringliteral}{"{} países diferentes."{}} << endl;}
+\DoxyCodeLine{01320 }
+\DoxyCodeLine{01321     \textcolor{comment}{//generate random number from 1 to 5}}
+\DoxyCodeLine{01322     \textcolor{keywordtype}{int} r = rand() \% 5 + 1;}
+\DoxyCodeLine{01323     set<int> destinations = graph.\mbox{\hyperlink{classGraph_ae62996682bfad8d45c5457325b0896f8}{getDestinations}}(\textcolor{keywordtype}{id}, r);}
+\DoxyCodeLine{01324     cout << \textcolor{stringliteral}{"{}Com apenas "{}} << r << \textcolor{stringliteral}{"{} voos, é possível chegar a "{}} << destinations.size() << \textcolor{stringliteral}{"{} aeroportos diferentes,"{}} << endl;}
+\DoxyCodeLine{01325     cout << \textcolor{stringliteral}{"{}a "{}} << getCitiesNumber(destinations) << \textcolor{stringliteral}{"{} cidades diferentes "{}};}
+\DoxyCodeLine{01326     cout << \textcolor{stringliteral}{"{}e a "{}} << getCountriesNumber(destinations) << \textcolor{stringliteral}{"{} países diferentes."{}} << endl;}
+\DoxyCodeLine{01327 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_ad071036de8bbc73f7725cdc9fc752c7e}\label{main_8cpp_ad071036de8bbc73f7725cdc9fc752c7e}} 
@@ -782,47 +796,65 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l01257}{1257}} of file \mbo
 
 Função que imprime os pontos de articulação. 
 
-Esta função pergunta ao utilizador pretende pesquisar apenas para certas companhias aéreas, caso sim pede ao utilizador as companhias aéreas a considerar e imprime os pontos de articulação. Esta função utiliza o método get\+Articulation\+Points() da classe \mbox{\hyperlink{classGraph}{Graph}}. 
+Esta função cria um novo grafo, ap\+\_\+graph, que é equivalente ao grafo de aeroportos, mas não dirigido. Deseguida pergunta ao utilizador pretende pesquisar apenas para certas companhias aéreas, caso sim pede ao utilizador as companhias aéreas a considerar e imprime os pontos de articulação do ap\+\_\+graph. Esta função utiliza o método get\+Articulation\+Points() da classe \mbox{\hyperlink{classGraph}{Graph}}. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01134}{1134}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01138}{1138}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01134                                  \{}
-\DoxyCodeLine{01135     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
-\DoxyCodeLine{01136     \textcolor{keywordtype}{string} op;}
-\DoxyCodeLine{01137     cin >> op;}
-\DoxyCodeLine{01138     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
-\DoxyCodeLine{01139         set<string> airlines\_to\_consider;}
-\DoxyCodeLine{01140         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
-\DoxyCodeLine{01141         \textcolor{keywordtype}{string} airline;}
-\DoxyCodeLine{01142         \textcolor{keywordflow}{while} (cin >> airline \&\& airline != \textcolor{stringliteral}{"{}fim"{}} \&\& airline != \textcolor{stringliteral}{"{}FIM"{}}) \{}
-\DoxyCodeLine{01143             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
-\DoxyCodeLine{01144                 airlines\_to\_consider.insert(airline);}
-\DoxyCodeLine{01145             \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01146                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
-\DoxyCodeLine{01147             \}}
-\DoxyCodeLine{01148         \}}
-\DoxyCodeLine{01149         set<int> ap = graph.getArticulationPoints(airlines\_to\_consider);}
-\DoxyCodeLine{01150         \textcolor{keywordflow}{if}(ap.empty()) cout << \textcolor{stringliteral}{"{}Sem pontos de articulacao"{}} << endl;}
-\DoxyCodeLine{01151         \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01152             cout << \textcolor{stringliteral}{"{}Pontos de Articulacao: "{}} << endl;}
-\DoxyCodeLine{01153             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} \&a : ap) \{}
-\DoxyCodeLine{01154                 cout << airports.at(a).getCode() << \textcolor{charliteral}{'-\/'} << airports.at(a).getName() << endl;}
-\DoxyCodeLine{01155             \}}
-\DoxyCodeLine{01156         \}}
-\DoxyCodeLine{01157     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01158         set<int> ap = graph.getArticulationPoints();}
-\DoxyCodeLine{01159         \textcolor{keywordflow}{if}(ap.empty()) cout << \textcolor{stringliteral}{"{}Sem pontos de articulacao"{}} << endl;}
-\DoxyCodeLine{01160         \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01161             cout << \textcolor{stringliteral}{"{}Pontos de Articulacao: "{}} << endl;}
-\DoxyCodeLine{01162             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} \&a : ap) \{}
-\DoxyCodeLine{01163                 cout << airports.at(a).getCode() << \textcolor{charliteral}{'-\/'} << airports.at(a).getName() << \textcolor{charliteral}{'-\/'} << a << endl;}
-\DoxyCodeLine{01164             \}}
-\DoxyCodeLine{01165         \}}
-\DoxyCodeLine{01166     \}}
-\DoxyCodeLine{01167     wait();}
-\DoxyCodeLine{01168 \}}
+\DoxyCodeLine{01138                                  \{}
+\DoxyCodeLine{01139     \mbox{\hyperlink{classGraph}{Graph}} ap\_graph = graph;}
+\DoxyCodeLine{01140     \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 1; i < graph.\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}.size(); i++) \{}
+\DoxyCodeLine{01141         \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} e: graph.\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}[i].adj) \{}
+\DoxyCodeLine{01142             \textcolor{keywordtype}{bool} ret = \textcolor{keyword}{false};}
+\DoxyCodeLine{01143             \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} f: graph.\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}[e.dest].adj)}
+\DoxyCodeLine{01144                 \textcolor{keywordflow}{if} (f.dest == i) \{}
+\DoxyCodeLine{01145                     ret = \textcolor{keyword}{true};}
+\DoxyCodeLine{01146                 \}}
+\DoxyCodeLine{01147             \textcolor{keywordflow}{if}(!ret) \{}
+\DoxyCodeLine{01148                 \textcolor{keywordflow}{for} (\textcolor{keywordtype}{string} airline: e.airlines) \{}
+\DoxyCodeLine{01149                     ap\_graph.\mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{addEdge}}(e.dest, i, airline, e.weight);}
+\DoxyCodeLine{01150                 \}}
+\DoxyCodeLine{01151             \}}
+\DoxyCodeLine{01152         \}}
+\DoxyCodeLine{01153     \}}
+\DoxyCodeLine{01154 }
+\DoxyCodeLine{01155     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
+\DoxyCodeLine{01156     \textcolor{keywordtype}{string} op;}
+\DoxyCodeLine{01157     cin >> op;}
+\DoxyCodeLine{01158     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
+\DoxyCodeLine{01159         set<string> airlines\_to\_consider;}
+\DoxyCodeLine{01160         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
+\DoxyCodeLine{01161         \textcolor{keywordtype}{string} airline;}
+\DoxyCodeLine{01162         \textcolor{keywordflow}{while} (cin >> airline) \{}
+\DoxyCodeLine{01163             transform(airline.begin(), airline.end(), airline.begin(), ::toupper);}
+\DoxyCodeLine{01164             \textcolor{keywordflow}{if} (airline == \textcolor{stringliteral}{"{}FIM"{}}) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01165             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
+\DoxyCodeLine{01166                 airlines\_to\_consider.insert(airline);}
+\DoxyCodeLine{01167             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01168                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
+\DoxyCodeLine{01169             \}}
+\DoxyCodeLine{01170         \}}
+\DoxyCodeLine{01171         set<int> ap = ap\_graph.\mbox{\hyperlink{classGraph_a1989c9e26e73c1268afac4123597e20c}{getArticulationPoints}}(airlines\_to\_consider);}
+\DoxyCodeLine{01172         \textcolor{keywordflow}{if}(ap.empty()) cout << \textcolor{stringliteral}{"{}Sem pontos de articulacao"{}} << endl;}
+\DoxyCodeLine{01173         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01174             cout << \textcolor{stringliteral}{"{}Pontos de Articulacao: "{}} << endl;}
+\DoxyCodeLine{01175             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} \&a : ap) \{}
+\DoxyCodeLine{01176                 cout << airports.at(a).getCode() << \textcolor{charliteral}{'-\/'} << airports.at(a).getName() << endl;}
+\DoxyCodeLine{01177             \}}
+\DoxyCodeLine{01178         \}}
+\DoxyCodeLine{01179     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01180         set<int> ap = ap\_graph.\mbox{\hyperlink{classGraph_a1989c9e26e73c1268afac4123597e20c}{getArticulationPoints}}();}
+\DoxyCodeLine{01181         \textcolor{keywordflow}{if}(ap.empty()) cout << \textcolor{stringliteral}{"{}Sem pontos de articulacao"{}} << endl;}
+\DoxyCodeLine{01182         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01183             cout << \textcolor{stringliteral}{"{}Pontos de Articulacao: "{}} << endl;}
+\DoxyCodeLine{01184             \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} \&a : ap) \{}
+\DoxyCodeLine{01185                 cout << airports.at(a).getCode() << \textcolor{charliteral}{'-\/'} << airports.at(a).getName() << endl;}
+\DoxyCodeLine{01186             \}}
+\DoxyCodeLine{01187         \}}
+\DoxyCodeLine{01188     \}}
+\DoxyCodeLine{01189     wait();}
+\DoxyCodeLine{01190 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a4bbb294a9a360290ff006a1af3dbef8f}\label{main_8cpp_a4bbb294a9a360290ff006a1af3dbef8f}} 
@@ -833,57 +865,65 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l01134}{1134}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01210}{1210}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Função que imprime as estatísticas de um país. 
+
+Esta função imprime as estatísticas da rede de um país. Para isto, formamos um novo grafo que contém todos os aeroportos do grafo original e apenas as rotas que ligam aeroportos desse país.
+
+Complexidade\+: O($\vert$\+V$\vert$ $\ast$ ($\vert$\+V$\vert$ + $\vert$\+E$\vert$)), que é a complexidade do método mais custoso, que calcula o diametro do grafo. 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01252}{1252}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01210                            \{}
-\DoxyCodeLine{01211     \textcolor{keywordtype}{string} country;}
-\DoxyCodeLine{01212     cout << \textcolor{stringliteral}{"{}Escolha o país: "{}};}
-\DoxyCodeLine{01213     getline(cin >> ws, country);}
-\DoxyCodeLine{01214     transform(country.begin(), country.end(), country.begin(), ::toupper);}
-\DoxyCodeLine{01215 }
-\DoxyCodeLine{01216     \textcolor{keywordflow}{if} (airport\_countries.find(country) == airport\_countries.end()) \{}
-\DoxyCodeLine{01217         cout << \textcolor{stringliteral}{"{}Pais nao encontrado!"{}} << endl;}
-\DoxyCodeLine{01218         wait();}
-\DoxyCodeLine{01219         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01220     \}}
-\DoxyCodeLine{01221     vector <int> airports\_nodes = airport\_countries[country];}
-\DoxyCodeLine{01222     \mbox{\hyperlink{classGraph}{Graph}} country\_graph = \mbox{\hyperlink{classGraph}{Graph}}((\textcolor{keywordtype}{int}) airports.size() + 1);}
-\DoxyCodeLine{01223 }
-\DoxyCodeLine{01224     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \&node : airports\_nodes) \{}
-\DoxyCodeLine{01225         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} \&edge : graph.nodes[node].adj) \{}
-\DoxyCodeLine{01226             \textcolor{keywordtype}{int} w = edge.dest;}
-\DoxyCodeLine{01227             \textcolor{keywordtype}{string} new\_country = airports.at(w).getCountry();}
-\DoxyCodeLine{01228             transform(new\_country.begin(), new\_country.end(), new\_country.begin(), ::toupper);}
-\DoxyCodeLine{01229             \textcolor{keywordflow}{if} (new\_country == country) \{}
-\DoxyCodeLine{01230                 \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airline : edge.airlines) \{}
-\DoxyCodeLine{01231                     country\_graph.addEdge(node, w, airline);}
-\DoxyCodeLine{01232                 \}}
-\DoxyCodeLine{01233             \}}
-\DoxyCodeLine{01234         \}}
-\DoxyCodeLine{01235     \}}
-\DoxyCodeLine{01236 }
-\DoxyCodeLine{01237 }
-\DoxyCodeLine{01238     \textcolor{keywordtype}{int} num\_airports = (int) airports\_nodes.size();}
-\DoxyCodeLine{01239     \textcolor{keywordtype}{int} num\_flights = country\_graph.getNumEdges();}
-\DoxyCodeLine{01240     \textcolor{keywordtype}{int} num\_companies = country\_graph.getCompanies();}
-\DoxyCodeLine{01241     \textcolor{keywordtype}{int} diameter = country\_graph.getDiameter();}
-\DoxyCodeLine{01242     \textcolor{comment}{// random number between 3 and 5}}
-\DoxyCodeLine{01243     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
-\DoxyCodeLine{01244     vector<pii> top\_airports = country\_graph.getTopAirports(n);}
-\DoxyCodeLine{01245 }
-\DoxyCodeLine{01246     cout << \textcolor{stringliteral}{"{}A rede de "{}} << country << \textcolor{stringliteral}{"{} tem um total de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
-\DoxyCodeLine{01247     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos,"{}} << endl;}
-\DoxyCodeLine{01248     cout << \textcolor{stringliteral}{"{}e "{}} << num\_companies << \textcolor{stringliteral}{"{} companhias aéreas."{}} << endl;}
-\DoxyCodeLine{01249 }
-\DoxyCodeLine{01250     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
-\DoxyCodeLine{01251     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
-\DoxyCodeLine{01252     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
-\DoxyCodeLine{01253         cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
-\DoxyCodeLine{01254     \}}
-\DoxyCodeLine{01255     wait();}
-\DoxyCodeLine{01256 \}}
+\DoxyCodeLine{01252                            \{}
+\DoxyCodeLine{01253     \textcolor{keywordtype}{string} country;}
+\DoxyCodeLine{01254     cout << \textcolor{stringliteral}{"{}Escolha o país: "{}};}
+\DoxyCodeLine{01255     getline(cin >> ws, country);}
+\DoxyCodeLine{01256     transform(country.begin(), country.end(), country.begin(), ::toupper);}
+\DoxyCodeLine{01257 }
+\DoxyCodeLine{01258     \textcolor{keywordflow}{if} (airport\_countries.find(country) == airport\_countries.end()) \{}
+\DoxyCodeLine{01259         cout << \textcolor{stringliteral}{"{}Pais nao encontrado!"{}} << endl;}
+\DoxyCodeLine{01260         wait();}
+\DoxyCodeLine{01261         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01262     \}}
+\DoxyCodeLine{01263     vector <int> airports\_nodes = airport\_countries[country];}
+\DoxyCodeLine{01264     \mbox{\hyperlink{classGraph}{Graph}} country\_graph = \mbox{\hyperlink{classGraph}{Graph}}(graph.\mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{n}} + 1);}
+\DoxyCodeLine{01265 }
+\DoxyCodeLine{01266     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \&node : airports\_nodes) \{}
+\DoxyCodeLine{01267         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} \textcolor{keyword}{const} \&edge : graph.\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}}[node].adj) \{}
+\DoxyCodeLine{01268             \textcolor{keywordtype}{int} w = edge.dest;}
+\DoxyCodeLine{01269             \textcolor{keywordtype}{string} new\_country = airports.at(w).getCountry();}
+\DoxyCodeLine{01270             transform(new\_country.begin(), new\_country.end(), new\_country.begin(), ::toupper);}
+\DoxyCodeLine{01271             \textcolor{keywordflow}{if} (new\_country == country) \{}
+\DoxyCodeLine{01272                 \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keywordtype}{string}\& airline : edge.airlines) \{}
+\DoxyCodeLine{01273                     country\_graph.\mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{addEdge}}(node, w, airline);}
+\DoxyCodeLine{01274                 \}}
+\DoxyCodeLine{01275             \}}
+\DoxyCodeLine{01276         \}}
+\DoxyCodeLine{01277     \}}
+\DoxyCodeLine{01278 }
+\DoxyCodeLine{01279 }
+\DoxyCodeLine{01280     \textcolor{keywordtype}{int} num\_airports = (int) airports\_nodes.size();}
+\DoxyCodeLine{01281     \textcolor{keywordtype}{int} num\_flights = country\_graph.\mbox{\hyperlink{classGraph_a383b200b23ce590c216adc97f0be6742}{getNumEdges}}();}
+\DoxyCodeLine{01282     \textcolor{keywordtype}{int} num\_companies = country\_graph.\mbox{\hyperlink{classGraph_a742a13abf5fcadc712dba088e963fcc3}{getCompanies}}();}
+\DoxyCodeLine{01283     \textcolor{keywordtype}{int} diameter = country\_graph.\mbox{\hyperlink{classGraph_a88224c6e2978264d31b58d33167c5cd7}{getDiameter}}();}
+\DoxyCodeLine{01284     \textcolor{comment}{// random number between 3 and 5}}
+\DoxyCodeLine{01285     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
+\DoxyCodeLine{01286     vector<pii> top\_airports = country\_graph.\mbox{\hyperlink{classGraph_a436a278b4fad166e19f0ed2ee266ad85}{getTopAirports}}(n);}
+\DoxyCodeLine{01287 }
+\DoxyCodeLine{01288     cout << \textcolor{stringliteral}{"{}A rede de "{}} << country << \textcolor{stringliteral}{"{} tem um total de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
+\DoxyCodeLine{01289     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos,"{}} << endl;}
+\DoxyCodeLine{01290     cout << \textcolor{stringliteral}{"{}e "{}} << num\_companies << \textcolor{stringliteral}{"{} companhias aéreas."{}} << endl;}
+\DoxyCodeLine{01291 }
+\DoxyCodeLine{01292     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
+\DoxyCodeLine{01293     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
+\DoxyCodeLine{01294     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
+\DoxyCodeLine{01295         \textcolor{keywordflow}{if} (top\_airport.second > 0) \{}
+\DoxyCodeLine{01296             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
+\DoxyCodeLine{01297         \}}
+\DoxyCodeLine{01298     \}}
+\DoxyCodeLine{01299     wait();}
+\DoxyCodeLine{01300 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a077376a310d7f3098f0c63ca1d63df01}\label{main_8cpp_a077376a310d7f3098f0c63ca1d63df01}} 
@@ -894,30 +934,36 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l01210}{1210}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01275}{1275}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Função que imprime as estatísticas da rede global. 
+
+Esta função imprime as estatísticas da rede global. Para isto, chamamos alguns métodos da classe \mbox{\hyperlink{classGraph}{Graph}}.
+
+Complexidade\+: O($\vert$\+V$\vert$ $\ast$ ($\vert$\+V$\vert$ + $\vert$\+E$\vert$)), que é a complexidade do método mais custoso, que calcula o diametro do grafo. 
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01337}{1337}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01275                           \{}
-\DoxyCodeLine{01276     \textcolor{keywordtype}{int} num\_airports = (int) graph.getNodes().size();}
-\DoxyCodeLine{01277     \textcolor{keywordtype}{int} num\_flights = graph.getNumEdges();}
-\DoxyCodeLine{01278     \textcolor{keywordtype}{int} num\_companies = graph.getCompanies();}
-\DoxyCodeLine{01279     \textcolor{keywordtype}{int} diameter = graph.getDiameter();}
-\DoxyCodeLine{01280     \textcolor{comment}{// random number between 3 and 5}}
-\DoxyCodeLine{01281     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
-\DoxyCodeLine{01282     vector<pii> top\_airports = graph.getTopAirports(n);}
-\DoxyCodeLine{01283 }
-\DoxyCodeLine{01284     cout << \textcolor{stringliteral}{"{}A rede global tem um total de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
-\DoxyCodeLine{01285     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos,"{}} << endl;}
-\DoxyCodeLine{01286     cout << \textcolor{stringliteral}{"{}e "{}} << num\_companies << \textcolor{stringliteral}{"{} companhias aéreas."{}} << endl;}
-\DoxyCodeLine{01287 }
-\DoxyCodeLine{01288     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
-\DoxyCodeLine{01289     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
-\DoxyCodeLine{01290     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
-\DoxyCodeLine{01291         cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
-\DoxyCodeLine{01292     \}}
-\DoxyCodeLine{01293     wait();}
-\DoxyCodeLine{01294 \}}
+\DoxyCodeLine{01337                           \{}
+\DoxyCodeLine{01338     \textcolor{keywordtype}{int} num\_airports = (int) graph.\mbox{\hyperlink{classGraph_adc4daf6c35b3e73211dc5503479f8dca}{getNodes}}().size();}
+\DoxyCodeLine{01339     \textcolor{keywordtype}{int} num\_flights = graph.\mbox{\hyperlink{classGraph_a383b200b23ce590c216adc97f0be6742}{getNumEdges}}();}
+\DoxyCodeLine{01340     \textcolor{keywordtype}{int} num\_companies = graph.\mbox{\hyperlink{classGraph_a742a13abf5fcadc712dba088e963fcc3}{getCompanies}}();}
+\DoxyCodeLine{01341     \textcolor{keywordtype}{int} diameter = graph.\mbox{\hyperlink{classGraph_a88224c6e2978264d31b58d33167c5cd7}{getDiameter}}();}
+\DoxyCodeLine{01342     \textcolor{comment}{// random number between 3 and 5}}
+\DoxyCodeLine{01343     \textcolor{keywordtype}{int} n = rand() \% 3 + 3;}
+\DoxyCodeLine{01344     vector<pii> top\_airports = graph.\mbox{\hyperlink{classGraph_a436a278b4fad166e19f0ed2ee266ad85}{getTopAirports}}(n);}
+\DoxyCodeLine{01345 }
+\DoxyCodeLine{01346     cout << \textcolor{stringliteral}{"{}A rede global tem um total de "{}} << num\_airports << \textcolor{stringliteral}{"{} aeroportos,"{}} << endl;}
+\DoxyCodeLine{01347     cout << \textcolor{stringliteral}{"{}com um total de "{}} << num\_flights << \textcolor{stringliteral}{"{} voos,"{}} << endl;}
+\DoxyCodeLine{01348     cout << \textcolor{stringliteral}{"{}e "{}} << num\_companies << \textcolor{stringliteral}{"{} companhias aéreas."{}} << endl;}
+\DoxyCodeLine{01349 }
+\DoxyCodeLine{01350     cout << \textcolor{stringliteral}{"{}O diâmetro da rede é "{}} << diameter << \textcolor{stringliteral}{"{}."{}} << endl;}
+\DoxyCodeLine{01351     cout << \textcolor{stringliteral}{"{}Os "{}} << n << \textcolor{stringliteral}{"{} aeroportos com mais voos são:"{}} << endl;}
+\DoxyCodeLine{01352     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto} \& top\_airport : top\_airports) \{}
+\DoxyCodeLine{01353         cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(top\_airport.first).getName() << \textcolor{stringliteral}{"{}, "{}} << airports.at(top\_airport.first).getCountry() << \textcolor{stringliteral}{"{} ("{}} << top\_airport.second << \textcolor{stringliteral}{"{} voos)"{}} << endl;}
+\DoxyCodeLine{01354     \}}
+\DoxyCodeLine{01355     wait();}
+\DoxyCodeLine{01356 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_ae91d4cbee2dab64187187499dd0eecd4}\label{main_8cpp_ae91d4cbee2dab64187187499dd0eecd4}} 
@@ -932,45 +978,45 @@ Imprime o menu principal.
 
 Imprime o menu principal e chama a função correspondente à opção escolhida. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00206}{206}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00205}{205}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00206                   \{}
-\DoxyCodeLine{00207     \textcolor{keywordtype}{int} choice;}
-\DoxyCodeLine{00208     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{00209         clear();}
-\DoxyCodeLine{00210         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00211         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000         |"{}} << endl;}
-\DoxyCodeLine{00212         cout << \textcolor{stringliteral}{"{}| 1. Rotas sem distâncias                |"{}} << endl;}
-\DoxyCodeLine{00213         cout << \textcolor{stringliteral}{"{}| 2. Rotas com distâncias                |"{}} << endl;}
-\DoxyCodeLine{00214         cout << \textcolor{stringliteral}{"{}| 3. Estatísticas da rede                |"{}} << endl;}
-\DoxyCodeLine{00215         cout << \textcolor{stringliteral}{"{}| 4. Estudos sobre a rede                |"{}} << endl;}
-\DoxyCodeLine{00216         cout << \textcolor{stringliteral}{"{}| 5. Informações sobre um aeroporto      |"{}} << endl;}
-\DoxyCodeLine{00217         cout << \textcolor{stringliteral}{"{}| 0. Sair                                |"{}} << endl;}
-\DoxyCodeLine{00218         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00219         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00220         cin >> choice;}
-\DoxyCodeLine{00221         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00222             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00223                 \textcolor{keywordflow}{case} 1:}
-\DoxyCodeLine{00224                     \mbox{\hyperlink{main_8cpp_a7829a6661589b853b3f18dc8953c705f}{print\_menu1}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00225                 \textcolor{keywordflow}{case} 2:}
-\DoxyCodeLine{00226                     \mbox{\hyperlink{main_8cpp_af1ceaa939e62c546344a6f261c1f791b}{print\_menu2}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00227                 \textcolor{keywordflow}{case} 3:}
-\DoxyCodeLine{00228                     \mbox{\hyperlink{main_8cpp_a432a270ce921bf6af4bad934052e0eeb}{print\_menu3}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00229                 \textcolor{keywordflow}{case} 4:}
-\DoxyCodeLine{00230                     \mbox{\hyperlink{main_8cpp_aaec24c83cd45a0f2656ead62dbbefbe1}{print\_menu4}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00231                 \textcolor{keywordflow}{case} 5:}
-\DoxyCodeLine{00232                     \mbox{\hyperlink{main_8cpp_abc90c4185bb7865ed03b2f4a1292c564}{print\_menu5}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00233                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00234                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00235             \}}
-\DoxyCodeLine{00236         \}}
-\DoxyCodeLine{00237     \} \textcolor{keywordflow}{while} (choice != 0);}
-\DoxyCodeLine{00238 }
-\DoxyCodeLine{00239     clear();}
-\DoxyCodeLine{00240 \}}
+\DoxyCodeLine{00205                   \{}
+\DoxyCodeLine{00206     \textcolor{keywordtype}{int} choice;}
+\DoxyCodeLine{00207     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{00208         clear();}
+\DoxyCodeLine{00209         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00210         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000         |"{}} << endl;}
+\DoxyCodeLine{00211         cout << \textcolor{stringliteral}{"{}| 1. Rotas sem distâncias                |"{}} << endl;}
+\DoxyCodeLine{00212         cout << \textcolor{stringliteral}{"{}| 2. Rotas com distâncias                |"{}} << endl;}
+\DoxyCodeLine{00213         cout << \textcolor{stringliteral}{"{}| 3. Estatísticas da rede                |"{}} << endl;}
+\DoxyCodeLine{00214         cout << \textcolor{stringliteral}{"{}| 4. Estudos sobre a rede                |"{}} << endl;}
+\DoxyCodeLine{00215         cout << \textcolor{stringliteral}{"{}| 5. Informações sobre um aeroporto      |"{}} << endl;}
+\DoxyCodeLine{00216         cout << \textcolor{stringliteral}{"{}| 0. Sair                                |"{}} << endl;}
+\DoxyCodeLine{00217         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00218         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00219         cin >> choice;}
+\DoxyCodeLine{00220         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00221             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00222                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{00223                     \mbox{\hyperlink{main_8cpp_a7829a6661589b853b3f18dc8953c705f}{print\_menu1}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00224                 \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{00225                     \mbox{\hyperlink{main_8cpp_af1ceaa939e62c546344a6f261c1f791b}{print\_menu2}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00226                 \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{00227                     \mbox{\hyperlink{main_8cpp_a432a270ce921bf6af4bad934052e0eeb}{print\_menu3}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00228                 \textcolor{keywordflow}{case} 4:}
+\DoxyCodeLine{00229                     \mbox{\hyperlink{main_8cpp_aaec24c83cd45a0f2656ead62dbbefbe1}{print\_menu4}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00230                 \textcolor{keywordflow}{case} 5:}
+\DoxyCodeLine{00231                     \mbox{\hyperlink{main_8cpp_abc90c4185bb7865ed03b2f4a1292c564}{print\_menu5}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00232                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00233                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00234             \}}
+\DoxyCodeLine{00235         \}}
+\DoxyCodeLine{00236     \} \textcolor{keywordflow}{while} (choice != 0);}
+\DoxyCodeLine{00237 }
+\DoxyCodeLine{00238     clear();}
+\DoxyCodeLine{00239 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a7829a6661589b853b3f18dc8953c705f}\label{main_8cpp_a7829a6661589b853b3f18dc8953c705f}} 
@@ -985,134 +1031,134 @@ Imprime o menu das rotas sem distâncias.
 
 Imprime o menu das rotas sem distâncias e chama a função correspondente à opção escolhida. Aqui podemos escolher a origem e o destino do voo, e este irá imprimir a rota com o menor numero de voos entre esses dois pontos. A origem e o destino podem ser um aeroporto, uma cidade, o aeroporto mais proximo de umas dadas coordenadas, todos os aeroportos dentro de um dado raio ou os N aeroportos mais proximos das coordenadas. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00251}{251}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00250}{250}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00251                    \{}
-\DoxyCodeLine{00252     \textcolor{keywordtype}{bool} opcao\_invalida = \textcolor{keyword}{false};}
-\DoxyCodeLine{00253     \textcolor{keywordtype}{int} choice;}
-\DoxyCodeLine{00254     vector<int> src, dest;}
-\DoxyCodeLine{00255     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{00256         clear();}
-\DoxyCodeLine{00257         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00258         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
-\DoxyCodeLine{00259         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
-\DoxyCodeLine{00260         cout << \textcolor{stringliteral}{"{}| Selecione a origem do voo:               |"{}} << endl;}
-\DoxyCodeLine{00261         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
-\DoxyCodeLine{00262         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
-\DoxyCodeLine{00263         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
-\DoxyCodeLine{00264         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
-\DoxyCodeLine{00265         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
-\DoxyCodeLine{00266         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
-\DoxyCodeLine{00267         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00268         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00269         cin >> choice;}
-\DoxyCodeLine{00270         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00271             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00272                 \textcolor{keywordflow}{case} 1: \{}
-\DoxyCodeLine{00273                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00274                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00275                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
-\DoxyCodeLine{00276                     wait();}
-\DoxyCodeLine{00277                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00278                 \}}
-\DoxyCodeLine{00279                 \textcolor{keywordflow}{case} 2: \{}
-\DoxyCodeLine{00280                     src = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00281                     wait();}
-\DoxyCodeLine{00282                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00283                 \}}
-\DoxyCodeLine{00284 }
-\DoxyCodeLine{00285                 \textcolor{keywordflow}{case} 3: \{}
-\DoxyCodeLine{00286                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00287                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00288                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
-\DoxyCodeLine{00289                     wait();}
-\DoxyCodeLine{00290                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00291                 \}}
-\DoxyCodeLine{00292 }
-\DoxyCodeLine{00293                 \textcolor{keywordflow}{case} 4: \{}
-\DoxyCodeLine{00294                     src = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00295                     wait();}
-\DoxyCodeLine{00296                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00297                 \}}
-\DoxyCodeLine{00298 }
-\DoxyCodeLine{00299                 \textcolor{keywordflow}{case} 5: \{}
-\DoxyCodeLine{00300                     src = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00301                     wait();}
-\DoxyCodeLine{00302                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00303                 \}}
-\DoxyCodeLine{00304 }
-\DoxyCodeLine{00305                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00306                     opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00307                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
-\DoxyCodeLine{00308             \}}
-\DoxyCodeLine{00309         \}}
-\DoxyCodeLine{00310 }
-\DoxyCodeLine{00311         \textcolor{keywordflow}{if}(opcao\_invalida) \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00312 }
-\DoxyCodeLine{00313         clear();}
-\DoxyCodeLine{00314         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00315         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
-\DoxyCodeLine{00316         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
-\DoxyCodeLine{00317         cout << \textcolor{stringliteral}{"{}| Selecione o destino do voo:              |"{}} << endl;}
-\DoxyCodeLine{00318         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
-\DoxyCodeLine{00319         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
-\DoxyCodeLine{00320         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
-\DoxyCodeLine{00321         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
-\DoxyCodeLine{00322         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
-\DoxyCodeLine{00323         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
-\DoxyCodeLine{00324         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00325         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00326         cin >> choice;}
-\DoxyCodeLine{00327         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00328             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00329                 \textcolor{keywordflow}{case} 1: \{}
-\DoxyCodeLine{00330                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00331                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00332                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
-\DoxyCodeLine{00333                     wait();}
-\DoxyCodeLine{00334                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00335                 \}}
-\DoxyCodeLine{00336                 \textcolor{keywordflow}{case} 2: \{}
-\DoxyCodeLine{00337                     dest = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00338                     wait();}
-\DoxyCodeLine{00339                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00340                 \}}
-\DoxyCodeLine{00341 }
-\DoxyCodeLine{00342                 \textcolor{keywordflow}{case} 3: \{}
-\DoxyCodeLine{00343                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00344                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00345                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
-\DoxyCodeLine{00346                     wait();}
-\DoxyCodeLine{00347                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00348                 \}}
-\DoxyCodeLine{00349 }
-\DoxyCodeLine{00350                 \textcolor{keywordflow}{case} 4: \{}
-\DoxyCodeLine{00351                     dest = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00352                     wait();}
-\DoxyCodeLine{00353                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00354                 \}}
-\DoxyCodeLine{00355 }
-\DoxyCodeLine{00356                 \textcolor{keywordflow}{case} 5: \{}
-\DoxyCodeLine{00357                     dest = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00358                     wait();}
-\DoxyCodeLine{00359                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00360                 \}}
-\DoxyCodeLine{00361 }
-\DoxyCodeLine{00362                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00363                     opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00364                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
-\DoxyCodeLine{00365             \}}
-\DoxyCodeLine{00366 }
-\DoxyCodeLine{00367             \textcolor{keywordflow}{if}(!opcao\_invalida) \{}
-\DoxyCodeLine{00368                 \mbox{\hyperlink{main_8cpp_a0d7a6179b64029607936ec7560c4e061}{print\_shortest\_paths}}(src, dest);}
-\DoxyCodeLine{00369                 wait();}
-\DoxyCodeLine{00370                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00371             \}}
-\DoxyCodeLine{00372         \}}
-\DoxyCodeLine{00373     \} \textcolor{keywordflow}{while} (choice != 0 \&\& !opcao\_invalida);}
-\DoxyCodeLine{00374 \}}
+\DoxyCodeLine{00250                    \{}
+\DoxyCodeLine{00251     \textcolor{keywordtype}{bool} opcao\_invalida = \textcolor{keyword}{false};}
+\DoxyCodeLine{00252     \textcolor{keywordtype}{int} choice;}
+\DoxyCodeLine{00253     vector<int> src, dest;}
+\DoxyCodeLine{00254     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{00255         clear();}
+\DoxyCodeLine{00256         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00257         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
+\DoxyCodeLine{00258         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
+\DoxyCodeLine{00259         cout << \textcolor{stringliteral}{"{}| Selecione a origem do voo:               |"{}} << endl;}
+\DoxyCodeLine{00260         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
+\DoxyCodeLine{00261         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
+\DoxyCodeLine{00262         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
+\DoxyCodeLine{00263         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
+\DoxyCodeLine{00264         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
+\DoxyCodeLine{00265         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
+\DoxyCodeLine{00266         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00267         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00268         cin >> choice;}
+\DoxyCodeLine{00269         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00270             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00271                 \textcolor{keywordflow}{case} 1: \{}
+\DoxyCodeLine{00272                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00273                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00274                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
+\DoxyCodeLine{00275                     wait();}
+\DoxyCodeLine{00276                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00277                 \}}
+\DoxyCodeLine{00278                 \textcolor{keywordflow}{case} 2: \{}
+\DoxyCodeLine{00279                     src = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00280                     wait();}
+\DoxyCodeLine{00281                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00282                 \}}
+\DoxyCodeLine{00283 }
+\DoxyCodeLine{00284                 \textcolor{keywordflow}{case} 3: \{}
+\DoxyCodeLine{00285                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00286                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00287                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
+\DoxyCodeLine{00288                     wait();}
+\DoxyCodeLine{00289                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00290                 \}}
+\DoxyCodeLine{00291 }
+\DoxyCodeLine{00292                 \textcolor{keywordflow}{case} 4: \{}
+\DoxyCodeLine{00293                     src = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00294                     wait();}
+\DoxyCodeLine{00295                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00296                 \}}
+\DoxyCodeLine{00297 }
+\DoxyCodeLine{00298                 \textcolor{keywordflow}{case} 5: \{}
+\DoxyCodeLine{00299                     src = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00300                     wait();}
+\DoxyCodeLine{00301                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00302                 \}}
+\DoxyCodeLine{00303 }
+\DoxyCodeLine{00304                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00305                     opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00306                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
+\DoxyCodeLine{00307             \}}
+\DoxyCodeLine{00308         \}}
+\DoxyCodeLine{00309 }
+\DoxyCodeLine{00310         \textcolor{keywordflow}{if}(opcao\_invalida) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00311 }
+\DoxyCodeLine{00312         clear();}
+\DoxyCodeLine{00313         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00314         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
+\DoxyCodeLine{00315         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
+\DoxyCodeLine{00316         cout << \textcolor{stringliteral}{"{}| Selecione o destino do voo:              |"{}} << endl;}
+\DoxyCodeLine{00317         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
+\DoxyCodeLine{00318         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
+\DoxyCodeLine{00319         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
+\DoxyCodeLine{00320         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
+\DoxyCodeLine{00321         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
+\DoxyCodeLine{00322         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
+\DoxyCodeLine{00323         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00324         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00325         cin >> choice;}
+\DoxyCodeLine{00326         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00327             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00328                 \textcolor{keywordflow}{case} 1: \{}
+\DoxyCodeLine{00329                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00330                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00331                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
+\DoxyCodeLine{00332                     wait();}
+\DoxyCodeLine{00333                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00334                 \}}
+\DoxyCodeLine{00335                 \textcolor{keywordflow}{case} 2: \{}
+\DoxyCodeLine{00336                     dest = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00337                     wait();}
+\DoxyCodeLine{00338                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00339                 \}}
+\DoxyCodeLine{00340 }
+\DoxyCodeLine{00341                 \textcolor{keywordflow}{case} 3: \{}
+\DoxyCodeLine{00342                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00343                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00344                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
+\DoxyCodeLine{00345                     wait();}
+\DoxyCodeLine{00346                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00347                 \}}
+\DoxyCodeLine{00348 }
+\DoxyCodeLine{00349                 \textcolor{keywordflow}{case} 4: \{}
+\DoxyCodeLine{00350                     dest = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00351                     wait();}
+\DoxyCodeLine{00352                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00353                 \}}
+\DoxyCodeLine{00354 }
+\DoxyCodeLine{00355                 \textcolor{keywordflow}{case} 5: \{}
+\DoxyCodeLine{00356                     dest = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00357                     wait();}
+\DoxyCodeLine{00358                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00359                 \}}
+\DoxyCodeLine{00360 }
+\DoxyCodeLine{00361                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00362                     opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00363                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
+\DoxyCodeLine{00364             \}}
+\DoxyCodeLine{00365 }
+\DoxyCodeLine{00366             \textcolor{keywordflow}{if}(!opcao\_invalida) \{}
+\DoxyCodeLine{00367                 \mbox{\hyperlink{main_8cpp_a0d7a6179b64029607936ec7560c4e061}{print\_shortest\_paths}}(src, dest);}
+\DoxyCodeLine{00368                 wait();}
+\DoxyCodeLine{00369                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00370             \}}
+\DoxyCodeLine{00371         \}}
+\DoxyCodeLine{00372     \} \textcolor{keywordflow}{while} (choice != 0 \&\& !opcao\_invalida);}
+\DoxyCodeLine{00373 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_af1ceaa939e62c546344a6f261c1f791b}\label{main_8cpp_af1ceaa939e62c546344a6f261c1f791b}} 
@@ -1127,136 +1173,136 @@ Imprime o menu das rotas com distâncias.
 
 Imprime o menu das rotas com distâncias e chama a função correspondente à opção escolhida. Aqui podemos escolher a origem e o destino do voo, e este irá imprimir a rota com o menor dsitancia entre esses dois pontos. A origem e o destino podem ser um aeroporto, uma cidade, o aeroporto mais proximo de umas dadas coordenadas, todos os aeroportos dentro de um dado raio ou os N aeroportos mais proximos das coordenadas. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00385}{385}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00384}{384}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00385                    \{}
-\DoxyCodeLine{00386     \textcolor{keywordtype}{bool} opcao\_invalida = \textcolor{keyword}{false};}
-\DoxyCodeLine{00387     \textcolor{keywordtype}{int} choice;}
-\DoxyCodeLine{00388     vector<int> src, dest;}
-\DoxyCodeLine{00389     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{00390         clear();}
-\DoxyCodeLine{00391         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00392         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
-\DoxyCodeLine{00393         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
-\DoxyCodeLine{00394         cout << \textcolor{stringliteral}{"{}| Selecione a origem do voo:               |"{}} << endl;}
-\DoxyCodeLine{00395         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
-\DoxyCodeLine{00396         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
-\DoxyCodeLine{00397         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
-\DoxyCodeLine{00398         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
-\DoxyCodeLine{00399         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
-\DoxyCodeLine{00400         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
-\DoxyCodeLine{00401         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00402         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00403         cin >> choice;}
-\DoxyCodeLine{00404         \textcolor{keywordflow}{if} (choice == 0) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00405         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00406             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00407                 \textcolor{keywordflow}{case} 1: \{}
-\DoxyCodeLine{00408                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00409                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00410                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
-\DoxyCodeLine{00411                     wait();}
-\DoxyCodeLine{00412                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00413                 \}}
-\DoxyCodeLine{00414                 \textcolor{keywordflow}{case} 2: \{}
-\DoxyCodeLine{00415                     src = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00416                     wait();}
-\DoxyCodeLine{00417                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00418                 \}}
-\DoxyCodeLine{00419 }
-\DoxyCodeLine{00420                 \textcolor{keywordflow}{case} 3: \{}
-\DoxyCodeLine{00421                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00422                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00423                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
-\DoxyCodeLine{00424                     wait();}
-\DoxyCodeLine{00425                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00426                 \}}
-\DoxyCodeLine{00427 }
-\DoxyCodeLine{00428                 \textcolor{keywordflow}{case} 4: \{}
-\DoxyCodeLine{00429                     src = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00430                     wait();}
-\DoxyCodeLine{00431                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00432                 \}}
-\DoxyCodeLine{00433 }
-\DoxyCodeLine{00434                 \textcolor{keywordflow}{case} 5: \{}
-\DoxyCodeLine{00435                     src = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{true});}
-\DoxyCodeLine{00436                     wait();}
-\DoxyCodeLine{00437                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00438                 \}}
-\DoxyCodeLine{00439 }
-\DoxyCodeLine{00440                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00441                     opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00442                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
-\DoxyCodeLine{00443             \}}
-\DoxyCodeLine{00444         \}}
-\DoxyCodeLine{00445 }
-\DoxyCodeLine{00446         \textcolor{keywordflow}{if}(opcao\_invalida) \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00447 }
-\DoxyCodeLine{00448         clear();}
-\DoxyCodeLine{00449         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00450         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
-\DoxyCodeLine{00451         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
-\DoxyCodeLine{00452         cout << \textcolor{stringliteral}{"{}| Selecione o destino do voo:              |"{}} << endl;}
-\DoxyCodeLine{00453         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
-\DoxyCodeLine{00454         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
-\DoxyCodeLine{00455         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
-\DoxyCodeLine{00456         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
-\DoxyCodeLine{00457         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
-\DoxyCodeLine{00458         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
-\DoxyCodeLine{00459         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00460         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00461         cin >> choice;}
-\DoxyCodeLine{00462         \textcolor{keywordflow}{if} (choice == 0) \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00463         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00464             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00465                 \textcolor{keywordflow}{case} 1: \{}
-\DoxyCodeLine{00466                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00467                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00468                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
-\DoxyCodeLine{00469                     wait();}
-\DoxyCodeLine{00470                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00471                 \}}
-\DoxyCodeLine{00472                 \textcolor{keywordflow}{case} 2: \{}
-\DoxyCodeLine{00473                     dest = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00474                     wait();}
-\DoxyCodeLine{00475                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00476                 \}}
-\DoxyCodeLine{00477 }
-\DoxyCodeLine{00478                 \textcolor{keywordflow}{case} 3: \{}
-\DoxyCodeLine{00479                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00480                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00481                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
-\DoxyCodeLine{00482                     wait();}
-\DoxyCodeLine{00483                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00484                 \}}
-\DoxyCodeLine{00485 }
-\DoxyCodeLine{00486                 \textcolor{keywordflow}{case} 4: \{}
-\DoxyCodeLine{00487                     dest = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00488                     wait();}
-\DoxyCodeLine{00489                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00490                 \}}
-\DoxyCodeLine{00491 }
-\DoxyCodeLine{00492                 \textcolor{keywordflow}{case} 5: \{}
-\DoxyCodeLine{00493                     dest = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{false});}
-\DoxyCodeLine{00494                     wait();}
-\DoxyCodeLine{00495                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00496                 \}}
-\DoxyCodeLine{00497 }
-\DoxyCodeLine{00498                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00499                     opcao\_invalida = \textcolor{keyword}{true};}
-\DoxyCodeLine{00500                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
-\DoxyCodeLine{00501             \}}
-\DoxyCodeLine{00502 }
-\DoxyCodeLine{00503             \textcolor{keywordflow}{if}(!opcao\_invalida) \{}
-\DoxyCodeLine{00504                 \mbox{\hyperlink{main_8cpp_a0d674a6e2fc40023d1007c1f9d2790ce}{print\_shortest\_paths\_distance}}(src, dest);}
-\DoxyCodeLine{00505                 wait();}
-\DoxyCodeLine{00506                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00507             \}}
-\DoxyCodeLine{00508         \}}
-\DoxyCodeLine{00509     \} \textcolor{keywordflow}{while} (choice != 0 \&\& !opcao\_invalida);}
-\DoxyCodeLine{00510 \}}
+\DoxyCodeLine{00384                    \{}
+\DoxyCodeLine{00385     \textcolor{keywordtype}{bool} opcao\_invalida = \textcolor{keyword}{false};}
+\DoxyCodeLine{00386     \textcolor{keywordtype}{int} choice;}
+\DoxyCodeLine{00387     vector<int> src, dest;}
+\DoxyCodeLine{00388     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{00389         clear();}
+\DoxyCodeLine{00390         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00391         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
+\DoxyCodeLine{00392         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
+\DoxyCodeLine{00393         cout << \textcolor{stringliteral}{"{}| Selecione a origem do voo:               |"{}} << endl;}
+\DoxyCodeLine{00394         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
+\DoxyCodeLine{00395         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
+\DoxyCodeLine{00396         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
+\DoxyCodeLine{00397         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
+\DoxyCodeLine{00398         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
+\DoxyCodeLine{00399         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
+\DoxyCodeLine{00400         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00401         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00402         cin >> choice;}
+\DoxyCodeLine{00403         \textcolor{keywordflow}{if} (choice == 0) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00404         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00405             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00406                 \textcolor{keywordflow}{case} 1: \{}
+\DoxyCodeLine{00407                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00408                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00409                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
+\DoxyCodeLine{00410                     wait();}
+\DoxyCodeLine{00411                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00412                 \}}
+\DoxyCodeLine{00413                 \textcolor{keywordflow}{case} 2: \{}
+\DoxyCodeLine{00414                     src = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00415                     wait();}
+\DoxyCodeLine{00416                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00417                 \}}
+\DoxyCodeLine{00418 }
+\DoxyCodeLine{00419                 \textcolor{keywordflow}{case} 3: \{}
+\DoxyCodeLine{00420                     \textcolor{keywordtype}{int} src\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00421                     \textcolor{keywordflow}{if}(src\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00422                     \textcolor{keywordflow}{else} src.push\_back(src\_i);}
+\DoxyCodeLine{00423                     wait();}
+\DoxyCodeLine{00424                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00425                 \}}
+\DoxyCodeLine{00426 }
+\DoxyCodeLine{00427                 \textcolor{keywordflow}{case} 4: \{}
+\DoxyCodeLine{00428                     src = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00429                     wait();}
+\DoxyCodeLine{00430                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00431                 \}}
+\DoxyCodeLine{00432 }
+\DoxyCodeLine{00433                 \textcolor{keywordflow}{case} 5: \{}
+\DoxyCodeLine{00434                     src = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{true});}
+\DoxyCodeLine{00435                     wait();}
+\DoxyCodeLine{00436                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00437                 \}}
+\DoxyCodeLine{00438 }
+\DoxyCodeLine{00439                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00440                     opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00441                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
+\DoxyCodeLine{00442             \}}
+\DoxyCodeLine{00443         \}}
+\DoxyCodeLine{00444 }
+\DoxyCodeLine{00445         \textcolor{keywordflow}{if}(opcao\_invalida) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00446 }
+\DoxyCodeLine{00447         clear();}
+\DoxyCodeLine{00448         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00449         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
+\DoxyCodeLine{00450         cout << \textcolor{stringliteral}{"{}|            Rotas mais curtas             |"{}} << endl;}
+\DoxyCodeLine{00451         cout << \textcolor{stringliteral}{"{}| Selecione o destino do voo:              |"{}} << endl;}
+\DoxyCodeLine{00452         cout << \textcolor{stringliteral}{"{}| 1. Aeroporto                             |"{}} << endl;}
+\DoxyCodeLine{00453         cout << \textcolor{stringliteral}{"{}| 2. Cidade                                |"{}} << endl;}
+\DoxyCodeLine{00454         cout << \textcolor{stringliteral}{"{}| 3. Ponto mais proximo das Coordenadas    |"{}} << endl;}
+\DoxyCodeLine{00455         cout << \textcolor{stringliteral}{"{}| 4. Todos os pontos a Xkm das Coordenadas |"{}} << endl;}
+\DoxyCodeLine{00456         cout << \textcolor{stringliteral}{"{}| 5. N pontos mais proximos                |"{}} << endl;}
+\DoxyCodeLine{00457         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
+\DoxyCodeLine{00458         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00459         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00460         cin >> choice;}
+\DoxyCodeLine{00461         \textcolor{keywordflow}{if} (choice == 0) \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00462         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00463             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00464                 \textcolor{keywordflow}{case} 1: \{}
+\DoxyCodeLine{00465                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_a1d9cbeb6fc616c7bfde21311411a8502}{get\_airport}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00466                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00467                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
+\DoxyCodeLine{00468                     wait();}
+\DoxyCodeLine{00469                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00470                 \}}
+\DoxyCodeLine{00471                 \textcolor{keywordflow}{case} 2: \{}
+\DoxyCodeLine{00472                     dest = \mbox{\hyperlink{main_8cpp_a61b41dd27ac38d1a2444a332b0a33796}{get\_city}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00473                     wait();}
+\DoxyCodeLine{00474                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00475                 \}}
+\DoxyCodeLine{00476 }
+\DoxyCodeLine{00477                 \textcolor{keywordflow}{case} 3: \{}
+\DoxyCodeLine{00478                     \textcolor{keywordtype}{int} dest\_i = \mbox{\hyperlink{main_8cpp_af5d54a2d1e9db31d103bb441ec8f0e2a}{get\_coordinates}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00479                     \textcolor{keywordflow}{if}(dest\_i == -\/1) opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00480                     \textcolor{keywordflow}{else} dest.push\_back(dest\_i);}
+\DoxyCodeLine{00481                     wait();}
+\DoxyCodeLine{00482                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00483                 \}}
+\DoxyCodeLine{00484 }
+\DoxyCodeLine{00485                 \textcolor{keywordflow}{case} 4: \{}
+\DoxyCodeLine{00486                     dest = \mbox{\hyperlink{main_8cpp_a49820625f81ed6037cca5cf609ee454f}{get\_coordinates\_km}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00487                     wait();}
+\DoxyCodeLine{00488                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00489                 \}}
+\DoxyCodeLine{00490 }
+\DoxyCodeLine{00491                 \textcolor{keywordflow}{case} 5: \{}
+\DoxyCodeLine{00492                     dest = \mbox{\hyperlink{main_8cpp_a44e386e3f588a9a64142c3512fb9362a}{get\_n\_coordinates}}(\textcolor{keyword}{false});}
+\DoxyCodeLine{00493                     wait();}
+\DoxyCodeLine{00494                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00495                 \}}
+\DoxyCodeLine{00496 }
+\DoxyCodeLine{00497                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00498                     opcao\_invalida = \textcolor{keyword}{true};}
+\DoxyCodeLine{00499                     cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
+\DoxyCodeLine{00500             \}}
+\DoxyCodeLine{00501 }
+\DoxyCodeLine{00502             \textcolor{keywordflow}{if}(!opcao\_invalida) \{}
+\DoxyCodeLine{00503                 \mbox{\hyperlink{main_8cpp_a0d674a6e2fc40023d1007c1f9d2790ce}{print\_shortest\_paths\_distance}}(src, dest);}
+\DoxyCodeLine{00504                 wait();}
+\DoxyCodeLine{00505                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00506             \}}
+\DoxyCodeLine{00507         \}}
+\DoxyCodeLine{00508     \} \textcolor{keywordflow}{while} (choice != 0 \&\& !opcao\_invalida);}
+\DoxyCodeLine{00509 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a432a270ce921bf6af4bad934052e0eeb}\label{main_8cpp_a432a270ce921bf6af4bad934052e0eeb}} 
@@ -1276,43 +1322,43 @@ Imprime o menu das estatisticas e chama a função correspondente à opção esc
 \item Estatisticas de uma companhia aerea à escolha 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00522}{522}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00521}{521}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00522                    \{}
-\DoxyCodeLine{00523     \textcolor{keywordtype}{int} choice;}
-\DoxyCodeLine{00524     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{00525         clear();}
-\DoxyCodeLine{00526         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00527         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
-\DoxyCodeLine{00528         cout << \textcolor{stringliteral}{"{}|          Estatísticas da Rede            |"{}} << endl;}
-\DoxyCodeLine{00529         cout << \textcolor{stringliteral}{"{}| Selecione o modo:                        |"{}} << endl;}
-\DoxyCodeLine{00530         cout << \textcolor{stringliteral}{"{}| 1. Estatísticas da rede global           |"{}} << endl;}
-\DoxyCodeLine{00531         cout << \textcolor{stringliteral}{"{}| 2. Estatísticas de um país               |"{}} << endl;}
-\DoxyCodeLine{00532         cout << \textcolor{stringliteral}{"{}| 3. Estatísticas de uma companhia         |"{}} << endl;}
-\DoxyCodeLine{00533         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
-\DoxyCodeLine{00534         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00535         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00536         cin >> choice;}
-\DoxyCodeLine{00537         \textcolor{keywordflow}{switch}(choice) \{}
-\DoxyCodeLine{00538             \textcolor{keywordflow}{case} 1:}
-\DoxyCodeLine{00539                 print\_global\_stats();}
-\DoxyCodeLine{00540                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00541             \textcolor{keywordflow}{case} 2:}
-\DoxyCodeLine{00542                 print\_country\_stats();}
-\DoxyCodeLine{00543                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00544             \textcolor{keywordflow}{case} 3:}
-\DoxyCodeLine{00545                 print\_airline\_stats();}
-\DoxyCodeLine{00546                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00547             \textcolor{keywordflow}{case} 0:}
-\DoxyCodeLine{00548                 \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00549             \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00550                 cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
-\DoxyCodeLine{00551                 wait();}
-\DoxyCodeLine{00552         \}}
-\DoxyCodeLine{00553     \} \textcolor{keywordflow}{while}(choice != 0);}
-\DoxyCodeLine{00554 \}}
+\DoxyCodeLine{00521                    \{}
+\DoxyCodeLine{00522     \textcolor{keywordtype}{int} choice;}
+\DoxyCodeLine{00523     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{00524         clear();}
+\DoxyCodeLine{00525         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00526         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000           |"{}} << endl;}
+\DoxyCodeLine{00527         cout << \textcolor{stringliteral}{"{}|          Estatísticas da Rede            |"{}} << endl;}
+\DoxyCodeLine{00528         cout << \textcolor{stringliteral}{"{}| Selecione o modo:                        |"{}} << endl;}
+\DoxyCodeLine{00529         cout << \textcolor{stringliteral}{"{}| 1. Estatísticas da rede global           |"{}} << endl;}
+\DoxyCodeLine{00530         cout << \textcolor{stringliteral}{"{}| 2. Estatísticas de um país               |"{}} << endl;}
+\DoxyCodeLine{00531         cout << \textcolor{stringliteral}{"{}| 3. Estatísticas de uma companhia         |"{}} << endl;}
+\DoxyCodeLine{00532         cout << \textcolor{stringliteral}{"{}| 0. Voltar                                |"{}} << endl;}
+\DoxyCodeLine{00533         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00534         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00535         cin >> choice;}
+\DoxyCodeLine{00536         \textcolor{keywordflow}{switch}(choice) \{}
+\DoxyCodeLine{00537             \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{00538                 \mbox{\hyperlink{main_8cpp_a077376a310d7f3098f0c63ca1d63df01}{print\_global\_stats}}();}
+\DoxyCodeLine{00539                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00540             \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{00541                 \mbox{\hyperlink{main_8cpp_a4bbb294a9a360290ff006a1af3dbef8f}{print\_country\_stats}}();}
+\DoxyCodeLine{00542                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00543             \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{00544                 \mbox{\hyperlink{main_8cpp_a539d4ab5ef1ed1fffdd2b20cafd767ac}{print\_airline\_stats}}();}
+\DoxyCodeLine{00545                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00546             \textcolor{keywordflow}{case} 0:}
+\DoxyCodeLine{00547                 \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00548             \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00549                 cout << \textcolor{stringliteral}{"{}Opcao invalida!"{}} << endl;}
+\DoxyCodeLine{00550                 wait();}
+\DoxyCodeLine{00551         \}}
+\DoxyCodeLine{00552     \} \textcolor{keywordflow}{while}(choice != 0);}
+\DoxyCodeLine{00553 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_aaec24c83cd45a0f2656ead62dbbefbe1}\label{main_8cpp_aaec24c83cd45a0f2656ead62dbbefbe1}} 
@@ -1330,34 +1376,34 @@ Imprime o menu das rotas mais baratas e chama a função correspondente à opç�
 \item Pontos de Articulação (Global ou apenas de uma ou varias companhias aereas) 
 \end{DoxyItemize}
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00564}{564}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00563}{563}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00564                    \{}
-\DoxyCodeLine{00565     \textcolor{keywordtype}{int} choice;}
-\DoxyCodeLine{00566     \textcolor{keywordflow}{do} \{}
-\DoxyCodeLine{00567         clear();}
-\DoxyCodeLine{00568         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00569         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000         |"{}} << endl;}
-\DoxyCodeLine{00570         cout << \textcolor{stringliteral}{"{}|          Estudos sobre a rede          |"{}} << endl;}
-\DoxyCodeLine{00571         cout << \textcolor{stringliteral}{"{}| 1. Pontos de Ariculacao                |"{}} << endl;}
-\DoxyCodeLine{00572         cout << \textcolor{stringliteral}{"{}| 0. Sair                                |"{}} << endl;}
-\DoxyCodeLine{00573         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
-\DoxyCodeLine{00574         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
-\DoxyCodeLine{00575         cin >> choice;}
-\DoxyCodeLine{00576         \textcolor{keywordflow}{if} (choice != 0) \{}
-\DoxyCodeLine{00577             \textcolor{keywordflow}{switch} (choice) \{}
-\DoxyCodeLine{00578                 \textcolor{keywordflow}{case} 1:}
-\DoxyCodeLine{00579                     \mbox{\hyperlink{main_8cpp_ad071036de8bbc73f7725cdc9fc752c7e}{print\_articulation\_points}}(); \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00580                 \textcolor{keywordflow}{default}:}
-\DoxyCodeLine{00581                     \textcolor{keywordflow}{break};}
-\DoxyCodeLine{00582             \}}
-\DoxyCodeLine{00583         \}}
-\DoxyCodeLine{00584     \} \textcolor{keywordflow}{while} (choice != 0);}
-\DoxyCodeLine{00585 }
-\DoxyCodeLine{00586     clear();}
-\DoxyCodeLine{00587 \}}
+\DoxyCodeLine{00563                    \{}
+\DoxyCodeLine{00564     \textcolor{keywordtype}{int} choice;}
+\DoxyCodeLine{00565     \textcolor{keywordflow}{do} \{}
+\DoxyCodeLine{00566         clear();}
+\DoxyCodeLine{00567         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00568         cout << \textcolor{stringliteral}{"{}|         Simulador de Voos 3000         |"{}} << endl;}
+\DoxyCodeLine{00569         cout << \textcolor{stringliteral}{"{}|          Estudos sobre a rede          |"{}} << endl;}
+\DoxyCodeLine{00570         cout << \textcolor{stringliteral}{"{}| 1. Pontos de Ariculacao                |"{}} << endl;}
+\DoxyCodeLine{00571         cout << \textcolor{stringliteral}{"{}| 0. Sair                                |"{}} << endl;}
+\DoxyCodeLine{00572         cout << \textcolor{stringliteral}{"{}-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"{}} << endl;}
+\DoxyCodeLine{00573         cout << \textcolor{stringliteral}{"{}Escolha: "{}};}
+\DoxyCodeLine{00574         cin >> choice;}
+\DoxyCodeLine{00575         \textcolor{keywordflow}{if} (choice != 0) \{}
+\DoxyCodeLine{00576             \textcolor{keywordflow}{switch} (choice) \{}
+\DoxyCodeLine{00577                 \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{00578                     \mbox{\hyperlink{main_8cpp_ad071036de8bbc73f7725cdc9fc752c7e}{print\_articulation\_points}}(); \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00579                 \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00580                     \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00581             \}}
+\DoxyCodeLine{00582         \}}
+\DoxyCodeLine{00583     \} \textcolor{keywordflow}{while} (choice != 0);}
+\DoxyCodeLine{00584 }
+\DoxyCodeLine{00585     clear();}
+\DoxyCodeLine{00586 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_abc90c4185bb7865ed03b2f4a1292c564}\label{main_8cpp_abc90c4185bb7865ed03b2f4a1292c564}} 
@@ -1372,26 +1418,26 @@ Imprime informacoes sobre um areoporto.
 
 Pede ao utilizador o nome do aeroporto e imprime as informacoes sobre esse aeroporto. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00595}{595}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00594}{594}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00595                    \{}
-\DoxyCodeLine{00596     \textcolor{keywordtype}{string} code;}
-\DoxyCodeLine{00597     cout << \textcolor{stringliteral}{"{}Escolha o código do aeroporto: "{}};}
-\DoxyCodeLine{00598     cin >> code; cout << endl;}
-\DoxyCodeLine{00599 }
-\DoxyCodeLine{00600     transform(code.begin(), code.end(), code.begin(), ::toupper);}
-\DoxyCodeLine{00601 }
-\DoxyCodeLine{00602     \textcolor{keywordflow}{if} (airport\_codes.find(code) == airport\_codes.end()) \{}
-\DoxyCodeLine{00603         cout << \textcolor{stringliteral}{"{}Código inválido!"{}} << endl; wait(); \textcolor{keywordflow}{return};}
-\DoxyCodeLine{00604     \}}
-\DoxyCodeLine{00605 }
-\DoxyCodeLine{00606     \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = airport\_codes[code];}
-\DoxyCodeLine{00607     \mbox{\hyperlink{classAirport}{Airport}} airport = airports.at(\textcolor{keywordtype}{id});}
-\DoxyCodeLine{00608     print\_airport\_stats(\textcolor{keywordtype}{id}, airport);}
-\DoxyCodeLine{00609     wait();}
-\DoxyCodeLine{00610 \}}
+\DoxyCodeLine{00594                    \{}
+\DoxyCodeLine{00595     \textcolor{keywordtype}{string} code;}
+\DoxyCodeLine{00596     cout << \textcolor{stringliteral}{"{}Escolha o código do aeroporto: "{}};}
+\DoxyCodeLine{00597     cin >> code; cout << endl;}
+\DoxyCodeLine{00598 }
+\DoxyCodeLine{00599     transform(code.begin(), code.end(), code.begin(), ::toupper);}
+\DoxyCodeLine{00600 }
+\DoxyCodeLine{00601     \textcolor{keywordflow}{if} (airport\_codes.find(code) == airport\_codes.end()) \{}
+\DoxyCodeLine{00602         cout << \textcolor{stringliteral}{"{}Código inválido!"{}} << endl; wait(); \textcolor{keywordflow}{return};}
+\DoxyCodeLine{00603     \}}
+\DoxyCodeLine{00604 }
+\DoxyCodeLine{00605     \textcolor{keywordtype}{int} \textcolor{keywordtype}{id} = airport\_codes[code];}
+\DoxyCodeLine{00606     \mbox{\hyperlink{classAirport}{Airport}} airport = airports.at(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00607     \mbox{\hyperlink{main_8cpp_a86b72aecd71f918b974747365432a2e5}{print\_airport\_stats}}(\textcolor{keywordtype}{id}, airport);}
+\DoxyCodeLine{00608     wait();}
+\DoxyCodeLine{00609 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a0d7a6179b64029607936ec7560c4e061}\label{main_8cpp_a0d7a6179b64029607936ec7560c4e061}} 
@@ -1415,57 +1461,59 @@ Esta função serve como passo intermedio entre o menu e a função \mbox{\hyper
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01078}{1078}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01079}{1079}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01078                                                                            \{}
-\DoxyCodeLine{01079     \textcolor{keywordflow}{if}(src.empty()) \{}
-\DoxyCodeLine{01080         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de origem!"{}} << endl;}
-\DoxyCodeLine{01081         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01082     \}}
-\DoxyCodeLine{01083     \textcolor{keywordflow}{if}(dest.empty()) \{}
-\DoxyCodeLine{01084         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de destino!"{}} << endl;}
-\DoxyCodeLine{01085         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01086     \}}
-\DoxyCodeLine{01087 }
-\DoxyCodeLine{01088     \textcolor{keywordflow}{if}(src.size() == 1) \{}
-\DoxyCodeLine{01089         cout << \textcolor{stringliteral}{"{}Aeroporto de origem: "{}} << airports.at(src[0]).getName() << endl;}
-\DoxyCodeLine{01090     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01091         cout << \textcolor{stringliteral}{"{}Aeroportos de origem: "{}} << endl;}
-\DoxyCodeLine{01092         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src.size(); i++) \{}
-\DoxyCodeLine{01093             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(src[i]).getName() << endl;}
-\DoxyCodeLine{01094         \}}
-\DoxyCodeLine{01095     \}}
-\DoxyCodeLine{01096     cout << endl;}
-\DoxyCodeLine{01097     \textcolor{keywordflow}{if}(dest.size() == 1) \{}
-\DoxyCodeLine{01098         cout << \textcolor{stringliteral}{"{}Aeroporto de destino: "{}} << airports.at(dest[0]).getName() << endl;}
-\DoxyCodeLine{01099     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01100         cout << \textcolor{stringliteral}{"{}Aeroportos de destino: "{}} << endl;}
-\DoxyCodeLine{01101         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < dest.size(); i++) \{}
-\DoxyCodeLine{01102             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(dest[i]).getName() << endl;}
-\DoxyCodeLine{01103         \}}
-\DoxyCodeLine{01104     \}}
-\DoxyCodeLine{01105 }
-\DoxyCodeLine{01106     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
-\DoxyCodeLine{01107     \textcolor{keywordtype}{string} op;}
-\DoxyCodeLine{01108     cin >> op;}
-\DoxyCodeLine{01109     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
-\DoxyCodeLine{01110         set<string> airlines\_to\_consider;}
-\DoxyCodeLine{01111         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
-\DoxyCodeLine{01112         \textcolor{keywordtype}{string} airline;}
-\DoxyCodeLine{01113         \textcolor{keywordflow}{while} (cin >> airline \&\& airline != \textcolor{stringliteral}{"{}fim"{}} \&\& airline != \textcolor{stringliteral}{"{}FIM"{}}) \{}
-\DoxyCodeLine{01114             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
-\DoxyCodeLine{01115                 airlines\_to\_consider.insert(airline);}
-\DoxyCodeLine{01116             \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01117                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
-\DoxyCodeLine{01118             \}}
-\DoxyCodeLine{01119         \}}
-\DoxyCodeLine{01120         \mbox{\hyperlink{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}{list\_shortest\_paths}}(src, dest, airlines\_to\_consider);}
-\DoxyCodeLine{01121     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01122         \mbox{\hyperlink{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}{list\_shortest\_paths}}(src, dest);}
-\DoxyCodeLine{01123     \}}
-\DoxyCodeLine{01124 \}}
+\DoxyCodeLine{01079                                                                            \{}
+\DoxyCodeLine{01080     \textcolor{keywordflow}{if}(src.empty()) \{}
+\DoxyCodeLine{01081         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de origem!"{}} << endl;}
+\DoxyCodeLine{01082         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01083     \}}
+\DoxyCodeLine{01084     \textcolor{keywordflow}{if}(dest.empty()) \{}
+\DoxyCodeLine{01085         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de destino!"{}} << endl;}
+\DoxyCodeLine{01086         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01087     \}}
+\DoxyCodeLine{01088 }
+\DoxyCodeLine{01089     \textcolor{keywordflow}{if}(src.size() == 1) \{}
+\DoxyCodeLine{01090         cout << \textcolor{stringliteral}{"{}Aeroporto de origem: "{}} << airports.at(src[0]).getName() << endl;}
+\DoxyCodeLine{01091     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01092         cout << \textcolor{stringliteral}{"{}Aeroportos de origem: "{}} << endl;}
+\DoxyCodeLine{01093         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < src.size(); i++) \{}
+\DoxyCodeLine{01094             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(src[i]).getName() << endl;}
+\DoxyCodeLine{01095         \}}
+\DoxyCodeLine{01096     \}}
+\DoxyCodeLine{01097     cout << endl;}
+\DoxyCodeLine{01098     \textcolor{keywordflow}{if}(dest.size() == 1) \{}
+\DoxyCodeLine{01099         cout << \textcolor{stringliteral}{"{}Aeroporto de destino: "{}} << airports.at(dest[0]).getName() << endl;}
+\DoxyCodeLine{01100     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01101         cout << \textcolor{stringliteral}{"{}Aeroportos de destino: "{}} << endl;}
+\DoxyCodeLine{01102         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i = 0; i < dest.size(); i++) \{}
+\DoxyCodeLine{01103             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(dest[i]).getName() << endl;}
+\DoxyCodeLine{01104         \}}
+\DoxyCodeLine{01105     \}}
+\DoxyCodeLine{01106 }
+\DoxyCodeLine{01107     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
+\DoxyCodeLine{01108     \textcolor{keywordtype}{string} op;}
+\DoxyCodeLine{01109     cin >> op;}
+\DoxyCodeLine{01110     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
+\DoxyCodeLine{01111         set<string> airlines\_to\_consider;}
+\DoxyCodeLine{01112         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
+\DoxyCodeLine{01113         \textcolor{keywordtype}{string} airline;}
+\DoxyCodeLine{01114         \textcolor{keywordflow}{while} (cin >> airline) \{}
+\DoxyCodeLine{01115             transform(airline.begin(), airline.end(), airline.begin(), ::toupper);}
+\DoxyCodeLine{01116             \textcolor{keywordflow}{if} (airline == \textcolor{stringliteral}{"{}FIM"{}}) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01117             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
+\DoxyCodeLine{01118                 airlines\_to\_consider.insert(airline);}
+\DoxyCodeLine{01119             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01120                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
+\DoxyCodeLine{01121             \}}
+\DoxyCodeLine{01122         \}}
+\DoxyCodeLine{01123         \mbox{\hyperlink{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}{list\_shortest\_paths}}(src, dest, airlines\_to\_consider);}
+\DoxyCodeLine{01124     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01125         \mbox{\hyperlink{main_8cpp_a09e2cca382c4e6c6d7cf1331f63901fe}{list\_shortest\_paths}}(src, dest);}
+\DoxyCodeLine{01126     \}}
+\DoxyCodeLine{01127 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a0d674a6e2fc40023d1007c1f9d2790ce}\label{main_8cpp_a0d674a6e2fc40023d1007c1f9d2790ce}} 
@@ -1489,57 +1537,59 @@ Esta função serve como passo intermedio entre o menu e a função \mbox{\hyper
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l01020}{1020}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l01019}{1019}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{01020                                                                                     \{}
-\DoxyCodeLine{01021     \textcolor{keywordflow}{if}(src.empty()) \{}
-\DoxyCodeLine{01022         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de origem!"{}} << endl;}
-\DoxyCodeLine{01023         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01024     \}}
-\DoxyCodeLine{01025     \textcolor{keywordflow}{if}(dest.empty()) \{}
-\DoxyCodeLine{01026         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de destino!"{}} << endl;}
-\DoxyCodeLine{01027         \textcolor{keywordflow}{return};}
-\DoxyCodeLine{01028     \}}
-\DoxyCodeLine{01029 }
-\DoxyCodeLine{01030     \textcolor{keywordflow}{if}(src.size() == 1) \{}
-\DoxyCodeLine{01031         cout << \textcolor{stringliteral}{"{}Aeroporto de origem: "{}} << airports.at(src[0]).getName() << endl;}
-\DoxyCodeLine{01032     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01033         cout << \textcolor{stringliteral}{"{}Aeroportos de origem: "{}} << endl;}
-\DoxyCodeLine{01034         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i : src) \{}
-\DoxyCodeLine{01035             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(i).getName() << endl;}
-\DoxyCodeLine{01036         \}}
-\DoxyCodeLine{01037     \}}
-\DoxyCodeLine{01038     cout << endl;}
-\DoxyCodeLine{01039     \textcolor{keywordflow}{if}(dest.size() == 1) \{}
-\DoxyCodeLine{01040         cout << \textcolor{stringliteral}{"{}Aeroporto de destino: "{}} << airports.at(dest[0]).getName() << endl;}
-\DoxyCodeLine{01041     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01042         cout << \textcolor{stringliteral}{"{}Aeroportos de destino: "{}} << endl;}
-\DoxyCodeLine{01043         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i : dest) \{}
-\DoxyCodeLine{01044             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(i).getName() << endl;}
-\DoxyCodeLine{01045         \}}
-\DoxyCodeLine{01046     \}}
-\DoxyCodeLine{01047 }
-\DoxyCodeLine{01048     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
-\DoxyCodeLine{01049     \textcolor{keywordtype}{string} op;}
-\DoxyCodeLine{01050     cin >> op;}
-\DoxyCodeLine{01051     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
-\DoxyCodeLine{01052         set<string> airlines\_to\_consider;}
-\DoxyCodeLine{01053         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
-\DoxyCodeLine{01054         \textcolor{keywordtype}{string} airline;}
-\DoxyCodeLine{01055         \textcolor{keywordflow}{while} (cin >> airline \&\& airline != \textcolor{stringliteral}{"{}fim"{}} \&\& airline != \textcolor{stringliteral}{"{}FIM"{}}) \{}
-\DoxyCodeLine{01056             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
-\DoxyCodeLine{01057                 airlines\_to\_consider.insert(airline);}
-\DoxyCodeLine{01058             \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01059                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
-\DoxyCodeLine{01060             \}}
-\DoxyCodeLine{01061         \}}
-\DoxyCodeLine{01062         \mbox{\hyperlink{main_8cpp_a221026311c13465c2f5a9907e60c70e3}{list\_shortest\_paths\_with\_distance}}(src, dest, airlines\_to\_consider);}
-\DoxyCodeLine{01063     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{01064         \mbox{\hyperlink{main_8cpp_a221026311c13465c2f5a9907e60c70e3}{list\_shortest\_paths\_with\_distance}}(src, dest);}
-\DoxyCodeLine{01065     \}}
-\DoxyCodeLine{01066 \}}
+\DoxyCodeLine{01019                                                                                     \{}
+\DoxyCodeLine{01020     \textcolor{keywordflow}{if}(src.empty()) \{}
+\DoxyCodeLine{01021         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de origem!"{}} << endl;}
+\DoxyCodeLine{01022         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01023     \}}
+\DoxyCodeLine{01024     \textcolor{keywordflow}{if}(dest.empty()) \{}
+\DoxyCodeLine{01025         cout << \textcolor{stringliteral}{"{}Nao existem aeroportos de destino!"{}} << endl;}
+\DoxyCodeLine{01026         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{01027     \}}
+\DoxyCodeLine{01028 }
+\DoxyCodeLine{01029     \textcolor{keywordflow}{if}(src.size() == 1) \{}
+\DoxyCodeLine{01030         cout << \textcolor{stringliteral}{"{}Aeroporto de origem: "{}} << airports.at(src[0]).getName() << endl;}
+\DoxyCodeLine{01031     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01032         cout << \textcolor{stringliteral}{"{}Aeroportos de origem: "{}} << endl;}
+\DoxyCodeLine{01033         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i : src) \{}
+\DoxyCodeLine{01034             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(i).getName() << endl;}
+\DoxyCodeLine{01035         \}}
+\DoxyCodeLine{01036     \}}
+\DoxyCodeLine{01037     cout << endl;}
+\DoxyCodeLine{01038     \textcolor{keywordflow}{if}(dest.size() == 1) \{}
+\DoxyCodeLine{01039         cout << \textcolor{stringliteral}{"{}Aeroporto de destino: "{}} << airports.at(dest[0]).getName() << endl;}
+\DoxyCodeLine{01040     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01041         cout << \textcolor{stringliteral}{"{}Aeroportos de destino: "{}} << endl;}
+\DoxyCodeLine{01042         \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int} i : dest) \{}
+\DoxyCodeLine{01043             cout << \textcolor{stringliteral}{"{}  -\/ "{}} << airports.at(i).getName() << endl;}
+\DoxyCodeLine{01044         \}}
+\DoxyCodeLine{01045     \}}
+\DoxyCodeLine{01046 }
+\DoxyCodeLine{01047     cout << endl << \textcolor{stringliteral}{"{}Pretende pesquisar apenas para certas companhias aéreas? (s/n) "{}};}
+\DoxyCodeLine{01048     \textcolor{keywordtype}{string} op;}
+\DoxyCodeLine{01049     cin >> op;}
+\DoxyCodeLine{01050     \textcolor{keywordflow}{if} (op == \textcolor{stringliteral}{"{}s"{}} || op == \textcolor{stringliteral}{"{}S"{}}) \{}
+\DoxyCodeLine{01051         set<string> airlines\_to\_consider;}
+\DoxyCodeLine{01052         cout << \textcolor{stringliteral}{"{}Liste os códigos das companhias aéreas que pretende considerar (escreva 'fim' para terminar): "{}};}
+\DoxyCodeLine{01053         \textcolor{keywordtype}{string} airline;}
+\DoxyCodeLine{01054         \textcolor{keywordflow}{while} (cin >> airline) \{}
+\DoxyCodeLine{01055             transform(airline.begin(), airline.end(), airline.begin(), ::toupper);}
+\DoxyCodeLine{01056             \textcolor{keywordflow}{if} (airline == \textcolor{stringliteral}{"{}FIM"{}}) \textcolor{keywordflow}{break};}
+\DoxyCodeLine{01057             \textcolor{keywordflow}{if} (airline\_codes.find(airline) != airline\_codes.end()) \{}
+\DoxyCodeLine{01058                 airlines\_to\_consider.insert(airline);}
+\DoxyCodeLine{01059             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01060                 cout << \textcolor{stringliteral}{"{}Companhia aérea não encontrada!"{}} << endl;}
+\DoxyCodeLine{01061             \}}
+\DoxyCodeLine{01062         \}}
+\DoxyCodeLine{01063         \mbox{\hyperlink{main_8cpp_a221026311c13465c2f5a9907e60c70e3}{list\_shortest\_paths\_with\_distance}}(src, dest, airlines\_to\_consider);}
+\DoxyCodeLine{01064     \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{01065         \mbox{\hyperlink{main_8cpp_a221026311c13465c2f5a9907e60c70e3}{list\_shortest\_paths\_with\_distance}}(src, dest);}
+\DoxyCodeLine{01066     \}}
+\DoxyCodeLine{01067 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_aee3b3024592c49bdb879f7465f8beae9}\label{main_8cpp_aee3b3024592c49bdb879f7465f8beae9}} 
@@ -1554,28 +1604,31 @@ Lê as companhias aéreas do ficheiro airlines.\+csv e guarda-\/as nas estrutura
 
 Nesta função lemos of ficheiro o airlines.\+csv e adicionamos a informacao a varios unordered maps. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00150}{150}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00149                      \{}
-\DoxyCodeLine{00150     ifstream airlines\_file(\textcolor{stringliteral}{"{}../DataFiles/airlines.csv"{}});}
-\DoxyCodeLine{00151 }
-\DoxyCodeLine{00152     \textcolor{keywordtype}{string} line;}
-\DoxyCodeLine{00153     \textcolor{keywordtype}{int} i = 1;}
-\DoxyCodeLine{00154     \textcolor{keywordflow}{while} (getline(airlines\_file, line)) \{}
-\DoxyCodeLine{00155         istringstream ss(line);}
-\DoxyCodeLine{00156         \textcolor{keywordtype}{string} code, name, callSign, country;}
-\DoxyCodeLine{00157         getline(ss, code, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00158         getline(ss, name, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00159         getline(ss, callSign, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00160         getline(ss, country);}
-\DoxyCodeLine{00161         \mbox{\hyperlink{classAirline}{Airline}} airline(code, name, callSign, country);}
-\DoxyCodeLine{00162         airline\_codes.insert(\{code, i\});}
-\DoxyCodeLine{00163         airlines.insert(\{i, airline\});}
-\DoxyCodeLine{00164         i++;}
-\DoxyCodeLine{00165     \}}
-\DoxyCodeLine{00166 \}}
+\DoxyCodeLine{00150                      \{}
+\DoxyCodeLine{00151     ifstream airlines\_file(\textcolor{stringliteral}{"{}../DataFiles/airlines.csv"{}});}
+\DoxyCodeLine{00152 }
+\DoxyCodeLine{00153     \textcolor{keywordtype}{string} line;}
+\DoxyCodeLine{00154     \textcolor{keywordtype}{int} i = 1;}
+\DoxyCodeLine{00155     getline(airlines\_file, line);}
+\DoxyCodeLine{00156     \textcolor{keywordflow}{while} (getline(airlines\_file, line)) \{}
+\DoxyCodeLine{00157         istringstream ss(line);}
+\DoxyCodeLine{00158         \textcolor{keywordtype}{string} code, name, callSign, country;}
+\DoxyCodeLine{00159         getline(ss, code, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00160         getline(ss, name, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00161         getline(ss, callSign, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00162         getline(ss, country);}
+\DoxyCodeLine{00163         \textcolor{keywordflow}{if} (country[country.size() -\/ 1] == \textcolor{charliteral}{'\(\backslash\)r'}) country.pop\_back();}
+\DoxyCodeLine{00164         \mbox{\hyperlink{classAirline}{Airline}} airline(code, name, callSign, country);}
+\DoxyCodeLine{00165         airline\_codes.insert(\{code, i\});}
+\DoxyCodeLine{00166         airlines.insert(\{i, airline\});}
+\DoxyCodeLine{00167         airport\_airlines.insert(\{code, vector<int>()\});}
+\DoxyCodeLine{00168         i++;}
+\DoxyCodeLine{00169     \}}
+\DoxyCodeLine{00170 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_ac8f974a281ae4c2242532ae613428e17}\label{main_8cpp_ac8f974a281ae4c2242532ae613428e17}} 
@@ -1599,52 +1652,53 @@ Definition at line \mbox{\hyperlink{main_8cpp_source_l00091}{91}} of file \mbox{
 \DoxyCodeLine{00093 }
 \DoxyCodeLine{00094     \textcolor{keywordtype}{string} line;}
 \DoxyCodeLine{00095     \textcolor{keywordtype}{int} i = 1;}
-\DoxyCodeLine{00096     \textcolor{keywordflow}{while} (getline(airports\_file, line)) \{}
-\DoxyCodeLine{00097         istringstream ss(line);}
-\DoxyCodeLine{00098         \textcolor{keywordtype}{string} code, name, city, country;}
-\DoxyCodeLine{00099         \textcolor{keywordtype}{double} lat, lon;}
-\DoxyCodeLine{00100         getline(ss, code, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00101         getline(ss, name, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00102         getline(ss, city, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00103         getline(ss, country, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00104         ss >> lat;}
-\DoxyCodeLine{00105         ss.ignore();}
-\DoxyCodeLine{00106         ss >> lon;}
-\DoxyCodeLine{00107 }
-\DoxyCodeLine{00108         \mbox{\hyperlink{classAirport}{Airport}} airport(code, name, city, country, lat, lon);}
-\DoxyCodeLine{00109         airport\_codes.insert(\{code, i\});}
-\DoxyCodeLine{00110         airports.insert(\{i, airport\});}
-\DoxyCodeLine{00111         airport\_coords.insert(\{\{lat, lon\}, i\});}
-\DoxyCodeLine{00112         tree.insert(lat, lon);}
-\DoxyCodeLine{00113 }
-\DoxyCodeLine{00114         transform(country.begin(), country.end(), country.begin(), ::toupper);}
-\DoxyCodeLine{00115         transform(city.begin(), city.end(), city.begin(), ::toupper);}
-\DoxyCodeLine{00116         \textcolor{keywordflow}{if}(airport\_cities.find(city) == airport\_cities.end()) \{}
-\DoxyCodeLine{00117             vector<int> v; v.push\_back(i);}
-\DoxyCodeLine{00118             airport\_cities.insert(\{city, v\});}
-\DoxyCodeLine{00119         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00120             airport\_cities.at(city).push\_back(i);}
-\DoxyCodeLine{00121         \}}
-\DoxyCodeLine{00122 }
-\DoxyCodeLine{00123         \textcolor{keywordflow}{if}(cities\_country.find(city) == cities\_country.end()) \{}
-\DoxyCodeLine{00124             unordered\_set<string> countries = \{country\};}
-\DoxyCodeLine{00125             cities\_country.insert(\{city, countries\});}
-\DoxyCodeLine{00126         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(cities\_country.find(city) -\/> second.find(country) == cities\_country.find(city) -\/> second.end())\{}
-\DoxyCodeLine{00127             cities\_country.at(city).insert(country);}
-\DoxyCodeLine{00128         \}}
-\DoxyCodeLine{00129 }
-\DoxyCodeLine{00130         \textcolor{keywordflow}{if} (airport\_countries.find(country) == airport\_countries.end()) \{}
-\DoxyCodeLine{00131             vector<int> v; v.push\_back(i);}
-\DoxyCodeLine{00132             \textcolor{comment}{//transform(country.begin(), country.end(), country.begin(), ::toupper);}}
-\DoxyCodeLine{00133             airport\_countries.insert(\{country, v\});}
-\DoxyCodeLine{00134         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00135             \textcolor{comment}{//transform(country.begin(), country.end(), country.begin(), ::toupper);}}
-\DoxyCodeLine{00136             airport\_countries.at(country).push\_back(i);}
-\DoxyCodeLine{00137         \}}
-\DoxyCodeLine{00138 }
-\DoxyCodeLine{00139         i++;}
-\DoxyCodeLine{00140     \}}
-\DoxyCodeLine{00141 \}}
+\DoxyCodeLine{00096     getline(airports\_file, line);}
+\DoxyCodeLine{00097     \textcolor{keywordflow}{while} (getline(airports\_file, line)) \{}
+\DoxyCodeLine{00098         istringstream ss(line);}
+\DoxyCodeLine{00099         \textcolor{keywordtype}{string} code, name, city, country;}
+\DoxyCodeLine{00100         \textcolor{keywordtype}{double} lat, lon;}
+\DoxyCodeLine{00101         getline(ss, code, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00102         getline(ss, name, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00103         getline(ss, city, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00104         getline(ss, country, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00105         ss >> lat;}
+\DoxyCodeLine{00106         ss.ignore();}
+\DoxyCodeLine{00107         ss >> lon;}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109         \mbox{\hyperlink{classAirport}{Airport}} airport(code, name, city, country, lat, lon);}
+\DoxyCodeLine{00110         airport\_codes.insert(\{code, i\});}
+\DoxyCodeLine{00111         airports.insert(\{i, airport\});}
+\DoxyCodeLine{00112         airport\_coords.insert(\{\{lat, lon\}, i\});}
+\DoxyCodeLine{00113         tree.insert(lat, lon);}
+\DoxyCodeLine{00114 }
+\DoxyCodeLine{00115         transform(country.begin(), country.end(), country.begin(), ::toupper);}
+\DoxyCodeLine{00116         transform(city.begin(), city.end(), city.begin(), ::toupper);}
+\DoxyCodeLine{00117         \textcolor{keywordflow}{if}(airport\_cities.find(city) == airport\_cities.end()) \{}
+\DoxyCodeLine{00118             vector<int> v; v.push\_back(i);}
+\DoxyCodeLine{00119             airport\_cities.insert(\{city, v\});}
+\DoxyCodeLine{00120         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00121             airport\_cities.at(city).push\_back(i);}
+\DoxyCodeLine{00122         \}}
+\DoxyCodeLine{00123 }
+\DoxyCodeLine{00124         \textcolor{keywordflow}{if}(cities\_country.find(city) == cities\_country.end()) \{}
+\DoxyCodeLine{00125             unordered\_set<string> countries = \{country\};}
+\DoxyCodeLine{00126             cities\_country.insert(\{city, countries\});}
+\DoxyCodeLine{00127         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if}(cities\_country.find(city) -\/> second.find(country) == cities\_country.find(city) -\/> second.end())\{}
+\DoxyCodeLine{00128             cities\_country.at(city).insert(country);}
+\DoxyCodeLine{00129         \}}
+\DoxyCodeLine{00130 }
+\DoxyCodeLine{00131         \textcolor{keywordflow}{if} (airport\_countries.find(country) == airport\_countries.end()) \{}
+\DoxyCodeLine{00132             vector<int> v; v.push\_back(i);}
+\DoxyCodeLine{00133             \textcolor{comment}{//transform(country.begin(), country.end(), country.begin(), ::toupper);}}
+\DoxyCodeLine{00134             airport\_countries.insert(\{country, v\});}
+\DoxyCodeLine{00135         \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00136             \textcolor{comment}{//transform(country.begin(), country.end(), country.begin(), ::toupper);}}
+\DoxyCodeLine{00137             airport\_countries.at(country).push\_back(i);}
+\DoxyCodeLine{00138         \}}
+\DoxyCodeLine{00139 }
+\DoxyCodeLine{00140         i++;}
+\DoxyCodeLine{00141     \}}
+\DoxyCodeLine{00142 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a805dc87aa57ee651dd7dae25d8475fdd}\label{main_8cpp_a805dc87aa57ee651dd7dae25d8475fdd}} 
@@ -1659,34 +1713,29 @@ Lê os voos do ficheiro flights.\+csv e guarda-\/os nas estruturas de dados apro
 
 Nesta função lemos of ficheiro o flights.\+csv e adicionamos ao grafo pincipal, cada voos representa um Edge do grafo principal. 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00174}{174}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00178}{178}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00174                     \{}
-\DoxyCodeLine{00175     ifstream flights\_file(\textcolor{stringliteral}{"{}../DataFiles/flights.csv"{}});}
-\DoxyCodeLine{00176     \textcolor{keywordtype}{string} line;}
-\DoxyCodeLine{00177     getline(flights\_file, line);}
-\DoxyCodeLine{00178     \textcolor{keywordflow}{while} (getline(flights\_file, line)) \{}
-\DoxyCodeLine{00179         istringstream ss(line);}
-\DoxyCodeLine{00180         \textcolor{keywordtype}{string} origin, destination, airline;}
-\DoxyCodeLine{00181         getline(ss, origin, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00182         getline(ss, destination, \textcolor{charliteral}{','});}
-\DoxyCodeLine{00183         getline(ss, airline);}
-\DoxyCodeLine{00184 }
-\DoxyCodeLine{00185         \mbox{\hyperlink{classAirport}{Airport}} origin\_airport = airports.at(airport\_codes.at(origin));}
-\DoxyCodeLine{00186         \mbox{\hyperlink{classAirport}{Airport}} destination\_airport = airports.at(airport\_codes.at(destination));}
-\DoxyCodeLine{00187         \textcolor{keywordtype}{int} distance = (int) haversine(\{origin\_airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}(), origin\_airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}()\}, \{destination\_airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}(), destination\_airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}()\});}
-\DoxyCodeLine{00188         graph.addEdge(airport\_codes[origin], airport\_codes[destination], airline, distance);}
+\DoxyCodeLine{00178                     \{}
+\DoxyCodeLine{00179     ifstream flights\_file(\textcolor{stringliteral}{"{}../DataFiles/flights.csv"{}});}
+\DoxyCodeLine{00180     \textcolor{keywordtype}{string} line;}
+\DoxyCodeLine{00181     getline(flights\_file, line);}
+\DoxyCodeLine{00182     \textcolor{keywordflow}{while} (getline(flights\_file, line)) \{}
+\DoxyCodeLine{00183         istringstream ss(line);}
+\DoxyCodeLine{00184         \textcolor{keywordtype}{string} origin, destination, airline;}
+\DoxyCodeLine{00185         getline(ss, origin, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00186         getline(ss, destination, \textcolor{charliteral}{','});}
+\DoxyCodeLine{00187         getline(ss, airline);}
+\DoxyCodeLine{00188         \textcolor{keywordflow}{if} (airline[airline.size() -\/ 1] == \textcolor{charliteral}{'\(\backslash\)r'}) airline.pop\_back();}
 \DoxyCodeLine{00189 }
-\DoxyCodeLine{00190         \textcolor{keywordflow}{if} (airport\_airlines.find(airline) == airport\_airlines.end()) \{}
-\DoxyCodeLine{00191             vector<int> v; v.push\_back(airport\_codes[origin]);}
-\DoxyCodeLine{00192             airport\_airlines.insert(\{airline, v\});}
-\DoxyCodeLine{00193         \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00194             airport\_airlines.at(airline).push\_back(airport\_codes[origin]);}
-\DoxyCodeLine{00195         \}}
-\DoxyCodeLine{00196     \}}
-\DoxyCodeLine{00197 \}}
+\DoxyCodeLine{00190         \mbox{\hyperlink{classAirport}{Airport}} origin\_airport = airports.at(airport\_codes.at(origin));}
+\DoxyCodeLine{00191         \mbox{\hyperlink{classAirport}{Airport}} destination\_airport = airports.at(airport\_codes.at(destination));}
+\DoxyCodeLine{00192         \textcolor{keywordtype}{int} distance = (int) haversine(\{origin\_airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}(), origin\_airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}()\}, \{destination\_airport.\mbox{\hyperlink{classAirport_aed71ba4592b2a1401eb182931f2d3f06}{getLatitude}}(), destination\_airport.\mbox{\hyperlink{classAirport_ad8cd931389b14d63e5933a1658b653a3}{getLongitude}}()\});}
+\DoxyCodeLine{00193         graph.\mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{addEdge}}(airport\_codes[origin], airport\_codes[destination], airline, distance);}
+\DoxyCodeLine{00194         airport\_airlines.at(airline).push\_back(airport\_codes[origin]);}
+\DoxyCodeLine{00195     \}}
+\DoxyCodeLine{00196 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a82adfca00402553d6af70af425c1d158}\label{main_8cpp_a82adfca00402553d6af70af425c1d158}} 
@@ -1704,28 +1753,28 @@ String resultante da concatenação dos elementos do set
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00617}{617}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00616}{616}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00617                                              \{}
-\DoxyCodeLine{00618     std::stringstream result;}
-\DoxyCodeLine{00619     \textcolor{keywordtype}{bool} first = \textcolor{keyword}{true};}
-\DoxyCodeLine{00620     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::string\& s : set) \{}
-\DoxyCodeLine{00621         \textcolor{keywordflow}{if} (!first) \{}
-\DoxyCodeLine{00622             result << \textcolor{stringliteral}{"{}, "{}};}
-\DoxyCodeLine{00623         \}}
-\DoxyCodeLine{00624         result << s;}
-\DoxyCodeLine{00625         first = \textcolor{keyword}{false};}
-\DoxyCodeLine{00626     \}}
-\DoxyCodeLine{00627 }
-\DoxyCodeLine{00628     std::string str = result.str();}
-\DoxyCodeLine{00629     std::size\_t last\_comma = str.find\_last\_of(\textcolor{charliteral}{','});}
-\DoxyCodeLine{00630     \textcolor{keywordflow}{if} (last\_comma != std::string::npos) \{}
-\DoxyCodeLine{00631         str.replace(last\_comma, 2, \textcolor{stringliteral}{"{} \& "{}});}
-\DoxyCodeLine{00632     \}}
-\DoxyCodeLine{00633     \textcolor{keywordflow}{return} str;}
-\DoxyCodeLine{00634 \}}
+\DoxyCodeLine{00616                                              \{}
+\DoxyCodeLine{00617     std::stringstream result;}
+\DoxyCodeLine{00618     \textcolor{keywordtype}{bool} first = \textcolor{keyword}{true};}
+\DoxyCodeLine{00619     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::string\& s : set) \{}
+\DoxyCodeLine{00620         \textcolor{keywordflow}{if} (!first) \{}
+\DoxyCodeLine{00621             result << \textcolor{stringliteral}{"{}, "{}};}
+\DoxyCodeLine{00622         \}}
+\DoxyCodeLine{00623         result << s;}
+\DoxyCodeLine{00624         first = \textcolor{keyword}{false};}
+\DoxyCodeLine{00625     \}}
+\DoxyCodeLine{00626 }
+\DoxyCodeLine{00627     std::string str = result.str();}
+\DoxyCodeLine{00628     std::size\_t last\_comma = str.find\_last\_of(\textcolor{charliteral}{','});}
+\DoxyCodeLine{00629     \textcolor{keywordflow}{if} (last\_comma != std::string::npos) \{}
+\DoxyCodeLine{00630         str.replace(last\_comma, 2, \textcolor{stringliteral}{"{} \& "{}});}
+\DoxyCodeLine{00631     \}}
+\DoxyCodeLine{00632     \textcolor{keywordflow}{return} str;}
+\DoxyCodeLine{00633 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}\label{main_8cpp_a009aed09a6b5b4a81cb09ddfa41623d2}} 
@@ -1749,33 +1798,33 @@ Par de doubles com as coordenadas
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{main_8cpp_source_l00645}{645}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00644}{644}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00645                                                 \{}
-\DoxyCodeLine{00646     \textcolor{keywordtype}{double} lat; \textcolor{keywordtype}{double} lon;}
-\DoxyCodeLine{00647     \textcolor{keywordtype}{int} i = 0;}
-\DoxyCodeLine{00648     \textcolor{keywordflow}{while} (s[i] != \textcolor{charliteral}{'N'} \&\& s[i] != \textcolor{charliteral}{'S'} \&\& s[i] != \textcolor{charliteral}{','})\{}
-\DoxyCodeLine{00649         i++;}
-\DoxyCodeLine{00650         \textcolor{keywordflow}{if}(i == s.size()) \textcolor{keywordflow}{return} make\_pair(100, 200);}
-\DoxyCodeLine{00651     \}}
-\DoxyCodeLine{00652 }
-\DoxyCodeLine{00653     \textcolor{keywordflow}{if}(s[i] == \textcolor{charliteral}{','})\{}
-\DoxyCodeLine{00654         lat = stod(s.substr(0, i));}
-\DoxyCodeLine{00655         lon = stod(s.substr(i+1, s.size()-\/i-\/1));}
-\DoxyCodeLine{00656     \}}
-\DoxyCodeLine{00657     \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{00658         \textcolor{keywordflow}{if}(i+3 >= s.size() || (s[s.size()-\/1] != \textcolor{charliteral}{'E'} \&\& s[s.size()-\/1] != \textcolor{charliteral}{'W'})) \textcolor{keywordflow}{return} make\_pair(100, 200);}
-\DoxyCodeLine{00659 }
-\DoxyCodeLine{00660         lat = stod(s.substr(0, i));}
-\DoxyCodeLine{00661         \textcolor{keywordflow}{if} (s[i] == \textcolor{charliteral}{'S'}) lat *= -\/1;}
-\DoxyCodeLine{00662         lon = stod(s.substr(i + 2, s.size() -\/ i -\/ 3));}
-\DoxyCodeLine{00663         \textcolor{keywordflow}{if} (s[s.size() -\/ 1] == \textcolor{charliteral}{'W'}) lon *= -\/1;}
-\DoxyCodeLine{00664     \}}
-\DoxyCodeLine{00665     \textcolor{keywordflow}{if}(lat < -\/90 || lat > 90 || lon < -\/180 || lon > 180) \textcolor{keywordflow}{return} make\_pair(100, 200);}
-\DoxyCodeLine{00666     \textcolor{keywordflow}{return} make\_pair(lat, lon);}
-\DoxyCodeLine{00667 \}}
+\DoxyCodeLine{00644                                                 \{}
+\DoxyCodeLine{00645     \textcolor{keywordtype}{double} lat; \textcolor{keywordtype}{double} lon;}
+\DoxyCodeLine{00646     \textcolor{keywordtype}{int} i = 0;}
+\DoxyCodeLine{00647     \textcolor{keywordflow}{while} (s[i] != \textcolor{charliteral}{'N'} \&\& s[i] != \textcolor{charliteral}{'S'} \&\& s[i] != \textcolor{charliteral}{','})\{}
+\DoxyCodeLine{00648         i++;}
+\DoxyCodeLine{00649         \textcolor{keywordflow}{if}(i == s.size()) \textcolor{keywordflow}{return} make\_pair(100, 200);}
+\DoxyCodeLine{00650     \}}
+\DoxyCodeLine{00651 }
+\DoxyCodeLine{00652     \textcolor{keywordflow}{if}(s[i] == \textcolor{charliteral}{','})\{}
+\DoxyCodeLine{00653         lat = stod(s.substr(0, i));}
+\DoxyCodeLine{00654         lon = stod(s.substr(i+1, s.size()-\/i-\/1));}
+\DoxyCodeLine{00655     \}}
+\DoxyCodeLine{00656     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{00657         \textcolor{keywordflow}{if}(i+3 >= s.size() || (s[s.size()-\/1] != \textcolor{charliteral}{'E'} \&\& s[s.size()-\/1] != \textcolor{charliteral}{'W'})) \textcolor{keywordflow}{return} make\_pair(100, 200);}
+\DoxyCodeLine{00658 }
+\DoxyCodeLine{00659         lat = stod(s.substr(0, i));}
+\DoxyCodeLine{00660         \textcolor{keywordflow}{if} (s[i] == \textcolor{charliteral}{'S'}) lat *= -\/1;}
+\DoxyCodeLine{00661         lon = stod(s.substr(i + 2, s.size() -\/ i -\/ 3));}
+\DoxyCodeLine{00662         \textcolor{keywordflow}{if} (s[s.size() -\/ 1] == \textcolor{charliteral}{'W'}) lon *= -\/1;}
+\DoxyCodeLine{00663     \}}
+\DoxyCodeLine{00664     \textcolor{keywordflow}{if}(lat < -\/90 || lat > 90 || lon < -\/180 || lon > 180) \textcolor{keywordflow}{return} make\_pair(100, 200);}
+\DoxyCodeLine{00665     \textcolor{keywordflow}{return} make\_pair(lat, lon);}
+\DoxyCodeLine{00666 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{main_8cpp_aa3b21853f890838c88d047d6c2786917}\label{main_8cpp_aa3b21853f890838c88d047d6c2786917}} 

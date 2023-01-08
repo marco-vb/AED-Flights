@@ -15,49 +15,70 @@
 \DoxyCodeLine{\Hypertarget{Graph_8h_source_l00011}00011 \textcolor{keyword}{typedef} list<int> li;}
 \DoxyCodeLine{\Hypertarget{Graph_8h_source_l00012}00012 \textcolor{keyword}{typedef} vector<int> vi;}
 \DoxyCodeLine{\Hypertarget{Graph_8h_source_l00013}00013 \textcolor{keyword}{typedef} pair<int, int> pii;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00014}00014 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00015}\mbox{\hyperlink{classGraph}{00015}} \textcolor{keyword}{class }\mbox{\hyperlink{classGraph}{Graph}} \{}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00016}00016 \textcolor{keyword}{public}:}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00017}\mbox{\hyperlink{structGraph_1_1Edge}{00017}}     \textcolor{keyword}{struct }\mbox{\hyperlink{structGraph_1_1Edge}{Edge}} \{}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00018}00018         \textcolor{keywordtype}{int} dest;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00019}00019         \textcolor{keywordtype}{int} weight;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00020}00020         set<string> airlines;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00021}00021     \};}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00022}\mbox{\hyperlink{structGraph_1_1Node}{00022}}     \textcolor{keyword}{struct }\mbox{\hyperlink{structGraph_1_1Node}{Node}} \{}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00023}00023         list<Edge> adj;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00024}00024         \textcolor{keywordtype}{bool} visited;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00025}00025         \textcolor{keywordtype}{int} distance;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00026}00026     \};}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00027}00027 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00028}00028     \textcolor{keywordtype}{int} n;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00029}00029     vector<Node> nodes;}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00030}00030 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00031}00031     \mbox{\hyperlink{classGraph}{Graph}}();}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00032}00032     \textcolor{keyword}{explicit} \mbox{\hyperlink{classGraph}{Graph}}(\textcolor{keywordtype}{int} nodes);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00033}00033     \textcolor{keywordtype}{void} addEdge(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} dest, \textcolor{keywordtype}{string} airline, \textcolor{keywordtype}{int} weight = 1);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00034}00034 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00035}00035     \textcolor{keywordtype}{int} getOutDegree(\textcolor{keywordtype}{int} i);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00036}00036     \textcolor{keywordtype}{int} getAirlinesNumber(\textcolor{keywordtype}{int} i);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00037}00037     \textcolor{keywordtype}{int} getDestinationsNumber(\textcolor{keywordtype}{int} i);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00038}00038     \textcolor{keywordtype}{int} getDestinationsCountries(\textcolor{keywordtype}{int} i, unordered\_map<int, Airport> \&airports);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00039}00039     \textcolor{keywordtype}{int} getNumEdges();}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00040}00040     \textcolor{keywordtype}{int} getCompanies();}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00041}00041     \textcolor{keywordtype}{int} getDiameter();}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00042}00042     set<int> getDestinations(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} r);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00043}00043     vector<Node> getNodes() \textcolor{keyword}{const};}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00044}00044     vector<pii> getTopAirports(\textcolor{keywordtype}{int} i);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00045}00045     set<int> getArticulationPoints();}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00046}00046     set<int> getArticulationPoints(set<string> \&airlines\_to\_consider);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00047}00047 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00048}00048     list<li> least\_flights(vector<int> sources, vector<int> destination);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00049}00049     list<li> least\_flights(\textcolor{keyword}{const} vector<int>\& sources, \textcolor{keyword}{const} vector<int>\& dest, \textcolor{keyword}{const} set<string> \&airlines\_to\_consider);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00050}00050     list<li> least\_flights\_with\_distance(\textcolor{keyword}{const} vector<int>\& src, \textcolor{keyword}{const} vector<int>\& dest, \textcolor{keyword}{const} set<string>\& airlines\_to\_consider);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00051}00051     list<li> least\_flights\_with\_distance(\textcolor{keyword}{const} vector<int>\& src, \textcolor{keyword}{const} vector<int>\& dest);}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00052}00052 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00053}00053     \textcolor{keywordtype}{void} articulationPointsDFS(\textcolor{keywordtype}{int} v, \textcolor{keywordtype}{int} index, vector<int>\& num, vector<int>\& low, unordered\_set<int>\& s, set<int>\& ap, \textcolor{keywordtype}{bool} first = \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00054}00054     set<int> articulationPointsDFS(\textcolor{keywordtype}{int} v, \textcolor{keywordtype}{int} index, vector<int>\& num, vector<int>\& low, unordered\_set<int>\& s, set<int>\& ap, set<string> \&airlines\_to\_consider, \textcolor{keywordtype}{bool} first = \textcolor{keyword}{false});}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00055}00055 \};}
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00056}00056 }
-\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00057}00057 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00014}00014 \textcolor{keyword}{typedef} pair<int, string> pis;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00015}00015 \textcolor{keyword}{typedef} list<pis> lp;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00025}\mbox{\hyperlink{classGraph}{00025}} \textcolor{keyword}{class }\mbox{\hyperlink{classGraph}{Graph}} \{}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00026}00026 \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00031}\mbox{\hyperlink{structGraph_1_1Edge}{00031}}     \textcolor{keyword}{struct }\mbox{\hyperlink{structGraph_1_1Edge}{Edge}} \{}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00032}00032         \textcolor{keywordtype}{int} dest;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00033}00033         \textcolor{keywordtype}{int} weight;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00034}00034         set<string> airlines;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00035}00035     \};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00036}00036 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00043}\mbox{\hyperlink{structGraph_1_1Node}{00043}}     \textcolor{keyword}{struct }\mbox{\hyperlink{structGraph_1_1Node}{Node}} \{}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00044}00044         list<Edge> adj;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00045}00045         \textcolor{keywordtype}{bool} visited;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00046}00046         \textcolor{keywordtype}{int} distance;}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00047}00047     \};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00050}\mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{00050}}     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a81a76a428e630453ef019a15b9092967}{n}};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00051}00051 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00053}\mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{00053}}     vector<Node> \mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00059}00059     \mbox{\hyperlink{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00066}00066     \textcolor{keyword}{explicit} \mbox{\hyperlink{classGraph_ae4c72b8ac4d693c49800a4c7e273654f}{Graph}}(\textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a71b5e16eb9e0670fea3ecee3526abb41}{nodes}});}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00067}00067 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00075}00075     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGraph_abdb158cab83ecae2c1e49eaa46dd7d25}{addEdge}}(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} dest, \textcolor{keywordtype}{string} airline, \textcolor{keywordtype}{int} weight = 1);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00076}00076 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00083}00083     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a8b19b670048cbe95ab868ec7b1d3127d}{getOutDegree}}(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00092}00092     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a42356d6e2e2824d73ee457e8c38e9997}{getAirlinesNumber}}(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00101}00101     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_aa96dae4ef07978b18640b4277f4b106b}{getDestinationsNumber}}(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00102}00102 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00110}00110     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a73cc61bf3df3c833b831c2073c946b56}{getDestinationsCountries}}(\textcolor{keywordtype}{int} i, unordered\_map<int, Airport> \&airports);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00111}00111 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00117}00117     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a383b200b23ce590c216adc97f0be6742}{getNumEdges}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00118}00118 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00124}00124     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a742a13abf5fcadc712dba088e963fcc3}{getCompanies}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00125}00125 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00132}00132     \textcolor{keywordtype}{int} \mbox{\hyperlink{classGraph_a88224c6e2978264d31b58d33167c5cd7}{getDiameter}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00133}00133 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00142}00142     set<int> \mbox{\hyperlink{classGraph_ae62996682bfad8d45c5457325b0896f8}{getDestinations}}(\textcolor{keywordtype}{int} src, \textcolor{keywordtype}{int} r);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00143}00143 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00148}00148     vector<Node> \mbox{\hyperlink{classGraph_adc4daf6c35b3e73211dc5503479f8dca}{getNodes}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00162}00162     vector<pii> \mbox{\hyperlink{classGraph_a436a278b4fad166e19f0ed2ee266ad85}{getTopAirports}}(\textcolor{keywordtype}{int} i);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00163}00163 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00171}00171     set<int> \mbox{\hyperlink{classGraph_a1989c9e26e73c1268afac4123597e20c}{getArticulationPoints}}();}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00172}00172 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00182}00182     set<int> \mbox{\hyperlink{classGraph_a1989c9e26e73c1268afac4123597e20c}{getArticulationPoints}}(set<string> \&airlines\_to\_consider);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00183}00183 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00196}00196     list<lp> \mbox{\hyperlink{classGraph_ae407422b47c174d4471f349bab61e638}{least\_flights}}(vector<int> sources, vector<int> destination);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00212}00212     list<lp> \mbox{\hyperlink{classGraph_ae407422b47c174d4471f349bab61e638}{least\_flights}}(\textcolor{keyword}{const} vector<int>\& sources, \textcolor{keyword}{const} vector<int>\& dest, \textcolor{keyword}{const} set<string> \&airlines\_to\_consider);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00226}00226     list<lp> \mbox{\hyperlink{classGraph_a1b0e33d6078cb7c319316e95b1716adf}{least\_flights\_with\_distance}}(\textcolor{keyword}{const} vector<int>\& src, \textcolor{keyword}{const} vector<int>\& dest);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00227}00227 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00242}00242     list<lp> \mbox{\hyperlink{classGraph_a1b0e33d6078cb7c319316e95b1716adf}{least\_flights\_with\_distance}}(\textcolor{keyword}{const} vector<int>\& src, \textcolor{keyword}{const} vector<int>\& dest, \textcolor{keyword}{const} set<string>\& airlines\_to\_consider);}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00259}00259     \textcolor{keywordtype}{void} \mbox{\hyperlink{classGraph_a1cecaf0263febab8146b7e8138321b05}{articulationPointsDFS}}(\textcolor{keywordtype}{int} v, \textcolor{keywordtype}{int} index, vector<int>\& num, vector<int>\& low, unordered\_set<int>\& s, set<int>\& ap, \textcolor{keywordtype}{bool} first = \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00260}00260 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00279}00279     set<int> \mbox{\hyperlink{classGraph_a1cecaf0263febab8146b7e8138321b05}{articulationPointsDFS}}(\textcolor{keywordtype}{int} v, \textcolor{keywordtype}{int} index, vector<int>\& num, vector<int>\& low, unordered\_set<int>\& s, set<int>\& ap, set<string> \&airlines\_to\_consider, \textcolor{keywordtype}{bool} first = \textcolor{keyword}{false});}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00280}00280 \};}
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00281}00281 }
+\DoxyCodeLine{\Hypertarget{Graph_8h_source_l00282}00282 \textcolor{preprocessor}{\#endif}}
 
 \end{DoxyCode}
